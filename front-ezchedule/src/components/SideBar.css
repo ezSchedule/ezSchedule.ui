@@ -1,0 +1,16 @@
+*{
+    text-decoration: none;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+}
+
+p{
+    margin: 5px;
+}
+
+.active{
+    font-weight: bolder;
+}

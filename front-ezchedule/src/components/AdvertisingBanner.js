@@ -14,7 +14,11 @@ const AdvertisingBanner = () => {
                 Cadastro
             </button>
         </div>
-        <div></div>
+        <div className='imgAdvertising'>
+            <div>
+                
+            </div>
+        </div>
     </div>
     </div>
   )

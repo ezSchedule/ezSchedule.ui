@@ -1,5 +1,6 @@
 import React from 'react'
 import './AdvertisingBanner.css'
+import imgBanner from '../assets/bannerImg.png'
 
 const AdvertisingBanner = () => {
   return (
@@ -16,7 +17,7 @@ const AdvertisingBanner = () => {
         </div>
         <div className='imgAdvertising'>
             <div>
-                
+                <img src={imgBanner} alt="" />
             </div>
         </div>
     </div>

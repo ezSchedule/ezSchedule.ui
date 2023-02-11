@@ -1,0 +1,34 @@
+.mainContact {
+    height: 25vh;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.contact {
+    width: 80%;
+    height: 100%;
+}
+
+.contact h1 {
+    color: #f5f5f5;
+    font-size: 3.3em;
+    font-weight: bold;
+    padding-bottom: 1.5rem;
+}
+
+.imgContact{
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.imgContact img{
+    cursor: pointer;
+    height: 70px;
+}

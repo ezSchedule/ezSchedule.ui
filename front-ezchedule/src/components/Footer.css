@@ -1,0 +1,20 @@
+.mainFooter{
+    width: 100%;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.mainFooter div{
+    width: 80%;
+    height: 100%;
+    border-top:1px solid #ffffff26 ;
+    border-radius: 2.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+}

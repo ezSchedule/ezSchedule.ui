@@ -17,7 +17,6 @@ npm i -y react-router-dom
 
 ## Após isso já pode rodar :)
 
-```
 **Vai la gafanhoto roda esse front lindão:**
 ```
 npm start

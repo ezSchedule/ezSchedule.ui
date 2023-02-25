@@ -1,20 +1,22 @@
 import './App.css';
-import AdvertisingBanner from './components/AdvertisingBanner';
-import Arrow from './components/Arrow';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import HowItWorks from './components/HowItWorks';
+import Register from './pages/Register';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import NotFound from './pages/NotFound';
+
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <AdvertisingBanner />
-      <Arrow />
-      <HowItWorks />
-      <Contact />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+        <Route path='/' element={<Home />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

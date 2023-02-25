@@ -6,7 +6,7 @@ const SideBar = () => {
   return (
     <nav>
         <NavLink to="/"><p>Home</p></NavLink>
-        <NavLink to="/about"><p>Sobre Nós</p></NavLink>
+        <NavLink to="/register"><p>Sobre Nós</p></NavLink>
     </nav>
   )
 }

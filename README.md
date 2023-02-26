@@ -13,6 +13,8 @@ cd front-ezchedule
 npm i -y 
 
 npm i -y react-router-dom
+
+npm i -y axios
 ```
 
 ## Após isso já pode rodar :)

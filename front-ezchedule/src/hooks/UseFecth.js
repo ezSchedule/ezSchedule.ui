@@ -6,7 +6,7 @@ function UseFecth() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('')
+        axios.get('viacep.com.br/ws/01001000/json/')
         .then(res =>{
             console.log(res)
         })

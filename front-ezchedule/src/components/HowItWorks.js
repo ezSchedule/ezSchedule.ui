@@ -25,7 +25,7 @@ const HowItWorks = () => {
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
           </div>
 
-          <div class="imagensDivItem">
+          <div className="imagensDivItem">
             <div className='iconsDiv'>
               <img src={Notificacao} alt="" />
             </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import './Register.css'
 import { useState } from 'react';
+import MaskCpf from '../masks/MaskCpf';
 
 
 const Register = () => {
@@ -14,7 +15,6 @@ const Register = () => {
   const hendleSubmit = (e) => {
     e.preventDefault();
     console.log("Enviando formulario sem recarregar a página...")
-    //aqui eu irei fazer as máscaras
 
     //mostrando dados que peguei do form
     console.log(name)
@@ -30,7 +30,6 @@ const Register = () => {
     setNumberApartment('');
     setBloco('');
   }
-
   return (
     <div className='mainForm'>
       <form onSubmit={hendleSubmit}>
@@ -40,12 +39,10 @@ const Register = () => {
            onChange={(e) => setName(e.target.value)} value={name} />
           <input type="text" name='surname' placeholder='Sobrenome' required
            onChange={(e) => setSurname(e.target.value)} value={surname}/>
-          <input type="text" name='cpf' placeholder='CPF' required 
-          onChange={(e) => setCpf(e.target.value)} value={cpf}/>
+          <MaskCpf value={cpf} onChange={(e) => setCpf(e.target.value)}/>
           <div className='divInputsNumbers' required>
             <input type="number" name='numberApartment' placeholder='Nº Apt' required 
             onChange={(e) => setNumberApartment(e.target.value)} value={numberApartment}/>
-            
             <input type="number" name='bloco' placeholder='Bloco' required 
             onChange={(e) => setBloco(e.target.value)} value={bloco}/>
           </div>

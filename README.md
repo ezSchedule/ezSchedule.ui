@@ -15,6 +15,9 @@ npm i -y
 npm i -y react-router-dom
 
 npm i -y axios
+
+npm i -y react-input-mask
+
 ```
 
 ## Após isso já pode rodar :)

@@ -1,6 +1,7 @@
 import React from 'react'
 import './AdvertisingBanner.css'
 import imgBanner from '../assets/bannerImg.png'
+
 import { Link } from 'react-router-dom'
 import Seta from '../assets/seta.png'
 

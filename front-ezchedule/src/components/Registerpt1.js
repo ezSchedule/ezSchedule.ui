@@ -37,7 +37,7 @@ const RegisterPt1 = () => {
             <div className='inputsDiv'>
                 <div>
                 <input type="text" placeholder='Nome'/>
-                <input type="text" placeholder='Sonrenome'/>
+                <input type="text" placeholder='Sobrenome'/>
                 <MaskCpf value={cpf} onChange={(e) => setCpf(e.target.value)}/>
                 </div>
             </div>

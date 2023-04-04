@@ -1,7 +1,7 @@
 import React from 'react'
-import './RegisterPt1.css'
+import './registerPt1.css'
 import { useState } from 'react';
-import MaskCpf from '../masks/MaskCpf';
+import MaskCpf from '../../../masks/MaskCpf';
 
 
 const RegisterPt1 = () => {

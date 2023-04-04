@@ -1,8 +1,8 @@
 import React from 'react'
-import './RegisterPt3.css'
+import './registerPt3.css'
 import { useState } from 'react';
-import MaskCpf from '../masks/MaskCpf';
-import MaskPhone from '../masks/MaskPhone';
+import MaskCpf from '../../../masks/MaskCpf';
+import MaskPhone from '../../../masks/MaskPhone';
 
 
 const RegisterPt3 = () => {

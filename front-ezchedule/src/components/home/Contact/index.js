@@ -1,8 +1,8 @@
 import React from 'react';
-import GitHub from '../assets/github.png';
-import Envelop from '../assets/email.png';
-import Location from '../assets/localizacao.png';
-import './Contact.css'
+import GitHub from '../../assets/github.png';
+import Envelop from '../../assets/email.png';
+import Location from '../../assets/localizacao.png';
+import './contact.css'
 const Contact = () => {
     return (
         <div className='mainContact'>

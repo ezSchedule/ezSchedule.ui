@@ -1,8 +1,8 @@
 import React from 'react';
-import './HowItWorks.css';
-import Calendario from '../assets/calendario.png';
-import Moeda from '../assets/moeda.png';
-import Notificacao from '../assets/notificacao.png';
+import './howItWorks.css';
+import Calendario from '../../assets/calendario.png';
+import Moeda from '../../assets/moeda.png';
+import Notificacao from '../../assets/notificacao.png';
 
 const HowItWorks = () => {
   return (

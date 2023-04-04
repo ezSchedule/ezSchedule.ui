@@ -1,6 +1,6 @@
 import React from 'react'
-import './Arrow.css'
-import Seta from '../assets/seta.png'
+import './arrow.css'
+import Seta from '../../assets/seta.png'
 
 const Arrow = () => {
   return (

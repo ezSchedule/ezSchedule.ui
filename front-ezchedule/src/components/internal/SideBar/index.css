@@ -1,0 +1,24 @@
+.calendarMain{
+    float: left;
+    width: 8vw;
+    background-color: #0A0C10;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.calendarMain div{
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.calendarMain div img{
+    width: 35px;
+    height: 35px;
+}

@@ -1,0 +1,12 @@
+.headerInternal{
+    width: 100vw;
+    background-color: aqua;
+    height: 15vh;
+    align-items: center;
+}
+
+.headerInternal div{
+    width: 100%;
+    height: 95%;
+    background-color: blue;
+}

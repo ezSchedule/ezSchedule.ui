@@ -6,31 +6,32 @@ import imgCalendarClock from '../../assets/relogio-calendario.png'
 import imgMoney from '../../assets/dinheiro.png'
 import imgForum from '../../assets/forum.png'
 import imgSettings from '../../assets/configuracoes.png'
-const Calendar = () => {
+import { NavLink } from 'react-router-dom'
+const Sidebar = () => {
   return (
     <>
-        <div className='calendarMain'>
+        <nav className='calendarMain'>
+            <NavLink to="/homeAdm">
+                <img className='img' src={imgCalendar} />
+            </NavLink>
             <div>
-                <img src={imgCalendar} />
+                <img className='img' src={imgGraph} />
             </div>
             <div>
-                <img src={imgGraph} />
+                <img className='img' src={imgCalendarClock} />
             </div>
             <div>
-                <img src={imgCalendarClock} />
+                <img className='img' src={imgMoney} />
             </div>
             <div>
-                <img src={imgMoney} />
+                <img className='img' src={imgForum} />
             </div>
             <div>
-                <img src={imgForum} />
+                <img className='img' src={imgSettings} />
             </div>
-            <div>
-                <img src={imgSettings} />
-            </div>
-        </div>
+        </nav>
     </>
   )
 }
 
-export default Calendar
+export default Sidebar;

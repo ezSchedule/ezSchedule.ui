@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Calendar from './pages/Administrator/Calendar/index';
+import Graphic from './pages/Administrator/Graphic';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/homeAdm' element={<Calendar />} />
+          <Route path='/graphicAdm' element={<Graphic />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

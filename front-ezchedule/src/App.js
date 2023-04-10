@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Calendar from './pages/Administrator/Calendar/index';
 import Graphic from './pages/Administrator/Graphic';
+import Service from './pages/Administrator/Service/Index';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/homeAdm' element={<Calendar />} />
           <Route path='/graphicAdm' element={<Graphic />} />
+          <Route path='/servicesAdm' element={<Service />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

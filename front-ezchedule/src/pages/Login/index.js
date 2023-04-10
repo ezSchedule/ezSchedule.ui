@@ -1,5 +1,6 @@
 import React from 'react'
 import './login.css'
+import { NavLink } from 'react-router-dom'
 
 const Login = () => {
   return (
@@ -12,7 +13,7 @@ const Login = () => {
                 <input type="text" placeholder='Senha' required/>
                 </div>
                   <span>
-                  <a href="">Esqueci minha senha</a>
+                  <a href=''>Esqueci minha senha</a>
                   </span>
             </div>
             <div className='divButtonLogin'>

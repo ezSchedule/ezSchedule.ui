@@ -17,9 +17,9 @@ const Sidebar = () => {
             <NavLink to="/graphicAdm">
                 <img className='img' src={imgGraph} />
             </NavLink>
-            <div>
+            <NavLink to="/servicesAdm">
                 <img className='img' src={imgCalendarClock} />
-            </div>
+            </NavLink>
             <div>
                 <img className='img' src={imgMoney} />
             </div>

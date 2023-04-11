@@ -1,0 +1,96 @@
+.mainServiceList{
+    display: flex;
+    width: 80%;
+    height: 80%;
+    margin-left: 5%;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mainServiceList .divAddService{
+    background-color: #C6F7D3;
+    height: 130px;
+    width: 45%;
+    margin: 25px;
+    border-radius: 10px;
+    display: flex;
+}
+
+.mainServiceList .divAddService button{
+    width: 80px;
+    height: 80px;
+    border: none;
+    background-color: #C6F7D3;
+    color: black;
+    font-size: 5rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    cursor: pointer;
+}
+
+.mainServiceList .divInformationsTenant{
+    background-color: #5AE982;
+    height: 130px;
+    width: 45%;
+    margin: 25px;
+    border-radius: 10px;
+    display: flex;
+}
+
+.mainServiceList .divInformationsTenant .imgTenant{
+    width: 40%;
+    height: 100%;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+
+}
+
+.mainServiceList .divInformationsTenant .imgTenant img{
+    width: 70px;
+    height: 70px;
+    background-color: #f5f5f5;
+    border-radius: 50px;
+    border: 1px solid #555;
+}
+
+.textInfos{
+    width: 60%;
+
+}
+
+.textInfos h4{
+    font-size: 1.2rem;
+    color: black;
+    font-weight: bolder;
+    margin-bottom: -10px;
+}
+
+.textInfos p{
+    font-size: 1rem;
+    color: #555;
+    font-weight: bolder;
+    margin-bottom: -10px;
+}
+::-webkit-scrollbar-track{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+	border-radius:0;
+	background-color: #D0D4CE;
+}
+
+::-webkit-scrollbar{
+	width: 6px;
+	background-color: #D0D4CE;
+}
+
+::-webkit-scrollbar-thumb{
+	border-radius:0;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+    border-radius: 10px;
+}

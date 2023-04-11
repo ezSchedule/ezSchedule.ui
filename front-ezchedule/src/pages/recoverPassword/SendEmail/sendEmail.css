@@ -1,0 +1,74 @@
+.mainBody {
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    background-color: #ffffff21;
+}
+
+.formSendEmail {
+    width: 35%;
+    height: 90vh;
+    background-color: #0A0C10;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+}
+
+.formSendEmail .container {
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.formSendEmail .container h1 {
+    font-size: 2rem;
+    margin-top: 20%;
+}
+
+.formSendEmail .container p {
+    width: 100%;
+    font-size: 16px;
+}
+
+.formSendEmail .containerBottom {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.formSendEmail .containerBottom input {
+    width: 100%;
+    height: 60px;
+    background-color: #44484f;
+    outline: none;
+    border-radius: 15px;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0 8px;
+}
+
+.formSendEmail .containerBottom .button {
+    width: 50%;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 30px;
+    background-color: #5AE982;
+    color: #0A0C10;
+    font-size: 1.7em;
+    font-weight: bold;
+    cursor: pointer;
+}

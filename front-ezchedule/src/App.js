@@ -6,6 +6,9 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Calendar from './pages/Administrator/Calendar/index';
 import Graphic from './pages/Administrator/Graphic';
+import SendEmail from './pages/recoverPassword/SendEmail';
+import SecurityCode from './pages/recoverPassword/SecurityCode';
+import UpdatePassword from './pages/recoverPassword/UpdatePassword';
 import Service from './pages/Administrator/Service/Index';
 
 function App() {
@@ -18,6 +21,9 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/homeAdm' element={<Calendar />} />
           <Route path='/graphicAdm' element={<Graphic />} />
+          <Route path='/sendEmail' element={<SendEmail />} />
+          <Route path='/securityCode' element={<SecurityCode />} />
+          <Route path='/updatePassword' element={<UpdatePassword />} />
           <Route path='/servicesAdm' element={<Service />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

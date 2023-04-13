@@ -10,6 +10,7 @@ import SendEmail from './pages/recoverPassword/SendEmail';
 import SecurityCode from './pages/recoverPassword/SecurityCode';
 import UpdatePassword from './pages/recoverPassword/UpdatePassword';
 import Service from './pages/Administrator/Service/Index';
+import Payment from './pages/Administrator/Payment';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/securityCode' element={<SecurityCode />} />
           <Route path='/updatePassword' element={<UpdatePassword />} />
           <Route path='/servicesAdm' element={<Service />} />
+          <Route path='/paymentAdm' element={<Payment />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

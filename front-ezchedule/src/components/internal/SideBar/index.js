@@ -20,9 +20,9 @@ const Sidebar = () => {
             <NavLink to="/servicesAdm">
                 <img className='img' src={imgCalendarClock} />
             </NavLink>
-            <div>
+            <NavLink to="/paymentAdm">
                 <img className='img' src={imgMoney} />
-            </div>
+            </NavLink>
             <div>
                 <img className='img' src={imgForum} />
             </div>

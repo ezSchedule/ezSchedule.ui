@@ -1,0 +1,28 @@
+.textField{
+    background-color: cornflowerblue;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    }
+    
+    .textField .textArea{
+    width: 100%;
+    height: 70%;
+    background-color: crimson;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    }
+    
+    .textField .textArea textarea{
+    width: 99%;
+    height: 90%;
+    resize: none;
+    }
+    
+    .buttonsTextField{
+    width: 100%;
+    height: 30%;
+    background-color: darkcyan;
+    }

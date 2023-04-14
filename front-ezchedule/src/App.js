@@ -11,6 +11,7 @@ import SecurityCode from './pages/recoverPassword/SecurityCode';
 import UpdatePassword from './pages/recoverPassword/UpdatePassword';
 import Service from './pages/Administrator/Service/Index';
 import Payment from './pages/Administrator/Payment';
+import Forum from './pages/Administrator/Forum';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/updatePassword' element={<UpdatePassword />} />
           <Route path='/servicesAdm' element={<Service />} />
           <Route path='/paymentAdm' element={<Payment />} />
+          <Route path='/forumAdm' element={<Forum />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,28 +1,67 @@
-.textField{
-    background-color: cornflowerblue;
+.textField {
     width: 100%;
     height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
-    }
-    
-    .textField .textArea{
+}
+
+.textField .textArea {
     width: 100%;
     height: 70%;
-    background-color: crimson;
+    background-color: #8EEFA9;
     align-items: center;
     justify-content: center;
     display: flex;
-    }
-    
-    .textField .textArea textarea{
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.textField .textArea textarea {
     width: 99%;
-    height: 90%;
+    height: 70%;
     resize: none;
-    }
-    
-    .buttonsTextField{
+    background-color: #8EEFA9;
+    border: none;   
+    margin: 30px;
+    font-size: 1.2rem;
+    font-size: #0A0C10;
+    font-weight: bold;
+}
+
+.buttonsTextField {
     width: 100%;
     height: 30%;
-    background-color: darkcyan;
-    }
+    background-color: #8EEFA9;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.buttonsTextField button{
+    margin: 0px 30px 30px 30px;
+    background-color: #A8BFAF;
+    width: 150px;
+    padding: 8px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    color: #0A0C10;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnPost{
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.btnPost button{
+    padding: 10px;
+    width: 130px;
+    background-color: #5AE982;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 1rem;
+}

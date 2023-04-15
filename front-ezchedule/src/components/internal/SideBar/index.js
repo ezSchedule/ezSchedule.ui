@@ -26,9 +26,9 @@ const Sidebar = () => {
             <NavLink to="/forumAdm">
                 <img className='img' src={imgForum} />
             </NavLink>
-            <div>
+            <NavLink to="/configurationAdm">
                 <img className='img' src={imgSettings} />
-            </div>
+            </NavLink>
         </nav>
     </>
   )

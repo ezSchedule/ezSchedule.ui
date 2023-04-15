@@ -12,6 +12,7 @@ import UpdatePassword from './pages/recoverPassword/UpdatePassword';
 import Service from './pages/Administrator/Service/Index';
 import Payment from './pages/Administrator/Payment';
 import Forum from './pages/Administrator/Forum';
+import Configuration from './pages/Administrator/Configuration';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path='/servicesAdm' element={<Service />} />
           <Route path='/paymentAdm' element={<Payment />} />
           <Route path='/forumAdm' element={<Forum />} />
+          <Route path='/configurationAdm' element={<Configuration />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

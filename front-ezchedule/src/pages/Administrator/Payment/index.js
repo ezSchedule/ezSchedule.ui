@@ -1,10 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './payment.css';
 import Sidebar from '../../../components/internal/SideBar/index';
 import HeaderInternal from '../../../components/internal/Header';
 import TablePayment from '../../../components/internal/TablePayment';
-
-
 
 const Payment = () => {
     return (
@@ -15,7 +13,7 @@ const Payment = () => {
             </div>
             <div className='payment'>
                 <div>
-                <TablePayment />
+                    <TablePayment />
                 </div>
             </div>
         </>

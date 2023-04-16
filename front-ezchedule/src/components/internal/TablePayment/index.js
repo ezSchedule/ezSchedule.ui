@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './tablePayment.css'
+import FinanceTr from '../FinanceTr'
+import useFetch from '../../../hooks/UseFecth';
+import { useState } from 'react';
 
 const TablePayment = () => {
+    const [payment, setPayment] = useState([]);
+
+    useEffect(() => {
+        useFetch.get().then((response) => {
+            console.log(response.data);
+            setPayment(response.data)
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, []);
     return (
         <>
             <table>
@@ -11,67 +24,15 @@ const TablePayment = () => {
                     <th>Salão</th>
                     <th>Valor</th>
                 </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                <tr className="dataTable">
-                    <td>Vinicius A Nunes</td>
-                    <td>27/10/03</td>
-                    <td>Salão B</td>
-                    <td>130,80</td>
-                </tr>
-                
+                {
+                    payment.map((payment)=>(
+                        <FinanceTr 
+                        name={payment.name} 
+                        date={payment.date} 
+                        salon={payment.salon}
+                        value={payment.value} />
+                    ))
+                }
             </table>
         </>
     )

@@ -1,8 +1,10 @@
 import './App.css';
-import Register from './pages/Register';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import RegisterPart1 from './pages/register/RegisterPart1';
+import RegisterPart2 from './pages/register/RegisterPart2';
+import RegisterPart3 from './pages/register/RegisterPart3';
 import NotFound from './pages/NotFound';
 import Calendar from './pages/Administrator/Calendar/index';
 import Graphic from './pages/Administrator/Graphic';
@@ -18,8 +20,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/registerPart1' element={<RegisterPart1 />} />
+          <Route path='/registerPart2' element={<RegisterPart2 />} />
+          <Route path='/registerPart3' element={<RegisterPart3 />} />
           <Route path='/homeAdm' element={<Calendar />} />
           <Route path='/graphicAdm' element={<Graphic />} />
           <Route path='/sendEmail' element={<SendEmail />} />

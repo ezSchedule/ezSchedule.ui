@@ -1,23 +1,33 @@
 import React from 'react'
 import './login.css'
 import { Link } from 'react-router-dom'
+import onBackPressed from '../../components/assets/left-arrow.png';
 
 const Login = () => {
   return (
-    <div className='mainForm'>
-      <form>
-        <h1>Entrar</h1>
-        <div className='inputsDivLogin'>
-          <div>
-            <input type="text" placeholder='Email' required />
-            <input type="text" placeholder='Senha' required />
-          </div>
-          <span>
-            <Link to="/sendEmail">Esqueci minha senha</Link>
-          </span>
+    <div className='mainBodyLogin'>
+      <form className='formLogin'>
+        <div className='imageContainer'>
+          <Link className='onBack' to="/">
+            <img src={onBackPressed} />
+          </Link>
         </div>
-        <div className='divButtonLogin'>
-          <button type='submit'>Continuar</button>
+
+        <div className='container'>
+
+          <h1>Entrar</h1>
+
+          <div className='contentContainer'>
+            <div className='inputContainer'>
+              <input type="text" placeholder='Email' required />
+              <input type="text" placeholder='Senha' required />
+            </div>
+            <span>
+              <Link className='forgotPassword' to="/sendEmail">Esqueci minha senha</Link>
+            </span>
+          </div>
+            <button type='submit'>Continuar</button>
+
         </div>
       </form>
     </div>

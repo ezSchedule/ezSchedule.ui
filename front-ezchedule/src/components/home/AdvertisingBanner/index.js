@@ -13,9 +13,9 @@ const AdvertisingBanner = () => {
                     <h1>
                         A um passo da <span>organização!</span>
                     </h1>
-                    <p>Problemas para organizar sua festa? Podemoste ajudar com isso, apresentamos para você o Schedule!</p>
+                    <p>Problemas para organizar sua festa? Podemos te ajudar com isso, apresentamos para você o Schedule!</p>
                     <div className='btnDiv'>
-                        <Link to={'/register'} className='btn'>
+                        <Link to={'/registerPart1'} className='btn'>
                             Cadastro
                         </Link>
                     </div>

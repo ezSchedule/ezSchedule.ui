@@ -23,12 +23,12 @@ const Sidebar = () => {
             <NavLink to="/paymentAdm">
                 <img className='img' src={imgMoney} />
             </NavLink>
-            <div>
+            <NavLink to="/forumAdm">
                 <img className='img' src={imgForum} />
-            </div>
-            <div>
+            </NavLink>
+            <NavLink to="/configurationAdm">
                 <img className='img' src={imgSettings} />
-            </div>
+            </NavLink>
         </nav>
     </>
   )

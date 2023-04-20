@@ -1,19 +1,7 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
 
-
-function UseFecth() {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        axios.get('viacep.com.br/ws/01001000/json/')
-        .then(res =>{
-            console.log(res)
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+    const useFetch = axios.create({
+        baseURL: "https://643b5adc70ea0e660292ea14.mockapi.io/payments/payment"
     })
-}
 
-export default UseFecth
+export default useFetch;

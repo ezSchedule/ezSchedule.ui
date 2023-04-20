@@ -7,7 +7,6 @@ import Notificacao from '../../assets/notificacao.png';
 const HowItWorks = () => {
   return (
     <div className='mainDivHowItsWorks'>
-          <div className='HowItsWorks'>
       <div className="howItsWork">
         <h1>Como Funciona?</h1>
         <div class="imagensDiv">
@@ -32,9 +31,7 @@ const HowItWorks = () => {
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
           </div>
         </div>
-
       </div>
-    </div>
     </div>
   )
 }

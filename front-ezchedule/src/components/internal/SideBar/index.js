@@ -20,15 +20,15 @@ const Sidebar = () => {
             <NavLink to="/servicesAdm">
                 <img className='img' src={imgCalendarClock} />
             </NavLink>
-            <div>
+            <NavLink to="/paymentAdm">
                 <img className='img' src={imgMoney} />
-            </div>
-            <div>
+            </NavLink>
+            <NavLink to="/forumAdm">
                 <img className='img' src={imgForum} />
-            </div>
-            <div>
+            </NavLink>
+            <NavLink to="/configurationAdm">
                 <img className='img' src={imgSettings} />
-            </div>
+            </NavLink>
         </nav>
     </>
   )

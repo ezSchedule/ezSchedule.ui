@@ -1,0 +1,48 @@
+.mainConfiguraton{
+    background-color: #f5f5f5;
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+}
+
+.configurationInside{
+    background-color: #f5f5f5;
+    width: 100vw;
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.configurationInside div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -5%;
+}
+
+.configurationInside h5{
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.configurationInside .btnConfig{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.btnConfig button{
+    margin: 30px;
+    padding: 12px;
+    width: 160px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: #5AE982;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}

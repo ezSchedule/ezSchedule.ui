@@ -1,11 +1,17 @@
 import React from 'react';
 import './securityCode.css';
 import { Link } from 'react-router-dom';
+import onBackPressed from '../../../components/assets/left-arrow.png';
 
 const SecurityCode = () => {
     return (
         <div className='mainBody'>
             <form className='formSecurityCode'>
+                <div className='imageContainer'>
+                    <Link className='onBack' to="/sendEmail">
+                        <img src={onBackPressed} />
+                    </Link>
+                </div>
                 <div className='container'>
                     <h1>Recuperar Senha</h1>
                     <p>Código de verificação enviado! Por favor, digite a sequência numérica recebida na sua caixa de email.</p>

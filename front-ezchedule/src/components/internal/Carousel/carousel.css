@@ -1,0 +1,33 @@
+.carousel {
+    width: 80vw;
+    display: flex;
+    overflow-x: auto;
+    padding: 0 0 30px;
+    overflow-anchor: auto;
+}
+
+
+.carousel::-webkit-scrollbar {
+    display: none;
+
+}
+
+
+.carousel::-webkit-scrollbar-thumb {
+    background-color: #7171716e;
+    box-shadow: none;
+}
+
+.carousel::-webkit-scrollbar-track{
+    -webkit-box-shadow: none;
+    background-color: #f4f4f409;
+    
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+

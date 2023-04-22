@@ -1,0 +1,11 @@
+.mainComponentCalendar{
+    height: 50vh;
+    margin-left: 5%;
+    display: flex;
+    background-color: black;
+    width: 80%;
+}
+
+.teste{
+    width: 100%;
+}

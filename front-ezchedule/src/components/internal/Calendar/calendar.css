@@ -1,11 +1,105 @@
 .mainComponentCalendar{
-    height: 50vh;
-    margin-left: 5%;
-    display: flex;
-    background-color: black;
-    width: 80%;
+    height: 55vh;
+    margin-left: 6%;
+    width: 85%;
+    margin-top: -5%;
 }
 
-.teste{
-    width: 100%;
+.css-hlj6pa-MuiDialogActions-root{
+    display: none !important;
+}
+
+.css-3jvy96-MuiTypography-root-MuiDatePickerToolbar-title {
+    display: none !important;
+}
+
+.css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel{
+    font-size: 1.3rem !important;
+    margin-top: -8% !important;
+    font-weight: bold;
+}
+
+.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root{
+    display: none !important;
+}
+
+.css-1qs309j-MuiButtonBase-root-MuiPickersDay-root{
+    font-size: 1rem !important;
+}
+
+
+.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root{
+    background-color: #f5f5f5;
+}
+
+.css-cwhad8-MuiDateCalendar-root{
+    background-color: #5AE982 !important;
+    border-radius: 30px;
+    height: 100%;
+}
+
+.css-cwhad8-MuiDateCalendar-root {
+    width: 100% !important;
+    justify-content: space-between !important;
+    max-height: 70vh !important;
+    height: 55vh;
+    padding: 1px !important;
+}
+
+.css-1cafy48-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition{
+    padding: 5px !important;
+}
+
+.css-flbe84-MuiDayCalendar-weekContainer {
+    -webkit-justify-content: space-around !important;
+}
+
+.css-1qs309j-MuiButtonBase-root-MuiPickersDay-root:focus.Mui-selected {
+    will-change: background-color;
+    background-color: #C6F7D3 !important;
+    font-size: 1rem !important;
+}
+
+.css-1qs309j-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+    color: #0A0C10 !important;
+    background-color: #C6F7D3 !important;
+    font-size: 1rem !important;
+}
+
+.css-dplwbx-MuiPickersCalendarHeader-label{
+    font-size: 1.5rem !important;
+}
+
+.css-i5q14k-MuiDayCalendar-header {
+    justify-content: space-around !important;
+}
+
+.css-7oawqu-MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
+    font-size: 1rem !important;    
+}
+
+.css-7oawqu-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+    color: #0A0C10 !important;
+    background-color: #C6F7D3 !important;
+    font-size:  1rem !important;
+}
+
+.statusPayment{
+    margin: 30px 10px 10px 5px;
+    width: 50%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.statusPayment button{
+    background-color: #A8BFAF;
+    color: #0A0C10;
+    border: none;
+    width: 150px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
 }

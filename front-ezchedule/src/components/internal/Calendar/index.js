@@ -19,7 +19,7 @@ const Calendar = () => {
                         variant='static'
                         orientation='portrait'
                         value={value}
-                        disableFuture
+                        
                         onChange={(newValue) => setValue(newValue)}
                         renderInput={(params) => {
                             <TextField {...params} />;
@@ -41,6 +41,11 @@ const Calendar = () => {
                         }}
                     />
                 </LocalizationProvider>
+                <div className='statusPayment'>
+                        <button>Pago</button>
+                        <button>Em Aberto</button>
+                        <button>Em Andamento</button>
+                </div>
             </div>
         </>
     );

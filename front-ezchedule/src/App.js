@@ -15,6 +15,7 @@ import Service from './pages/Administrator/Service/Index';
 import Payment from './pages/Administrator/Payment';
 import Forum from './pages/Administrator/Forum';
 import Configuration from './pages/Administrator/Configuration';
+import PersonalSettings from './pages/Administrator/SettingsPerson';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path='/paymentAdm' element={<Payment />} />
           <Route path='/forumAdm' element={<Forum />} />
           <Route path='/configurationAdm' element={<Configuration />} />
+          <Route path='/personSettingsAdm' element={<PersonalSettings />} /> 
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

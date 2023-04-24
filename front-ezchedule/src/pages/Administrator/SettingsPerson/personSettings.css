@@ -1,0 +1,16 @@
+.mainPersonSettings{
+    background-color: #f5f5f5;
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+}
+
+.personSettingsInside{
+    background-color: blueviolet;
+    width: 100vw;
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

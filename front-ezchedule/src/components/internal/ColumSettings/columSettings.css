@@ -1,0 +1,33 @@
+.mainColumSettings{
+    width: 85%;
+    background-color: brown;
+    height: 65vh;
+    margin-left: 5%;
+    display: flex;
+    padding: 20px;
+}
+
+.settingsInformation{
+    width: 60%;
+    height: 100%;
+    background-color: chocolate;
+}
+
+.settingsImg{
+    width: 40%;
+    height: 100%;
+    background-color: darkcyan;
+}
+
+.settingsButtons{
+}
+
+.settingsButtons button{
+    margin: 10px;
+    width: 120px;
+    padding: 8px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

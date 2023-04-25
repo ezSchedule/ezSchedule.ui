@@ -27,7 +27,7 @@ function App() {
           <Route path='/registerPart1' element={<RegisterPart1 />} />
           <Route path='/registerPart2' element={<RegisterPart2 />} />
           <Route path='/registerPart3' element={<RegisterPart3 />} />
-          {/* <Route path='/homeAdm' element={<Calendar />} /> */}
+          <Route path='/homeAdm' element={<Calendar />} />
           <Route path='/graphicAdm' element={<Graphic />} />
           <Route path='/sendEmail' element={<SendEmail />} />
           <Route path='/securityCode' element={<SecurityCode />} />

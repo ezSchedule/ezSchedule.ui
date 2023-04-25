@@ -1,6 +1,5 @@
 .mainColumSettings{
     width: 85%;
-    background-color: brown;
     height: 65vh;
     margin-left: 5%;
     display: flex;
@@ -10,16 +9,22 @@
 .settingsInformation{
     width: 60%;
     height: 100%;
-    background-color: chocolate;
 }
 
 .settingsImg{
     width: 40%;
     height: 100%;
-    background-color: darkcyan;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .settingsButtons{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .settingsButtons button{
@@ -30,4 +35,16 @@
     border: none;
     outline: none;
     cursor: pointer;
+    background-color: #5AE982;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.settingsImg img{
+    height: 400px;
+}
+
+.settingsImg p{
+    font-size: 2rem;
+    font-weight: bold;
 }

@@ -1,0 +1,11 @@
+.mainInputInformation{
+    width: 95%;
+    height: 40px;
+    border-bottom: 0.1px solid #bebcbc;
+    margin: 5px;
+}
+
+.mainInputInformation p{
+    font-size: 1.5rem;
+    font-weight: bold;
+}

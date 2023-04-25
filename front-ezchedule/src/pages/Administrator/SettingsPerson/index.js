@@ -13,7 +13,7 @@ const PersonalSettings = () => {
             <HeaderInternal text="Ajustes" />
         </div>
         <div className='personSettingsInside'>
-            <ColumSettings />
+            <ColumSettings name="Vinicius Nunes"/>
         </div>
     </>
   )

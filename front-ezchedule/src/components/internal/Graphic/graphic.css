@@ -1,8 +1,4 @@
 .mainGraphicInside{
-    width: 80vw;
-    height: 70vh;
-    background-color: aquamarine;
-    display: flex;
-    margin-top: 15vh;
+    border-radius: 20px;
+    background-color: #5AE982;
 }
-

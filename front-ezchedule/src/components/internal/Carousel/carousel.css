@@ -3,6 +3,8 @@
     display: flex;
     overflow-x: auto;
     cursor: grab;
+    z-index:1;
+    box-shadow: inset 5em 1em gold;
   }
 
 

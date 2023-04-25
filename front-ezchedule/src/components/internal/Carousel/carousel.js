@@ -47,20 +47,20 @@ const Carousel = () => {
   }, [carouselRef, isMouseDown, startX, scrollLeft]);
 
   return (
-    <div className="carousel" ref={carouselRef} >
+    <div className="carousel" ref={carouselRef}>
       <div className="container" >
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Card textNome="Janeiro"/>
+          <Card text="Fevereiro"/>
+          <Card text="Março"/>
+          <Card text="Abril"/>
+          <Card text="Maio"/>
+          <Card text="Junho"/>
+          <Card text="Julho"/>
+          <Card text="Agosto"/>
+          <Card text="Setembro"/>
+          <Card text="Outubro"/>
+          <Card text="Novembro"/>
+          <Card text="Dezembro"/>
       </div>
     </div>
   );

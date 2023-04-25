@@ -10,18 +10,18 @@ const Graphic = () => {
     <>
       <div className='mainGraphic'>
       <Sidebar />
-      <HeaderInternal text="Váriavel ano" />
+      <HeaderInternal text="2023" />
       </div>
 
 
-      <div className='graphic'>
+      <div className='content'>
 
         <div className='sideBarMonth'>
           <Carousel />
         </div>
 
-        <div>
-          {/* <GraphicInside /> */}
+        <div className='graphic'>
+          <GraphicInside />
         </div>
       </div>
     </>

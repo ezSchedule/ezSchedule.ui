@@ -19,7 +19,7 @@ const GraphicInside = () => {
     curveType: 'function',
     legend: { position: 'bottom' },
     colors: ['#fff', '#fff'],
-    backgroundColor: '#5AE982',
+    backgroundColor: 'transparent',
     is3D: true,
     fontName: 'Arial',
     vAxis: {
@@ -37,9 +37,10 @@ const GraphicInside = () => {
         <Chart
           chartType="LineChart"
           width="80vw"
-          height="70vh"
+          height="45vh"
           data={data}
           options={options}
+          style={{borderRadius: '20px'}}
           
         />
       </div>

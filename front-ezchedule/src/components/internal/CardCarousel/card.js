@@ -5,9 +5,16 @@ const card = (props) => {
   return (
     <>
       <div className='card'>
-        <p className='titleMonth'>{props.nomeMes}</p>
-        <p className='information'>{props.qtdPessoas} Pessoas</p>
-        <p className='information'>{props.qtdConvidados} Convidados</p>
+        <div className='cardMonthTitle'>
+          <p className='titleMonth'>Janeiro</p>
+        </div>
+
+        <div className='cardInformation'>
+          <p className='information'>{props.qtdPessoas} Pessoas</p>
+          <p className='information'>{props.qtdConvidados} Convidados</p>
+
+        </div>
+        
       </div>
 
     </>

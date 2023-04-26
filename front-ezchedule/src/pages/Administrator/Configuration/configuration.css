@@ -35,14 +35,19 @@
     flex-direction: row;
 }
 
-.btnConfig button{
+.btnConfig .button {
+    width: 160px;
     margin: 30px;
     padding: 12px;
-    width: 160px;
+
+    color: #000;
+    text-align: center;
+    text-decoration: none;
     font-weight: bold;
+    font-size: 1.1rem;
+
     border-radius: 20px;
     background-color: #5AE982;
     border: none;
     cursor: pointer;
-    font-size: 1.1rem;
 }

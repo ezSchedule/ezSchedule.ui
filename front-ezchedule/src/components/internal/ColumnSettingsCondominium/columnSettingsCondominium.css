@@ -3,12 +3,16 @@
     height: 65vh;
     margin-left: 5%;
     display: flex;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 }
 
 .settingsInformation{
     width: 60%;
-    height: 100%;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .settingsImg{
@@ -31,7 +35,6 @@
 .settingsButtons button{
     width: 120px;
     margin: 8px;
-    padding: 8px 80px;
 
     display: flex;
     justify-content: center;
@@ -49,7 +52,7 @@
 }
 
 .settingsImg img{
-    height: 370px;
+    height: 300px;
 }
 
 .settingsImg p{

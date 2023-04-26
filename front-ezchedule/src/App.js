@@ -16,6 +16,7 @@ import Payment from './pages/Administrator/Payment';
 import Forum from './pages/Administrator/Forum';
 import Configuration from './pages/Administrator/Configuration';
 import PersonalSettings from './pages/Administrator/SettingsPerson';
+import CondominiumSettings from './pages/Administrator/SettingsCondominium';
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
           <Route path='/paymentAdm' element={<Payment />} />
           <Route path='/forumAdm' element={<Forum />} />
           <Route path='/configurationAdm' element={<Configuration />} />
-          <Route path='/personSettingsAdm' element={<PersonalSettings />} /> 
+          <Route path='/personSettingsAdm' element={<PersonalSettings />} />
+          <Route path='/condominiumSettings' element={<CondominiumSettings />} /> 
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

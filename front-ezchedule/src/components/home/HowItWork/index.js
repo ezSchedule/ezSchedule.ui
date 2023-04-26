@@ -9,15 +9,15 @@ const HowItWorks = () => {
     <div className='mainDivHowItsWorks'>
       <div className="howItsWork">
         <h1>Como Funciona?</h1>
-        <div class="imagensDiv">
-          <div class="imagensDivItem">
+        <div className="imagensDiv">
+          <div className="imagensDivItem">
             <div className='iconsDiv'>
               <img src={Calendario} alt="" />
             </div>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
           </div>
 
-          <div class="imagensDivItem">
+          <div className="imagensDivItem">
             <div className='iconsDiv'>
               <img src={Moeda} alt="" />
             </div>

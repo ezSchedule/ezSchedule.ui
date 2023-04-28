@@ -3,7 +3,7 @@ import './registerPart1.css'
 import { useState } from 'react';
 import MaskCpf from '../../../masks/MaskCpf';
 import { Link } from 'react-router-dom';
-import onBackPressed from '../../../components/assets/left-arrow.png'
+import onBackPressed from '../../../components/assets/left-arrow.png';
 
 const RegisterPart1 = () => {
 

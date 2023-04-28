@@ -18,12 +18,12 @@
 }
 
 .mainInputInformation input {
+    width: 70%;
+
+    font-size: 1.2rem;
+
+    outline: none;
     border: none;
     background-color: #f5f5f5;
-    padding: -10px;
-}
-
-.mainInputInformation input:active {
-    border: none;
-    padding: 0;
+    text-align: end;
 }

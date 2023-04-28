@@ -1,19 +1,22 @@
 .mainBodyLogin {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
+
     align-items: center;
     justify-content: center;
     flex-direction: column;
     display: flex;
-    background-color: #ffffff21;
 }
 
 .formLogin {
     width: 400px;
     height: 90vh;
+
     background-color: #0A0C10;
     border-radius: 5px;
     font-size: 0.8rem;
+    border: 1px solid white;
+
     display: flex;
     justify-content: center;
     align-items: center;

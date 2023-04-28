@@ -4,13 +4,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff21;
 }
 
 .mainFormPart3 .container {
     width: 400px;
     height: 90%;
 
+    border: 1px solid white;
+    
     display: flex;
     justify-content: center;
     align-items: center;

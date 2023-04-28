@@ -30,6 +30,7 @@ const Login = () => {
     sessionStorage.BLOCK = data.residentsBlock;
     sessionStorage.APARTMENT = data.apartmentNumber;
     sessionStorage.PHONE = data.phoneNumber;
+    sessionStorage.CPF = data.cpf;
   }
 
   function errorMessage(status) {

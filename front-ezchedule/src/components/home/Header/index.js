@@ -9,7 +9,7 @@ const Header = () => {
     <header>
         <div className='headerInside'>
             <div className='icon'>
-                <img src={Logo} alt="" />
+                <img src={Logo} onClick="" alt="" />
             </div>
             <Link to={'/login'} className='textToEnter'> Entrar</Link>
         </div>

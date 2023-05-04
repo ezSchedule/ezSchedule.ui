@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 header {
     width: 100%;
-    height: 10vh;
+    height: 8vh;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -30,9 +30,14 @@ header .headerInside .icon {
 }
 
 header .headerInside .icon img{
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
 }
+
+
+header .headerInside .icon img:hover {
+    transform: scale(1.1);
+  }
 
 header .headerInside .textToEnter {
     margin-top: 30px;
@@ -46,6 +51,10 @@ header .headerInside .textToEnter {
     flex-direction: row;
     font-size: 1.5em;
     cursor: pointer;
-    font-weight: 900;
+    font-weight: bold;
     text-decoration: none;
+}
+
+header .textToEnter:hover{
+    color: #5AE982;
 }

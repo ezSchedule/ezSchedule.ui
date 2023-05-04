@@ -1,6 +1,6 @@
 import React from 'react'
 import './advertisingBanner.css'
-import imgBanner from '../../assets/bannerImg.png'
+import calendarAnimate from '../../assets/calendar-animate.svg'
 
 import { Link } from 'react-router-dom'
 import Seta from '../../assets/seta.png'
@@ -13,7 +13,11 @@ const AdvertisingBanner = () => {
                     <h1>
                         A um passo da <span>organização!</span>
                     </h1>
-                    <p>Problemas para organizar sua festa? Podemos te ajudar com isso, apresentamos para você o Schedule!</p>
+                    <p>
+                        Problemas para organizar sua festa?<br/>
+                        Podemos te ajudar com isso,<br/> apresentamos para você o Schedule!
+                    </p>
+                    
                     <div className='btnDiv'>
                         <Link to={'/registerPart1'} className='btn'>
                             Cadastro
@@ -22,7 +26,7 @@ const AdvertisingBanner = () => {
                 </div>
                 <div className='imgAdvertising'>
                     <div>
-                        <img src={imgBanner} alt="" />
+                        <img src={calendarAnimate} alt="Imagem de um homem, segurando um lápis gigante editando um calendário" />
                     </div>
                 </div>
             </div>

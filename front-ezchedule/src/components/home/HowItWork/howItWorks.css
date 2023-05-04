@@ -1,10 +1,11 @@
 .mainDivHowItsWorks{
-    width: 100%;
-    height: 100vh;
+    width: 80%;
+    margin: auto;
+    height: 90vh;
     align-items: center;
     justify-content: center;
     display: flex;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
 }
 
 .HowItsWorks{
@@ -19,8 +20,8 @@
 h1{
     color: #fff;
     font-size: 3.3em;
-    padding-bottom: 3.5rem;
-    text-align: center;
+    font-weight: bold;
+    padding-bottom: 4.5rem;
 }
 
 
@@ -65,6 +66,9 @@ h1{
 }
 
 .iconsDiv img{
-    width: 60%;
-    
+    width: 60%;    
+}
+
+.iconsDiv img:hover{
+    transform: scale(1.1);
 }

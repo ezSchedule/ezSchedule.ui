@@ -15,12 +15,7 @@ const Forum = () => {
             <div className='forum'>
                 <div className='forumDiv'>
                     <ForumTextField />
-                    <Communique date="09 de Janeiro"/>
-                    <Communique date="09 de Janeiro"/>
-                    <Communique date="09 de Janeiro"/>
-                    <Communique date="09 de Janeiro"/>
-                    <Communique date="09 de Janeiro"/>
-
+                    <Communique />
                 </div>
             </div>
         </>

@@ -1,28 +1,36 @@
 import React from 'react'
 import './communique.css'
-import Filter from '../../assets/filter.png'
+import axios from 'axios'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import Post from '../Post/index';
+import PostSindicate from '../Post/index'
+
 const Communique = (props) => {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        axios.get('https://64540d77e9ac46cedf368660.mockapi.io/crud/posts')
+            .then((response) => {
+                console.log(response.data)
+                setPosts(response.data)
+            }).catch((err) => {
+                console.log(err);
+            });
+
+    }, [])
+
     return (
         <>
-            <div className='mainCommunique'>
-                <div className='line'></div>
-                <header>
-                    <input type="text" disabled value={props.date} />
-                    <img src={Filter} alt="" />
-                </header>
-                <div className='communiqueText'>
-                    <div>
-                        <h4>Manutenção ar condicionado</h4>
-                        <p>Atenção a todos os moradores dos BLOCO A e BLOCO B, ocorrerá a manutenção trimestral dos ares-condicionados nos dias 18, 19, 20 21 de Fevereiro, peço a todos compreensão com as eventuais trivialidades que podem ocorrer, como barulhos sonoros e desligamento dos ares-condicionados.</p>
-                        <div className='typeAndHour'>
-                            <div>
-                            <span>Comunicado</span>
-                            <span>16:40</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {
+                posts.map(
+                    (post) => (
+                        <React.Fragment key={post.id}>
+                            <PostSindicate date={post.date} title={post.title} hour={post.hour} content={post.content} />
+                        </React.Fragment>
+                    )
+                )
+            }
         </>
     )
 }

@@ -9,21 +9,33 @@
     background-color: #8EEFA9;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     display: flex;
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
 }
 
+
 .textField .textArea textarea {
-    width: 99%;
-    height: 70%;
+    width: 95%;
+    height: 50%;
     resize: none;
     background-color: #8EEFA9;
     border: none;   
-    margin: 30px;
+    outline: none;
+    margin: 10px;
     font-size: 1.2rem;
-    font-size: #0A0C10;
     font-weight: bold;
+}
+
+.textField .textArea input{
+    width: 95%;
+    background-color: #8EEFA9;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 .buttonsTextField {
@@ -32,6 +44,7 @@
     background-color: #8EEFA9;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    
 }
 
 .buttonsTextField button{
@@ -64,4 +77,5 @@
     cursor: pointer;
     font-weight: 900;
     font-size: 1rem;
+    margin-top: 10px;
 }

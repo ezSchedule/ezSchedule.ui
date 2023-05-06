@@ -1,12 +1,13 @@
 import React from 'react'
 import './ServiceList.css'
+import { Link } from 'react-router-dom'
 
 const ServiceList = () => {
   return (
     <>
         <div className='mainServiceList'>
             <div className='divAddService'>
-                <button>+</button>
+                <Link to='/newService'><button>+</button></Link>
             </div>
             <div className='divInformationsTenant'>
                 <div className='imgTenant'>

@@ -17,6 +17,7 @@ import Forum from './pages/Administrator/Forum';
 import Configuration from './pages/Administrator/Configuration';
 import PersonalSettings from './pages/Administrator/SettingsPerson';
 import CondominiumSettings from './pages/Administrator/SettingsCondominium';
+import NewService from './pages/Administrator/NewService';
 
 function App() {
   return (
@@ -34,11 +35,12 @@ function App() {
           <Route path='/securityCode' element={<SecurityCode />} />
           <Route path='/updatePassword' element={<UpdatePassword />} />
           <Route path='/servicesAdm' element={<Service />} />
+          <Route path='/newService' element={<NewService />} />
           <Route path='/paymentAdm' element={<Payment />} />
           <Route path='/forumAdm' element={<Forum />} />
           <Route path='/configurationAdm' element={<Configuration />} />
           <Route path='/personSettingsAdm' element={<PersonalSettings />} />
-          <Route path='/condominiumSettings' element={<CondominiumSettings />} /> 
+          <Route path='/condominiumSettings' element={<CondominiumSettings />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

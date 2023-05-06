@@ -1,0 +1,34 @@
+section{
+    width: 95%;
+    height: 75px;
+    background-color: #F1FAEE;
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section div, p{
+    margin: 30px;
+    font-weight: bold;
+}
+
+section div{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+section div span{
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+section div img{
+    width: 45px;
+    height: 45px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    border: 0.1px solid #ddd;
+}

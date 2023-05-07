@@ -65,6 +65,7 @@
     justify-content: center;
     flex-direction: column;
     text-decoration: none;
+    transition: 1.0s;
 }
 
 .btnDiv .btn:hover{

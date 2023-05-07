@@ -6,6 +6,8 @@ import Sidebar from '../../../components/internal/SideBar';
 import ColumSettings from '../../../components/internal/ColumSettings';
 
 const PersonalSettings = () => {
+  const name = sessionStorage.NAME;
+
   return (
     <>
         <div className='mainPersonSettings'>
@@ -13,7 +15,7 @@ const PersonalSettings = () => {
             <HeaderInternal text="Ajustes" />
         </div>
         <div className='personSettingsInside'>
-            <ColumSettings name="Vinicius Nunes"/>
+            <ColumSettings name={name}/>
         </div>
     </>
   )

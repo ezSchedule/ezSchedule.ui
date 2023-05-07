@@ -24,6 +24,7 @@ const Login = () => {
   }
 
   function saveData(data) {
+    sessionStorage.ID = data.id;
     sessionStorage.TOKEN = data.token;
     sessionStorage.NAME = data.name;
     sessionStorage.EMAIL = data.email;
@@ -38,6 +39,8 @@ const Login = () => {
       alert("Error 500");
     } else if (status == 403) {
       alert("Password or email is wrong");
+    } else if (status == 404) {
+      alert("Email doesn't exist");
     }
   }
 

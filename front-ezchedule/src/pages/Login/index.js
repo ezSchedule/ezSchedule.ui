@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import onBackPressed from '../../components/assets/left-arrow.png';
-import httpFetch from '../../hooks/httpFetch';
+import userFetch from '../../hooks/userFetch';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const Login = () => {
   function Login() {
     const loginUser = { email, password };
 
-    httpFetch.post('/users/login', loginUser)
+    userFetch.post('/login', loginUser)
       .then((res) => {
         saveData(res.data);
         navigate("/homeAdm");
@@ -31,6 +31,7 @@ const Login = () => {
     sessionStorage.APARTMENT = data.apartmentNumber;
     sessionStorage.PHONE = data.phoneNumber;
     sessionStorage.CPF = data.cpf;
+    sessionStorage.CONDOMINIUM = data.idCondominium;
   }
 
   function errorMessage(status) {

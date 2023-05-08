@@ -1,27 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './columnSettingsCondominium.css'
 import InputInformation from '../InputInformation'
 import ImgPerfil from "../../assets/predio_perfil.png"
+import condominiumFetch from "../../../hooks/condominiumFetch"
 
-const columnSettingsCondominium = (props) => {
+const ColumnSettingsCondominium = () => {
+  const [tenantQuantity, setTenantQuantity] = useState();
+  const [apartmentQuantity, setApartmentQuantity] = useState();
+  const [saloonQuantity, setSaloonQuantity] = useState();
+  const id = sessionStorage.CONDOMINIUM;
+
+  useEffect(() => {
+    condominiumFetch.get(`/settings?id=${id}`)
+    .then((res) => {
+      setTenantQuantity(res.data.amountTenants);
+      setApartmentQuantity(res.data.amountApartments);
+      setSaloonQuantity(res.data.amountSaloons);
+    }).catch((err) => {
+      console.log(err);
+    });
+  });
+
   return (
     <>
       <div className='mainColumSettings'>
         <div className='settingsInformation'>
-          <InputInformation attribute="Moradores" information="236"/>
-          <InputInformation attribute="Apartamentos" information="40"/>
-          <InputInformation attribute="Salões" information="5"/>
+          <InputInformation attribute="Moradores" information={tenantQuantity} editable={true} />
+          <InputInformation attribute="Apartamentos" information={apartmentQuantity} editable={true}/>
+          <InputInformation attribute="Salões" information={saloonQuantity} editable={true}/>
         </div>
         <div className='settingsImg'>
           <img src={ImgPerfil} />
         </div>
       </div>
-      <div className='settingsButtons'>
-        <button id='cancel'>Cancelar</button>
-        <button>Salvar</button>
-      </div>
     </>
   )
 }
 
-export default columnSettingsCondominium;
+export default ColumnSettingsCondominium;

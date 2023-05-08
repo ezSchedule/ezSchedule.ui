@@ -17,38 +17,11 @@
 
 .settingsImg{
     width: 40%;
-    height: 100%;
+    height: 80%;
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
-}
-
-.settingsButtons{
-    width: 25%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.settingsButtons button{
-    width: 120px;
-    margin: 8px;
-
-    display: flex;
-    justify-content: center;
-    border-radius: 24px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background-color: #5AE982;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.settingsButtons #cancel{
-    background-color: #dadada;
 }
 
 .settingsImg img{

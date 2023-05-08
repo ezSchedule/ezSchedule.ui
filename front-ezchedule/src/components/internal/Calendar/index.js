@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -10,6 +10,7 @@ import './calendar.css'
 const Calendar = () => {
     const [value, setValue] = useState(new Date());
     const [highlightedDays, setHighlightedDays] = useState([1, 2, 13]);
+
     return (
         <>
             <div className='mainComponentCalendar'>

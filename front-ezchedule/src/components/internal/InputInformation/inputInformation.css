@@ -11,6 +11,8 @@
 .mainInputInformation p{
     font-size: 1.2rem;
     font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 
 .mainInputInformation .result {

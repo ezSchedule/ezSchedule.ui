@@ -6,11 +6,13 @@ import userFetch from '../../../hooks/userFetch';
 import { useState } from 'react'
 
 const ColumSettings = (props) => {
+  const id = sessionStorage.ID;
+  const token = sessionStorage.TOKEN;
   const [name, setName] = useState(sessionStorage.NAME);
   const [cpf, setCpf] = useState(sessionStorage.CPF);
-  const [apartment, setApartment] = useState(sessionStorage.APARTMENT);
-  const [block, setBlock] = useState(sessionStorage.BLOCK);
-  const [phone, setPhone] = useState(sessionStorage.PHONE);
+  const [apartmentNumber, setApartment] = useState(sessionStorage.APARTMENT);
+  const [residentsBlock, setBlock] = useState(sessionStorage.BLOCK);
+  const [phoneNumber, setPhone] = useState(sessionStorage.PHONE);
   const [email, setEmail] = useState(sessionStorage.EMAIL);
 
   function updateTenant() {

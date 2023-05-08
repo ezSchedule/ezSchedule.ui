@@ -41,7 +41,7 @@ const Login = () => {
     } else if (status == 403) {
       alert("Password or email is wrong");
     } else if (status == 404) {
-      alert("Email doesn't exist")
+      alert("Email doesn't exist");
     }
   }
 

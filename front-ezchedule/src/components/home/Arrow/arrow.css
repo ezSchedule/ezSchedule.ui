@@ -8,6 +8,24 @@
     align-items: center;
 }
 
-.arrow img{
+
+.arrow img {
+    position: relative;
     height: 30px;
-}
+    animation: float 3.5s ease-in-out infinite;
+    z-index: -1;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+  
+    50% {
+      transform: translateY(15px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+  }

@@ -67,7 +67,7 @@ const ColumSettings = (props) => {
         <div className='settingsInformation'>
           <InputInformation attribute="Nome" information={name} insert={setName} editable={false} />
           <InputInformation attribute="CPF" information={cpf} insert={setCpf} editable={true} />
-          <InputInformation attribute="Nº Apartamento" information={apartmentNumber} insert={setApartment} editable={false} />
+          <InputInformation attribute="Apartamento" information={apartmentNumber} insert={setApartment} editable={false} />
           <InputInformation attribute="Bloco" information={residentsBlock} insert={setBlock} editable={false} />
           <InputInformation attribute="Telefone" information={phoneNumber} insert={setPhone} editable={false} />
           <InputInformation attribute="Email" information={email} insert={setEmail} editable={true} />

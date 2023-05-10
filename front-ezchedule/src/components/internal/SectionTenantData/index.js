@@ -1,6 +1,6 @@
 import React from 'react'
 import './sectionTenantData.css'
-import ImageUserDefault from '../assets/Perfil.png'
+import ImageUserDefault from '../../assets/Perfil.png'
 const SectionTenantData = () => {
   return (
     <>

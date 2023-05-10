@@ -1,6 +1,6 @@
 import React from 'react'
 import './sectionUserInformation.css'
-import SectionTenantData from '../../SectionTenantData'
+import SectionTenantData from '../../internal/SectionTenantData/index'
 
 const SectionUserInformation = () => {
     return (
@@ -13,6 +13,10 @@ const SectionUserInformation = () => {
                 <SectionTenantData />
                 <SectionTenantData />
             </div>
+            <form>
+                <input type="text" placeholder='Nome do serviço prestado' name="serviceName"/>
+                <button type='submit'>Cadastrar</button>
+            </form>
         </>
     )
 }

@@ -1,20 +1,25 @@
 import React, { useEffect } from 'react'
 import './tablePayment.css'
 import FinanceTr from '../FinanceTr'
-import useFetch from '../../../hooks/UseFecth';
 import { useState } from 'react';
+import reportFetch from '../../../hooks/reportFetch';
 
-const TablePayment = () => {
+const TablePayment = (props) => {
+    const token = sessionStorage.TOKEN;
+    const config = { headers: { Authorization: `Bearer ${token}` } };
     const [payment, setPayment] = useState([]);
 
     useEffect(() => {
-        useFetch.get().then((response) => {
-            console.log(response.data);
-            setPayment(response.data)
-        }).catch((err) => {
-            console.log(err);
-        });
+        reportFetch.get(`/condominium?id=${sessionStorage.CONDOMINIUM}`, config)
+            .then((res) => {
+                setPayment(res.data);
+                console.log(res.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }, []);
+
     return (
         <>
             <table>
@@ -25,17 +30,22 @@ const TablePayment = () => {
                     <th>Valor</th>
                 </tr>
                 {
-                    payment.map((payment)=>(
-                        <FinanceTr 
-                        name={payment.name} 
-                        date={payment.date} 
-                        salon={payment.salon}
-                        value={payment.value} />
-                    ))
+                    payment.map(
+                        (payment) => (
+                            <React.Fragment key={payment.id}>
+                                <FinanceTr
+                                    onClick={() => { props.modalEdit(true);  props.modalInformation(payment)}}
+                                    name={payment.tenantName}
+                                    date={payment.dateEvent}
+                                    salon={payment.saloonName}
+                                    value={payment.saloonPrice} />
+                            </React.Fragment>
+                        )
+                    )
                 }
             </table>
         </>
     )
 }
 
-export default TablePayment
+export default TablePayment;

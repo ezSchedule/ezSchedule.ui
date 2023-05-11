@@ -1,0 +1,18 @@
+.content-modal {
+    width: 100%;
+}
+
+.content-modal label {
+    width: 50%;
+
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.content-modal span {
+    width: 50%;
+
+    font-weight: 600;
+    font-size: 1rem;
+    color: gray;
+}

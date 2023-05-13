@@ -42,7 +42,7 @@ const Communique = (props) => {
                 posts.map(
                     (post) => (
                         <React.Fragment key={post.id}>
-                            <PostSindicate date={post.date} title={post.title} hour={post.hour} content={post.content} funcaoDeletar={() => deletePost(post.id)} />
+                            <PostSindicate id={post.id} date={post.date} title={post.title} hour={post.hour} content={post.content} funcaoDeletar={() => deletePost(post.id)} />
                         </React.Fragment>
                     )
                 )

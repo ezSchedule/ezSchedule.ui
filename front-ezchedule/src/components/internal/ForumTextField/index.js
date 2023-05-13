@@ -19,21 +19,12 @@ const ForumTextField = () => {
         }
 
         if (e.target.title.value == "" || e.target.content.value == "") {
-            // Swal.fire(
-            //     'Campos em Branco!',
-            //     'Preeenche os campos cabeção',
-            //     'error',
-            //   )
-
             Swal.fire({
-                title: "Are you sure?",
-                text: "You will not be able to recover this imaginary file!",
+                title: "Campos em branco!",
+                text: "Para realizar uma postagem no forum é necessario preencher todos os campos.",
                 type: "warning",
                 confirmButtonColor: "#5AE982",
-                confirmButtonText: "Yes, delete it!",
-                cancelButtonText: "No, cancel please!",
-                closeOnConfirm: false,
-                closeOnCancel: false
+                confirmButtonText: "ok",
             })
         }
         else {

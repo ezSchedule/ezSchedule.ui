@@ -4,7 +4,7 @@ import InputInformation from '../InputInformation'
 import ImgPerfil from "../../assets/Perfil.png"
 import userFetch from '../../../hooks/userFetch';
 import { useState } from 'react'
-
+import Swal from 'sweetalert2';
 const ColumSettings = (props) => {
   const id = sessionStorage.ID;
   const token = sessionStorage.TOKEN;
@@ -21,7 +21,13 @@ const ColumSettings = (props) => {
 
     userFetch.put(`/update-tenant?id=${id}`, updateTenant, config)
       .then(() => {
-        alert("Successfully updated information!")
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Informações atualizadas com sucesso!',
+          showConfirmButton: false,
+          timer: 1500
+        });
         updateSession(updateTenant);
       }).catch((err) => {
         console.clear();
@@ -33,9 +39,21 @@ const ColumSettings = (props) => {
     if (status == 500) {
       alert("Error 500");
     } else if (status == 401) {
-      alert("You don't have permission for that");
+      Swal.fire({
+        position: 'top-center',
+        icon: 'error',
+        title: 'Você não tem permissão para isso',
+        showConfirmButton: false,
+        timer: 1500
+      });
     } else if (status == 404) {
-      alert("Misspelled information");
+      Swal.fire({
+        position: 'top-center',
+        icon: 'error',
+        title: 'Informações com erros ortográficos',
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
   }
 
@@ -50,10 +68,30 @@ const ColumSettings = (props) => {
 
   function inputValidation() {
     if (name.length == 0 || cpf.length == 0 || apartmentNumber == 0 || residentsBlock.length == 0 || phoneNumber.length == 0) {
-      alert("Inputs cannot be empty!");
-    } 
-    else if (name.length > 100) alert("The name input has many characters!");
-    else if (cpf.length > 14) alert("Invalid CPF, has too many characters!");
+      Swal.fire({
+        position: 'top-center',
+        icon: 'error',
+        title: 'As informações não podem estar vazias!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+    else if (name.length > 100) 
+    Swal.fire({
+      position: 'top-center',
+      icon: 'error',
+      title: 'A informação do nome tem muitos caracteres!',
+      showConfirmButton: false,
+      timer: 1500
+    });
+    else if (cpf.length > 14) 
+    Swal.fire({
+      position: 'top-center',
+      icon: 'error',
+      title: 'CPF inválido, contém muitos caracteres!',
+      showConfirmButton: false,
+      timer: 1500
+    });
     else updateTenant()
   }
 

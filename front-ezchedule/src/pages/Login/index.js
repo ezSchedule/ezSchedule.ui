@@ -3,7 +3,7 @@ import './login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import onBackPressed from '../../components/assets/left-arrow.png';
 import userFetch from '../../hooks/userFetch';
-
+import Swal from 'sweetalert2';
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
@@ -18,8 +18,8 @@ const Login = () => {
         navigate("/homeAdm");
       }).catch((err) => {
         console.clear();
-        errorMessage(err.response.status);
         console.log(err);
+        errorMessage(err.response.status)
       });
   }
 
@@ -37,11 +37,23 @@ const Login = () => {
 
   function errorMessage(status) {
     if (status == 500) {
-      alert("Error 500");
+      console.log("Error 500");
     } else if (status == 403) {
-      alert("Password or email is wrong");
+      Swal.fire({
+        position: 'top-center',
+        icon: 'error',
+        title: 'Email ou Senha estão errados!',
+        showConfirmButton: false,
+        timer: 1500
+      });
     } else if (status == 404) {
-      alert("Email doesn't exist");
+      Swal.fire({
+        position: 'top-center',
+        icon: 'warning',
+        title: 'Email não existe!',
+        showConfirmButton: false,
+        timer: 1500
+      });
     }
   }
 

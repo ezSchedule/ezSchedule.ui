@@ -5,7 +5,7 @@ import { useState } from 'react';
 import SectionTenantData from '../SectionTenantData';
 import CardService from '../CardService/CardService';
 import serviceFetch from '../../../hooks/serviceFetch';
-
+import Swal from 'sweetalert2';
 const ServiceList = () => {
     const [openModal, setOpenModal] = useState(false);
     const [serviceList, setServiceList] = useState([]);
@@ -45,7 +45,13 @@ const ServiceList = () => {
 
         serviceFetch.post(``, service)
             .then(() => {
-                alert("Successfully registered!");
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Serviço adicionada com sucesso!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 window.location.reload(false);
             })
             .catch((err) => {
@@ -64,8 +70,22 @@ const ServiceList = () => {
     }
 
     function validateInput() {
-        if (serviceName == undefined || serviceName == "") alert("Fill in the service name!");
-        else if (idTenant == undefined) alert("Select a tenant!");
+        if (serviceName == undefined || serviceName == "")
+            Swal.fire({
+                position: 'top-center',
+                icon: 'error',
+                title: 'Preencha o nome do serviço!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        else if (idTenant == undefined)
+            Swal.fire({
+                position: 'top-center',
+                icon: 'error',
+                title: 'Selecione um inquilino!',
+                showConfirmButton: false,
+                timer: 1500
+            });
         else registerService();
     }
 

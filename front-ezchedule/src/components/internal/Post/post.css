@@ -1,6 +1,6 @@
 .mainCommunique{
     width: 100%;
-    height: 300px;
+    height: 320px;
     margin-top: 7.5%;
 }
 
@@ -35,3 +35,40 @@
     overflow: hidden;
     overflow-y: scroll;
 }
+
+.h4{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 30px;
+}
+
+.h4 .btnSpan{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.h4 .btnSpan button{
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffff;
+}
+
+.h4 .btnSpan button img{
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+

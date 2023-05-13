@@ -76,6 +76,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    border-top: 0.1px solid #aac2b14f;
 }
 
 .container-model-row .content-modal {

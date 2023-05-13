@@ -13,7 +13,6 @@ const TablePayment = (props) => {
         reportFetch.get(`/condominium?id=${sessionStorage.CONDOMINIUM}`, config)
             .then((res) => {
                 setPayment(res.data);
-                console.log(res.data)
             })
             .catch((err) => {
                 console.log(err);
@@ -25,7 +24,7 @@ const TablePayment = (props) => {
             <table>
                 <tr className='title'>
                     <th>Nome</th>
-                    <th>Data</th>
+                    <th>Data do pagamento</th>
                     <th>Salão</th>
                     <th>Valor</th>
                 </tr>
@@ -36,9 +35,9 @@ const TablePayment = (props) => {
                                 <FinanceTr
                                     onClick={() => { props.modalEdit(true);  props.modalInformation(payment)}}
                                     name={payment.tenantName}
-                                    date={payment.dateEvent}
+                                    date={payment.paymentTime == null ? "Não pago" : payment.paymentTime}
                                     salon={payment.saloonName}
-                                    value={payment.saloonPrice} />
+                                    value={"R$ " + payment.saloonPrice} />
                             </React.Fragment>
                         )
                     )

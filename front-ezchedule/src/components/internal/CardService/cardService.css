@@ -1,0 +1,64 @@
+.main-service-list .div-informations-tenant{
+    height: 130px;
+    width: 45%;
+    margin: 25px;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 10px;
+    background-color: #5AE982;
+}
+
+.main-service-list .div-informations-tenant .img-tenant{
+    width: 40%;
+    height: 100%;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+
+}
+
+.main-service-list .div-informations-tenant .img-tenant img{
+    width: 70px;
+    height: 70px;
+    background-color: #f5f5f5;
+    border-radius: 50px;
+    border: 1px solid #555;
+}
+
+.main-service-list .div-informations-tenant .delete {
+    width: 30px;
+    margin-right: 10px;
+    margin-top: -80px;
+    
+    cursor: pointer;
+}
+
+.text-infos{
+    width: 60%;
+    height: 60%;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: start;
+}
+
+.text-infos h4{
+    margin: 0;
+
+    font-size: 1.2rem;
+    color: black;
+    font-weight: bolder;
+}
+
+.text-infos p{
+    margin: 0;
+
+    font-size: 1rem;
+    color: #555;
+    font-weight: bolder;
+}

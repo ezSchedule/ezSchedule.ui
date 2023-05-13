@@ -8,10 +8,12 @@ const ColumnSettingsCondominium = () => {
   const [tenantQuantity, setTenantQuantity] = useState();
   const [apartmentQuantity, setApartmentQuantity] = useState();
   const [saloonQuantity, setSaloonQuantity] = useState();
+  const token = sessionStorage.TOKEN;
+  const config = { headers: { Authorization: `Bearer ${token}` } };
   const id = sessionStorage.CONDOMINIUM;
 
   useEffect(() => {
-    condominiumFetch.get(`/settings?id=${id}`)
+    condominiumFetch.get(`/settings?id=${id}`, config)
     .then((res) => {
       setTenantQuantity(res.data.amountTenants);
       setApartmentQuantity(res.data.amountApartments);

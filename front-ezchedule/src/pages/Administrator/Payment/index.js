@@ -41,7 +41,7 @@ const Payment = () => {
                 </div>
                 <div className='container-model-row'>
                     <Label label="Status:" text={modalInformation.paymentStatus} />
-                    <Label label="Valor total:" text={modalInformation.saloonPrice} />
+                    <Label label="Valor total:" text={"R$ " + modalInformation.saloonPrice} />
                 </div>
             </Modal>
         </>

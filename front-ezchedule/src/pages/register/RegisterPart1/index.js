@@ -36,12 +36,21 @@ const RegisterPart1 = () => {
     <div className='mainForm'>
       <div className='container'>
         <div className='imageContainer'>
-          <Link className='onBack' to="/">
-            <img src={onBackPressed} />
-          </Link>
+
+          <div className='navBarContainer'>
+            <div className='buttonBack'>
+              <Link className='onBack' to="/">
+                <img src={onBackPressed} />
+              </Link>
+            </div>
+            <div className='title'>
+              <p>Cadastro</p>
+            </div>
+          </div>
+
         </div>
+        
         <form onSubmit={hendleSubmit}>
-          <h1>Cadastrar</h1>
           <div className='inputsContainer'>
             <input type="text" placeholder='Nome' />
             <input type="text" placeholder='Sobrenome' />

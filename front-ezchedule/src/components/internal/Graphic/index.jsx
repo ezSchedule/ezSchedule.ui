@@ -3,7 +3,7 @@ import './graphic.css';
 import Chart from 'react-google-charts';
 
 
-const GraphicInside = () => {
+const GraphicInside = ({totalGuestsByMonth, totalEventsByMonth}) => {
 
   const data = [
     ['Year', 'Eventos', 'Pessoas'],

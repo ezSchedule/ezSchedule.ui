@@ -60,16 +60,20 @@ const Login = () => {
   return (
     <div className='mainBodyLogin'>
       <form className='formLogin'>
-        <div className='imageContainer'>
-          <Link className='onBack' to="/">
-            <img src={onBackPressed} />
-          </Link>
+        <div className='navBarContainer'>
+        
+          <div className='buttonBack'>
+            <Link className='onBack' to="/">
+              <img src={onBackPressed} />
+            </Link>
+          </div>
+          <div className='title'>
+            <p>Entrar</p>
+          </div>
+          
         </div>
 
         <div className='container'>
-
-          <h1>Entrar</h1>
-
           <div className='contentContainer'>
             <div className='inputContainer'>
               <input type="email" placeholder='Email' required defaultValue={email} onChange={(e) => setEmail(e.target.value)} />

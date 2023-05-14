@@ -12,13 +12,22 @@ const RegisterPart2 = () => {
     <div className='mainFormPart2'>
       <div className='container'>
         <div className='imageContainer'>
-          <Link className='onBack' to="/registerPart1">
-            <img src={onBackPressed} />
-          </Link>
+
+          <div className='navBarContainer'>
+            <div className='buttonBack'>
+              <Link className='onBack' to="/">
+                <img src={onBackPressed} />
+              </Link>
+            </div>
+            <div className='title'>
+              <p>Cadastro</p>
+            </div>
+          </div>
+
         </div>
+        
         <form onSubmit={hendleSubmit}>
-          <h1>Cadastrar</h1>
-          <div className='inputsColumn'>
+          <div className='inputsContainer'>
             <MaskPhone value={phone} onChange={(e) => setPhone(e.target.value)} />
             <input type="email" placeholder='Email' />
             <input type="password" placeholder='Senha' />

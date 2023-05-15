@@ -19,6 +19,7 @@ import PersonalSettings from './pages/Administrator/SettingsPerson';
 import CondominiumSettings from './pages/Administrator/SettingsCondominium';
 import { redirect } from 'react-router-dom';
 import NotAutorized from './pages/NotAuthorized';
+import PaymentTenant from './pages/Tenant';
 
 const RoutesSystem = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -47,6 +48,7 @@ const RoutesSystem = () => {
                 <Route path='/configurationAdm' element={isLoggedIn ? <Configuration /> : <NotAutorized />} />
                 <Route path='/personSettingsAdm' element={isLoggedIn ? <PersonalSettings /> : <NotAutorized />} />
                 <Route path='/condominiumSettings' element={isLoggedIn ? <CondominiumSettings /> : <NotAutorized />} />
+                <Route path='/paymentTenant' element={<PaymentTenant />} />
                 <Route path='/notAutorized' element={<NotAutorized />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>

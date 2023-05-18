@@ -1,5 +1,5 @@
-.scheduleBoxAddMain{
-    width: 400px;
+.scheduleBoxAddMain {
+    width: 540px;
     height: 100%;
     background-color: #5AE982;
     margin: 10px;
@@ -10,10 +10,129 @@
     flex-direction: column;
 }
 
-.scheduleBoxAddMain button{
-    font-weight: bold;
-    font-size: 2rem;
+.scheduleBoxAddMain button {
+    font-size: 7.5rem;
     background-color: transparent;
     outline: none;
     border: none;
+    cursor: pointer;
+    color: #717171;
 }
+
+.inputs-modal {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100%;
+}
+
+.inputs-modal input {
+    width: 580px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    height: 40px;
+    border-radius: 10px;
+    background: #0a0c1017;
+    font-weight: bolder;
+    font-size: 1rem;
+    color: #000;
+}
+
+.inputs-modal select {
+    width: 595px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    height: 55px;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 1rem;
+    background: #0a0c1017;
+    color: #000;
+}
+
+.btn-continue {
+    background-color: #5AE982;
+    padding: 8px;
+    width: 200px;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    border-radius: 24px;
+    cursor: pointer;
+    height: 50px;
+}
+
+.final-price {
+    width: 595px;
+    border: 0.5px solid #0A0C10;
+    outline: none;
+    height: 55px;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 1rem;
+    color: #717171;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffff;
+}
+
+.final-price span {
+    margin: 10px;
+}
+
+.final-price-choice-payment {
+    width: 595px;
+    border: none;
+    outline: none;
+    height: 55px;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 1rem;
+    color: #717171;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0a0c1017;
+}
+
+.final-price-choice-payment span {
+    margin: 10px;
+    text-decoration: none;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+.pix-code{
+    background-color: #717171;
+    width: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 60px;
+    border-radius: 10px;
+
+}
+
+.pix-code input{
+    width: 100%;
+    height: 100%;
+    background-color: #d6d3d3;
+    font-weight: bolder;
+    color: #0A0C10;
+    border: none;
+    outline: none;
+    padding: 20px;
+    font-size: 1rem;
+}
+

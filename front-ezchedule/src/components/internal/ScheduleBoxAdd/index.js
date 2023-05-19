@@ -1,12 +1,9 @@
 import React from 'react'
 import './scheduleBoxAdd.css'
-import Modal from '../../Modal'
 import { useState, useEffect, useRef } from 'react'
 import ModalPamyment from '../ModalPayment'
-import ModalPaymentChoice from '../ModalPaymentChoice'
-import { Link } from 'react-router-dom'
-import ModalPaymentPix from '../ModalPaymentPix'
 import PIX from 'react-qrcode-pix'
+import imgAdd from '../../assets/+.png'
 const ScheduleBoxAdd = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
@@ -19,24 +16,27 @@ const ScheduleBoxAdd = () => {
     setOpenModal(false);
     setOpenModal2(true);
   }
-
   function closeModal2() {
     setOpenModal2(false);
     setOpenModal3(true);
   }
-
   function closeModal3() {
     setOpenModal3(false);
     setOpenModal4(true);
   }
+  function closeModal4() {
+    setOpenModal4(false);
+  }
+
+
   return (
     <>
       <div className="scheduleBoxAddMain">
         <button onClick={() => setOpenModal(!openModal)}>
-          +
+          <img src={imgAdd} alt="" />
         </button>
       </div>
-      <Modal title="Nova Data" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
+      <ModalPamyment title="Nova Data" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
         <div className='container-list-tenant'>
           <div className='inputs-modal'>
             <input type="text" placeholder='Nome do Evento' />
@@ -56,9 +56,9 @@ const ScheduleBoxAdd = () => {
           </div>
         </div>
         <button className='btn-continue' onClick={closeModal}>Continuar</button>
-      </Modal>
+      </ModalPamyment>
 
-      <ModalPamyment title2="Nova Data" isOpen2={openModal2} setModalOpen2={() => setOpenModal2(!openModal2)}>
+      <ModalPamyment title="Nova Data" isOpen={openModal2} setModalOpen={() => setOpenModal(!openModal2)}>
         <div className='container-list-tenant'>
           <div className='inputs-modal'>
             <input type="text" placeholder='Digite o total de convidados' />
@@ -71,36 +71,41 @@ const ScheduleBoxAdd = () => {
         <button className='btn-continue' onClick={closeModal2}>Agendar</button>
       </ModalPamyment>
 
-      <ModalPaymentChoice title3="Pagamento" isOpen3={openModal3} setModalOpen3={() => setOpenModal3(!openModal3)}>
+      <ModalPamyment title="Pagamento" isOpen={openModal3} setModalOpen={() => setOpenModal3(!openModal3)}>
         <div className='container-list-tenant'>
           <div className='inputs-modal'>
-            <div className='final-price-choice-payment'>
-              <span>Mercado Pago</span><span> &gt; </span>
+            <div className='inputs-payment-choice'>
+              <span>Mercado Pago</span><span onClick={closeModal2} className='span-btn'> &gt; </span>
             </div>
-            <div className='final-price-choice-payment'>
-              <span>Pix</span><span onClick={closeModal3}> &gt; </span>
+            <div className='inputs-payment-choice'>
+              <span>Pix</span><span onClick={closeModal2} className='span-btn'> &gt; </span>
             </div>
             <div className='final-price'>
               <span>Valor:</span><span>R$ 60,00</span>
             </div>
           </div>
         </div>
-        <button className='btn-continue'>Agendar</button>
-      </ModalPaymentChoice>
-      <ModalPaymentPix title4="Pix" isOpen4={openModal4} setModalOpen4={() => setOpenModal4(!openModal4)}>
-        <PIX
-          pixkey="estudosviny@gmail.com"
-          merchant="Vinicius A Nunes"
-          city="São Paulo, Sp"
-          onLoad={setMinimalPIX}
-        />
-        <p>
-          Escaneie o Qr Code ou utilize a chave pix para realizar o pagamento.
-        </p>
-        <p className='pix-code'>
-          <input type="text" value={minimalPIX} />
-        </p>
-      </ModalPaymentPix>
+        <button className='btn-continue' onClick={closeModal3}>Agendar</button>
+      </ModalPamyment>
+
+      <ModalPamyment title="Pix" isOpen={openModal4} setModalOpen={() => setOpenModal3(!openModal4)}>
+        <div className='container-payment-pix'>
+          <PIX
+            pixkey="estudosviny@gmail.com"
+            merchant="Vinicius A Nunes"
+            city="São Paulo, Sp"
+            onLoad={setMinimalPIX}
+          />
+          <p className='text-pix-code'>
+            Escaneie o Qr Code ou utilize a chave pix para realizar o pagamento.
+          </p>
+          <input type="text" className='pix-final-code' value={minimalPIX} />
+          <div className='pix-final-value'>
+            <span>Valor</span> <span>R$ 60,00</span>
+          </div>
+          <button className='btn-cancel' onClick={closeModal4}>Cancelar</button>
+        </div>
+      </ModalPamyment>
     </>
   )
 }

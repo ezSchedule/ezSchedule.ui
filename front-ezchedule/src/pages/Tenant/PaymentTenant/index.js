@@ -14,8 +14,8 @@ const PaymentTenant = () => {
             <div className='paymentTenant'>
                 <div className='paymentTenantScroll'>
                     <div className='paymentTenantScrollBoxes'>
-                        <ScheduleBoxAdd />
                         <ScheduleBox />
+                        <ScheduleBoxAdd />
                     </div>
                 </div>
             </div>

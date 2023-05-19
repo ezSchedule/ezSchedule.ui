@@ -1,7 +1,43 @@
-.scheduleBoxMain{
-    width: 540px;
+.schedule-box-main{
+    width: 500px;
     height: 100%;
     background-color: #5AE982;
     margin: 10px;
     border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.infomations-party{
+    width: 80%;
+    height: 75%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: left;
+}
+
+.infomations-party h2{
+    color: #717171;
+    font-size: 1.4rem;
+}
+
+.infomations-party div{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+
+}
+.infomations-party img{
+    width: 25px;
+    height: 25px;
+}
+
+.infomations-party span{
+    margin: 15px;
+    color: #717171;
+    font-weight: bold;
 }

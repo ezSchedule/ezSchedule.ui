@@ -10,7 +10,7 @@ const SidebarTenant = () => {
   return (
     <>
         <nav className='calendarMain'>
-            <NavLink to="/*">
+            <NavLink to="/servicesTenant">
                 <img className='img' src={imgSuitcase} />
             </NavLink>
             <NavLink to="/paymentTenant">

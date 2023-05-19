@@ -2,7 +2,7 @@ import React from "react";
 import "./cardService.css"
 import Delete from '../../assets/delete-icon.png'
 
-const CardService = ({idService, service, nameTenant, imgTenant, phoneTenant, deleteFunction }) => {
+const CardService = ({idService, service, nameTenant, imgTenant, phoneTenant, deleteFunction, showImage }) => {
     return (
         <>
             <div className='div-informations-tenant'>
@@ -14,7 +14,7 @@ const CardService = ({idService, service, nameTenant, imgTenant, phoneTenant, de
                     <p className="name-tenant">{nameTenant}</p>
                     <p className="phone-tenant">{phoneTenant}</p>
                 </div>
-                <img src={Delete} className="delete" onClick={() => deleteFunction(idService)} />
+                {showImage ? <img src={Delete} className="delete" onClick={() => deleteFunction(idService)} /> : <></>}
             </div>
         </>
     );

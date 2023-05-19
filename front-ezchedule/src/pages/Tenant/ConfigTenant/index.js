@@ -1,8 +1,8 @@
 import React from 'react'
 import './configTenant.css'
-import SidebarTenant from '../../../components/internal/SidebarTenant/Index';
 import HeaderInternal from '../../../components/internal/Header';
 import ColumSettings from '../../../components/internal/ColumSettings';
+import SidebarTenant from '../../../components/internal/SidebarTenant/SidebarTenant';
 const ConfigTenant = () => {
     const name = sessionStorage.NAME;
 

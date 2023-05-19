@@ -109,7 +109,8 @@ const ServiceList = () => {
                                         nameTenant={service.tenant.name}
                                         imgTenant=""
                                         phoneTenant={service.tenant.phoneNumber}
-                                        deleteFunction={deleteService} />
+                                        deleteFunction={deleteService} 
+                                        showImage={true}/>
                                 </React.Fragment>
                             )
                         )

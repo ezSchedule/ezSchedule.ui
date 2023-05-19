@@ -20,6 +20,10 @@ const ServiceList = () => {
     useEffect(() => {
         serviceFetch.get(`?id=${idCondominium}`)
             .then((res) => {
+                if (res.status === 204) {
+                    setServiceList(0);
+                    return;
+                }
                 setServiceList(res.data);
             })
             .catch((err) => {
@@ -28,7 +32,6 @@ const ServiceList = () => {
 
         serviceFetch.get(`/tenant?id=${idCondominium}`)
             .then((res) => {
-                console.log(res.data)
                 setTenantList(res.data)
             })
             .catch((err) => {
@@ -96,19 +99,24 @@ const ServiceList = () => {
                     +
                 </div>
                 {
-                    serviceList.map(
-                        (service) => (
-                            <React.Fragment key={service.id}>
-                                <CardService
-                                    idService={service.id}
-                                    service={service.serviceName}
-                                    nameTenant={service.tenant.name}
-                                    imgTenant=""
-                                    phoneTenant={service.tenant.phoneNumber}
-                                    deleteFunction={deleteService} />
-                            </React.Fragment>
+                    serviceList ?
+                        serviceList.map(
+                            (service) => (
+                                <React.Fragment key={service.id}>
+                                    <CardService
+                                        idService={service.id}
+                                        service={service.serviceName}
+                                        nameTenant={service.tenant.name}
+                                        imgTenant=""
+                                        phoneTenant={service.tenant.phoneNumber}
+                                        deleteFunction={deleteService} />
+                                </React.Fragment>
+                            )
                         )
-                    )
+                        :
+                        <div className='div-not-content'>
+                            <p>Ainda não existe serviços cadastrados no seu condomínio!</p>
+                        </div>
                 }
             </div>
             <Modal title="Adicionar serviço" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>

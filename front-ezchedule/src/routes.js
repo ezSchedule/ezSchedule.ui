@@ -17,9 +17,8 @@ import Forum from './pages/Administrator/Forum';
 import Configuration from './pages/Administrator/Configuration';
 import PersonalSettings from './pages/Administrator/SettingsPerson';
 import CondominiumSettings from './pages/Administrator/SettingsCondominium';
-import { redirect } from 'react-router-dom';
 import NotAutorized from './pages/NotAuthorized';
-import PaymentTenant from './pages/Tenant';
+import PaymentTenant from './pages/Tenant/PaymentTenant';
 
 const RoutesSystem = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)

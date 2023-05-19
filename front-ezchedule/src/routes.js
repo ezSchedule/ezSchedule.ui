@@ -19,6 +19,7 @@ import PersonalSettings from './pages/Administrator/SettingsPerson';
 import CondominiumSettings from './pages/Administrator/SettingsCondominium';
 import NotAutorized from './pages/NotAuthorized';
 import PaymentTenant from './pages/Tenant/PaymentTenant';
+import ConfigTenant from './pages/Tenant/ConfigTenant';
 
 const RoutesSystem = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -48,7 +49,8 @@ const RoutesSystem = () => {
                 <Route path='/personSettingsAdm' element={isLoggedIn ? <PersonalSettings /> : <NotAutorized />} />
                 <Route path='/condominiumSettings' element={isLoggedIn ? <CondominiumSettings /> : <NotAutorized />} />
                 <Route path='/paymentTenant' element={<PaymentTenant />} />
-                <Route path='/notAutorized' element={<NotAutorized />} />
+                <Route path='/configurationTenant' element={<ConfigTenant />} />
+                <Route path='/notAutorized' element={<NotAutorized />} /> 
                 <Route path='*' element={<NotFound />} />
             </Routes>
         </BrowserRouter>

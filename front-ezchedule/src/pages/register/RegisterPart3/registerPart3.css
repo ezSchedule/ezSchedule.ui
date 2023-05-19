@@ -78,7 +78,7 @@
 }
 
 .mainFormPart3 .imgAvatar {
-    width: 40%;
+    height: 100%;
     padding: 10px;
 
     background-color: #5AE982;
@@ -113,5 +113,19 @@
     color: #0A0C10;
     font-size: 1.7em;
     font-weight: bold;
+    outline: none;
+    border: none;
+
     cursor: pointer;
+}
+
+.mainFormPart3 input[type="file"] {
+    display: none;
+}
+
+.mainFormPart3 .custom-file-upload {
+    width: 40%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
 }

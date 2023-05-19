@@ -1,30 +1,121 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './registerPart3.css';
-import onBackPressed from '../../../components/assets/left-arrow.png'
-import userAvatar from '../../../components/assets/user-avatar.png'
+import onBackPressed from '../../../components/assets/left-arrow.png';
+import userAvatar from '../../../components/assets/user-avatar.png';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
+import userFetch from '../../../hooks/userFetch';
 
 const RegisterPart3 = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const hendleSubmit = (e) => { }
+  const name = location.state.name;
+  const cpf = location.state.cpf;
+  const apartment = location.state.apartmentNumber;
+  const block = location.state.residentsBlock;
+  const subscribed = location.state.subscribed;
+  const phone = location.state.phoneNumber;
+  const email = location.state.email;
+  const password = location.state.password;
+  const [token, setToken] = useState("");
+  const [image, setImage] = useState({
+    selectedFile: null
+  });
+
+  const body = {
+    name: name,
+    cpf: cpf,
+    apartmentNumber: apartment,
+    residentsBlock: block,
+    subscribed: subscribed,
+    phoneNumber: phone,
+    email: email,
+    password: password,
+    nameBlobImage: image,
+    condominium: token
+  };
+
+  useEffect(() => {
+    console.log(location.state)
+  });
+
+  function fileSelectedHandler(event) {
+    setImage({
+      selectedFile: event.target.files[0]
+    })
+  }
+
+  function validateData() {
+    if (image.selectedFile == null) {
+      modal("Insira uma imagem sua antes de prosseguir!");
+    } else if (token == "" || token == undefined) {
+      modal("O campo token não pode ser vazio!");
+    } else {
+      registerUser();
+    }
+  }
+
+  function registerUser() {
+    const fd = new FormData();
+    fd.append('name', body.name);
+    fd.append('cpf', body.cpf);
+    fd.append('apartmentNumber', body.apartmentNumber);
+    fd.append('residentsBlock', body.residentsBlock);
+    fd.append('subscribed', body.subscribed);
+    fd.append('phoneNumber', body.phoneNumber);
+    fd.append('email', body.email);
+    fd.append('password', body.password);
+    fd.append('nameBlobImage', image.selectedFile, image.selectedFile.name);
+    fd.append('condominium', body.condominium);
+
+    console.log(body);
+    console.log(fd);
+
+    userFetch.post(``, fd, {
+      onUploadProgress: ProgressEvent => {
+        console.log('Upload Progress: ' + Math.round(ProgressEvent.loaded / ProgressEvent.total * 100) + '%')
+      }
+    })
+      .then((res) => {
+        console.log(res);
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function modal(text) {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: text,
+      showConfirmButton: false,
+      timer: 1500
+    });
+  }
 
   return (
     <div className='mainFormPart3'>
       <div className='container'>
-        <form onSubmit={hendleSubmit}>
+        <form>
 
           <div className='headerForm'>
-            <img className='onBack' src={onBackPressed} onClick={() => navigate("/registerPart2")} />
+            <img className='onBack' src={onBackPressed} onClick={() => navigate("/registerPart2", { state: body })} />
             <h1>Perfil</h1>
           </div>
 
           <div className='inputsContainer'>
-            <img className='imgAvatar' src={userAvatar}/>
-            <input id="syndicate" type="text" placeholder='Insira seu token' />
+            <label className="custom-file-upload">
+              <input type="file" onChange={fileSelectedHandler} />
+              <img className='imgAvatar' src={userAvatar} type="file" />
+            </label>
+            <input id="syndicate" type="text" placeholder='Insira seu token' onChange={(e) => setToken(e.target.value)} />
           </div>
 
-          <Link className='button' to="">Finalizar</Link>
+          <button className='button' type='button' onClick={() => validateData()}>Finalizar</button>
         </form>
       </div>
     </div>

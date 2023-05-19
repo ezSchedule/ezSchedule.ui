@@ -1,58 +1,98 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './registerPart1.css'
 import { useState } from 'react';
 import MaskCpf from '../../../masks/MaskCpf';
-import { Link, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import onBackPressed from '../../../components/assets/left-arrow.png';
+import Swal from 'sweetalert2';
 
 const RegisterPart1 = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [numberApartment, setNumberApartment] = useState('');
-  const [bloco, setBloco] = useState('');
+  location.state = location.state == null ? {} : location.state;
 
-  const hendleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Enviando formulario sem recarregar a página...")
+  const [name, setName] = useState(location.state.name);
+  const [cpf, setCpf] = useState(location.state.cpf);
+  const [apartment, setApartment] = useState(location.state.apartmentNumber);
+  const [block, setBlock] = useState(location.state.residentsBlock);
+  const [subscribed, setSubscribed] = useState(location.state.subscribed == undefined ? 0 : location.state.subscribed);
 
-    //mostrando dados que peguei do form
-    console.log(name)
-    console.log(surname)
-    console.log(cpf)
-    console.log(numberApartment)
-    console.log(bloco)
+  const body = {
+    name: name,
+    cpf: cpf,
+    apartmentNumber: apartment,
+    residentsBlock: block,
+    subscribed: subscribed
+  }
 
-    //apagando do formulario os dados após enviar
-    setName('');
-    setSurname('');
-    setCpf('');
-    setNumberApartment('');
-    setBloco('');
+  function validateField() {
+    if (name == "" || name == undefined) {
+      modal("O campo nome não pode ser vazio!");
+    } else if (cpf == "" || cpf == undefined) {
+      modal("O campo cpf não pode ser vazio!");
+    } else if (apartment == "" || apartment == undefined) {
+      modal("O campo número do apartamento não pode ser vazio!");
+    } else if (block == "" || block == undefined) {
+      modal("O campo bloco não pode ser vazio!");
+    } else if (name.length < 3) {
+      modal("O campo nome não pode ter menos que 3 caracteres!");
+    } else if (name.length > 45) {
+      modal("O campo nome não pode ter mais que 45 caracteres!");
+    } else {
+      nextPage();
+    }
+  }
+
+  function nextPage() {
+    navigate('/registerPart2', { state: body })
+  }
+
+  function modal(text) {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: text,
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   return (
     <div className='mainForm'>
       <div className='container'>
-        <form onSubmit={hendleSubmit}>
+        <form>
 
           <div className='headerForm'>
-            <img className='onBack' src={onBackPressed} onClick={() => navigate("/")}/>
+            <img className='onBack' src={onBackPressed} onClick={() => navigate("/")} />
             <h1>Cadastro</h1>
           </div>
 
           <div className='inputsContainer'>
-            <input type="text" placeholder='Nome e sobrenome' />
+
+            <input value={name} type="text" onChange={(e) => setName(e.target.value)} placeholder='Nome e sobrenome' />
             <MaskCpf value={cpf} onChange={(e) => setCpf(e.target.value)} />
+
             <div className='inputsRow'>
-              <input className='apartmentInput' type="text" placeholder='Nº Apartamento' />
-              <input className='blockInput' id='inputBloco' type="text" placeholder='Bloco' />
+              <input value={apartment} className='apartmentInput' type="text" onChange={(e) => setApartment(e.target.value)} placeholder='Nº Apartamento' />
+              <input value={block} className='blockInput' id='inputBloco' type="text" onChange={(e) => setBlock(e.target.value)} placeholder='Bloco' />
             </div>
+
+            <div className='inputsRadio'>
+              <label className='titleRadio'>
+                Deseja receber mensagens no email?
+              </label>
+              <input type="radio" id='yes' name='email-alert' onChange={() => setSubscribed(1)} />
+              <label htmlFor="yes">Yes</label>
+              <input type="radio" id='no' name='email-alert' onChange={() => setSubscribed(0)} />
+              <label htmlFor="no">No</label>
+            </div>
+
           </div>
 
-          <Link className='button' to="/registerPart2">Continuar</Link>
+          <button type='button' className='button' onClick={() => validateField()}>
+            Continuar
+          </button>
         </form>
       </div>
     </div>

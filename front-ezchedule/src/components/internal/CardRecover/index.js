@@ -3,7 +3,7 @@ import "./cardRecover.css";
 import onBackPressed from "../../assets/left-arrow.png";
 import { useNavigate } from "react-router-dom";
 
-const CardRecover = ({ title, back, locate, children }) => {
+const CardRecover = ({ title, back, action, children }) => {
     const navigate = useNavigate();
 
     return (
@@ -18,7 +18,7 @@ const CardRecover = ({ title, back, locate, children }) => {
                     {children}
                 </div>
 
-                <button className='button' type="button" onClick={() => navigate(locate)}>Confirmar</button>
+                <button className='button' type="button" onClick={() => action()}>Confirmar</button>
             </form>
         </>
     );

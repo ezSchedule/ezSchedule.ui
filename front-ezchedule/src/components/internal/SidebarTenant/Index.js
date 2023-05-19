@@ -11,12 +11,9 @@ const SidebarTenant = () => {
     <>
         <nav className='calendarMain'>
             <NavLink to="/*">
-                <img className='img' src={imgCalendar} />
-            </NavLink>
-            <NavLink to="/*">
                 <img className='img' src={imgSuitcase} />
             </NavLink>
-            <NavLink to="/*">
+            <NavLink to="/paymentTenant">
                 <img className='img' src={imgCalendarClock} />
             </NavLink>
             <NavLink to="/*">
@@ -25,7 +22,7 @@ const SidebarTenant = () => {
             <NavLink to="/*">
                 <img className='img' src={imgForum} />
             </NavLink>
-            <NavLink to="/configurationAdm">
+            <NavLink to="/configurationTenant">
                 <img className='img' src={imgSettings} />
             </NavLink>
         </nav>

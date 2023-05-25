@@ -65,7 +65,7 @@ const Login = () => {
       Swal.fire({
         position: 'top-center',
         icon: 'error',
-        title: "Email não existe!",
+        title: "Email ou senha errados!",
         showConfirmButton: false,
         timer: 1500
       });

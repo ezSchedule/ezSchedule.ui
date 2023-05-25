@@ -1,55 +1,62 @@
 import React, { useEffect, useState } from 'react';
-import TextField from '@mui/material/TextField';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
-import Badge from '@mui/material/Badge';
-import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 import './calendar.css'
+import { Calendar } from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import MiniModal from '../MiniModal';
 
-const Calendar = () => {
-    const [value, setValue] = useState(new Date());
-    const [highlightedDays, setHighlightedDays] = useState([1, 2, 13]);
+const MyCalendar = () => {
+    const [day, setDay] = useState(new Date());
+    const [displayCalendar, setDisplayCalendar] = useState('flex');
+    const [displaySchedules, setDisplaySchedule] = useState('none');
+    const [displayCanceled, setDisplayCanceled] = useState('none');
+
+    const [openModal, setOpenModal] = useState(false);
+
+    const calenderStyle = { display: displayCalendar }
+    const scheduleStyle = { display: displaySchedules }
+    const canceledStyle = { display: displayCanceled }
+
+    const listDate = [
+        new Date(2023, 5 - 1, 25)
+    ];
+
+    useEffect(() => {
+        console.log(listDate[0].toLocaleDateString())
+        console.log(day.toLocaleDateString())
+        console.log(listDate[0].toLocaleDateString() == day.toLocaleDateString() ? "É igual" : "Não é igual");
+    });
+
+    function showContent(calendar, schedule, canceled) {
+        setDisplayCalendar(calendar);
+        setDisplaySchedule(schedule);
+        setDisplayCanceled(canceled);
+    }
 
     return (
-        <>
-            <div className='mainComponentCalendar'>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <StaticDatePicker
-                        // mask='____/__/__'
-                        variant='static'
-                        orientation='portrait'
-                        value={value}
-                        
-                        onChange={(newValue) => setValue(newValue)}
-                        renderInput={(params) => {
-                            <TextField {...params} />;
-                        }}
-                        renderDay={(day, _value, DayComponentProps) => {
-                            const isSelected =
-                                !DayComponentProps.outsideCurrentMonth &&
-                                highlightedDays.indexOf(day.getDate()) >= 0;
-
-                            return (
-                                <Badge
-                                    key={day.toString()}
-                                    overlap='circular'
-                                    badgeContent={isSelected}
-                                >
-                                    <PickersDay {...DayComponentProps} />
-                                </Badge>
-                            );
-                        }}
-                    />
-                </LocalizationProvider>
-                <div className='statusPayment'>
-                        <button>Pago</button>
-                        <button>Em Aberto</button>
-                        <button>Em Andamento</button>
-                </div>
+        <div className='container-calendar'>
+            <div style={calenderStyle} className='content-calendar'>
+                <Calendar
+                    onChange={setDay}
+                    value={day}
+                    minDate={new Date()}
+                    onClickDay={() => setOpenModal(true)}
+                    locale='pt-br' />
             </div>
-        </>
+            <div className='content-schedules' style={scheduleStyle}></div>
+            <div className='content-canceled' style={canceledStyle}></div>
+
+            <div className='container-button' >
+                <button onClick={() => showContent('flex', 'none', 'none')}>Calendário</button>
+                <button onClick={() => showContent('none', 'flex', 'none')}>Agendados</button>
+                <button onClick={() => showContent('none', 'none', 'flex')}>Cancelados</button>
+            </div>
+
+            <MiniModal title="Cancelar dia" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} >
+                <input className='input-mini-modal' placeholder='Motivo:' />
+                <button className='button-mini-modal'>Cancelar</button>
+            </MiniModal>
+        </div>
     );
 };
 
-export default Calendar;
+export default MyCalendar;

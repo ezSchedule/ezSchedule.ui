@@ -21,6 +21,7 @@ import NotAutorized from './pages/NotAuthorized';
 import PaymentTenant from './pages/Tenant/PaymentTenant';
 import ConfigTenant from './pages/Tenant/ConfigTenant';
 import ServicesTenant from './pages/Tenant/ServicesTenant';
+import ForumTenant from './pages/Tenant/ForumTenant';
 
 const RoutesSystem = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -51,6 +52,7 @@ const RoutesSystem = () => {
                 <Route path='/condominiumSettings' element={isLoggedIn ? <CondominiumSettings /> : <NotAutorized />} />
                 <Route path='/paymentTenant' element={<PaymentTenant />} />
                 <Route path='/servicesTenant' element={<ServicesTenant />} />
+                <Route path='/forumTenent' element={<ForumTenant />} />
                 <Route path='/configurationTenant' element={<ConfigTenant />} />
                 <Route path='/notAutorized' element={<NotAutorized />} />
                 <Route path='*' element={<NotFound />} />

@@ -14,21 +14,21 @@ const HowItWorks = () => {
             <div className='iconsDiv'>
               <img src={Calendario} alt="" />
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
+            <p>Agende seus eventos pela nossa aplicação web! Isso pode facilitar seu dia e aumentar as interações dentro do seu condominío.</p>
           </div>
 
           <div className="imagensDivItem">
             <div className='iconsDiv'>
               <img src={Moeda} alt="" />
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
+            <p>Encontre serviços que os seus vizinhos oferecem e quite diretamente no app.</p>
           </div>
 
           <div className="imagensDivItem">
             <div className='iconsDiv'>
               <img src={Notificacao} alt="" />
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
+            <p>Receba notificações de pagamentos e eventos, através do fórum compartilhado.</p>
           </div>
         </div>
       </div>

@@ -1,51 +1,59 @@
-import React from 'react'
-import './communique.css'
-import axios from 'axios'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import React from 'react';
+import './communique.css';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import Post from '../Post/index';
-import PostSindicate from '../Post/index'
+import PostSindicate from '../Post/index';
+import postFetch from '../../../hooks/postFetch';
 
 const Communique = (props) => {
-    const api = axios.create({
-        baseURL: "https://64540d77e9ac46cedf368660.mockapi.io/crud/posts/"
-    })
 
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        axios.get('https://64540d77e9ac46cedf368660.mockapi.io/crud/posts')
+        postFetch.get('')
             .then((response) => {
                 console.log(response.data)
                 setPosts(response.data)
             }).catch((err) => {
                 console.log(err);
             });
-
+        console.log(posts)
     }, [])
 
-    function deletePost(id){
+    function deletePost(id) {
         console.log(id);
         setPosts(posts.filter(post => post.id !== id))
-    
-        api.delete(`https://64540d77e9ac46cedf368660.mockapi.io/crud/posts/${id}`)
-        .then(()=>{
-    
-        })
-        .catch((err)=>{
-          console.log(err)
-        })
-      }
+
+        postFetch.delete(`/delete/${id}`)
+            .then(() => {
+
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
     return (
         <>
             {
-                posts.map(
-                    (post) => (
-                        <React.Fragment key={post.id}>
-                            <PostSindicate id={post.id} date={post.date} title={post.title} hour={post.hour} content={post.content} funcaoDeletar={() => deletePost(post.id)} />
-                        </React.Fragment>
+                posts ?
+                    posts.map(
+                        (post) => (
+                            <React.Fragment key={post.id}>
+                                <PostSindicate
+                                    id={post.id}
+                                    date={post.dateTimePost.substring(-10, 10)}
+                                    hour={post.dateTimePost.substring(10)}
+                                    content={post.textContent}
+                                    typeMessage={post.typeMessage}
+                                    funcaoDeletar={() => deletePost(post.id)} />
+                            </React.Fragment>
+                        )
                     )
-                )
+                    :
+                    <div className='div-not-content-posts'>
+                            <p>Ainda não há posts!</p>
+                    </div>
             }
         </>
     )

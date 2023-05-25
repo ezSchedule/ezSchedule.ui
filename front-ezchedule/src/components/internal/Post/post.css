@@ -64,8 +64,9 @@
 
 .h4 .btnSpan{
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     display: flex;
+    width: 98%;
 }
 
 .h4 .btnSpan button{
@@ -113,6 +114,7 @@
     color: #0A0C10;
     font-weight: bold;
     cursor: not-allowed;
+    display: none;
 }
 
 .typeAndHour div .btnSaveEnable{
@@ -127,6 +129,17 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.typeAndHour div span{
+    background-color: #8eefa99b;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 15px;
+}
+
 
 
 

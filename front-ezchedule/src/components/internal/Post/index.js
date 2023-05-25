@@ -4,22 +4,22 @@ import Filter from '../../assets/filter.png'
 import { useState } from 'react'
 import ImgEdit from '../../../components/assets/edit-icon.png'
 import ImgDelete from '../../../components/assets/delete-icon.png'
-import axios from 'axios'
+import postFetch from '../../../hooks/postFetch';
 import Swal from 'sweetalert2'
 const PostSindicate = (props) => {
     const [editing, setEditing] = useState(false);
     const [content, setContent] = useState(props.content);
     const [date, setDate] = useState(props.date)
     const [hour, setHour] = useState(props.hour);
-    const [title, setTitle] = useState(props.title);
+    const [typeMessage, setTypeMessage] = useState(props.typeMessage);
 
     function updatePost() {
         const postUpdated = {
-            content,
-            title
+            textContent: content,
+            typeMessage: 'Importante'
         };
 
-        axios.put(`https://64540d77e9ac46cedf368660.mockapi.io/crud/posts/${props.id}`, postUpdated)
+        postFetch.put(`/${props.id}`, postUpdated)
             .then((res) => {
                 Swal.fire({
                     position: 'top-center',
@@ -27,8 +27,8 @@ const PostSindicate = (props) => {
                     title: 'Post atualizado com sucesso!',
                     showConfirmButton: false,
                     timer: 1500
-                  })
-                  setEditing(false);
+                })
+                setEditing(false);
             })
             .catch((err) => {
                 alert(err);
@@ -46,7 +46,6 @@ const PostSindicate = (props) => {
                 <div className='communiqueText'>
                     <div>
                         <h4 className='h4'>
-                            <span onChange={(e) => setTitle(e.target.value)}>{props.title}</span>
                             <span className='btnSpan'>
                                 <button onClick={() => setEditing(true)}>
                                     <img src={ImgEdit} />
@@ -63,10 +62,10 @@ const PostSindicate = (props) => {
                         >{props.content}</textarea>
                         <div className='typeAndHour'>
                             <div>
-                                <button disabled={editing==false} className={!editing ? "btnSave"
-                                :"btnSaveEnable"} onClick={updatePost}>Salvar</button>
+                                <button disabled={editing == false} className={!editing ? "btnSave"
+                                    : "btnSaveEnable"} onClick={updatePost}>Salvar</button>
                                 <div>
-                                    <span>Comunicado</span>
+                                    <span>{props.typeMessage}</span>
                                     <span>{props.hour}</span>
                                 </div>
                             </div>

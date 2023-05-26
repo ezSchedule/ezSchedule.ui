@@ -48,6 +48,7 @@ const Login = () => {
     sessionStorage.PHONE = data.phoneNumber;
     sessionStorage.CPF = data.cpf;
     sessionStorage.CONDOMINIUM = data.idCondominium;
+    sessionStorage.IMAGE = "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + data.image;
   }
 
   function errorMessage(status) {

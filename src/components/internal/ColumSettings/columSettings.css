@@ -51,6 +51,9 @@
 
 .settingsImg img{
     height: 370px;
+
+    border-radius: 200px;
+    border: 2px solid black;
 }
 
 .settingsImg p{

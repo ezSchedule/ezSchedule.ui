@@ -5,7 +5,7 @@ import ImageUserDefault from '../../assets/Perfil.png';
 const SectionTenantData = ({ img, id, name, apartment, block, insertId }) => {
   return (
     <>
-      <section onClick={() => { insertId(id) }}>
+      <section tabIndex="0" onClick={() => { insertId(id) }}>
         <div>
           <img src={img != "" ? img : ImageUserDefault} />
           <span>

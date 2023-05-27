@@ -18,7 +18,10 @@ const HeaderInternal = (props) => {
                 <img
                   className='image-user'
                   onClick={() => setToggle(!toggle)}
-                  src={sessionStorage.IMAGE == null ? UserDeafult : sessionStorage.IMAGE} />
+                  src={
+                    sessionStorage.IMAGE === "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/null" ? 
+                      UserDeafult : sessionStorage.IMAGE
+                  } />
               }
               <Toggle isOpen={toggle} />
             </div>

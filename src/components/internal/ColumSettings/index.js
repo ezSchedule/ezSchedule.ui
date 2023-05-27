@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import './columSettings.css'
-import InputInformation from '../InputInformation'
-import ImgPerfil from "../../assets/Perfil.png"
+import React from 'react';
+import './columSettings.css';
+import InputInformation from '../InputInformation';
+import ImgPerfil from "../../assets/user.png";
 import userFetch from '../../../hooks/userFetch';
 import { useState } from 'react'
 import Swal from 'sweetalert2';
@@ -37,21 +37,21 @@ const ColumSettings = (props) => {
   }
 
   function errorMessage(status) {
-    if (status == 500) {
+    if (status === 500) {
       alert("Error 500");
-    } else if (status == 401) {
+    } else if (status === 401) {
       Swal.fire({
         position: 'top-center',
         icon: 'error',
-        title: 'Você não tem permissão para isso',
+        title: 'Você não tem permissão para isso.',
         showConfirmButton: false,
         timer: 1500
       });
-    } else if (status == 404) {
+    } else if (status === 404) {
       Swal.fire({
         position: 'top-center',
         icon: 'error',
-        title: 'Informações com erros ortográficos',
+        title: 'Informações com erros ortográficos.',
         showConfirmButton: false,
         timer: 1500
       });
@@ -103,7 +103,8 @@ const ColumSettings = (props) => {
         </div>
         <div className='settingsImg'>
           {
-            <img src={sessionStorage.IMAGE == null ? ImgPerfil : sessionStorage.IMAGE} />
+            <img src={sessionStorage.IMAGE === "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/null" ? 
+              ImgPerfil : sessionStorage.IMAGE} />
           }
           <p>{props.name}</p>
         </div>

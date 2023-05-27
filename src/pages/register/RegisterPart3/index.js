@@ -37,10 +37,6 @@ const RegisterPart3 = () => {
     condominium: token
   };
 
-  useEffect(() => {
-    console.log(location.state)
-  });
-
   function fileSelectedHandler(event) {
     setImage({
       selectedFile: event.target.files[0]
@@ -69,9 +65,6 @@ const RegisterPart3 = () => {
     fd.append('password', body.password);
     fd.append('nameBlobImage', image.selectedFile, image.selectedFile.name);
     fd.append('condominium', body.condominium);
-
-    console.log(body);
-    console.log(fd);
 
     userFetch.post(``, fd, {
       onUploadProgress: ProgressEvent => {

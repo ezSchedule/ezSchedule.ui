@@ -5,13 +5,26 @@ import postFetch from '../../../hooks/postFetch';
 const ForumTextField = () => {
     const [typeMessageValue, setTypeMessageValue] = useState();
 
+    const [announcementColor, setAnnouncementColor] = useState(''); // Estado para controlar a cor do botão 'Comunicado'
+    const [urgentColor, setUrgentColor] = useState(''); // Estado para controlar a cor do botão 'Urgente'
+    const [voteColor, setVoteColor] = useState('');
+
     function setToAnnouncement() {
+        setAnnouncementColor('#81ab8d');
+        setUrgentColor('');
+        setVoteColor('');
         setTypeMessageValue("Comunicado");
     }
     function setToUrgent() {
+        setAnnouncementColor('');
+        setUrgentColor('#81ab8d');
+        setVoteColor('');
         setTypeMessageValue("Urgente");
     }
     function setToVote() {
+        setAnnouncementColor('');
+        setUrgentColor('');
+        setVoteColor('#81ab8d');
         setTypeMessageValue("Votação");
     }
 
@@ -36,7 +49,7 @@ const ForumTextField = () => {
                 confirmButtonText: "ok",
             })
         }
-        else if(typeMessageValue == null){
+        else if (typeMessageValue == null) {
             Swal.fire({
                 title: "Tipo de post em branco",
                 text: "Escolha o tipo de publição deseja postar!",
@@ -64,9 +77,9 @@ const ForumTextField = () => {
                         <textarea name="content" cols="30" rows="10" placeholder='Digite alguma coisa...'></textarea>
                     </div>
                     <div className='buttonsTextField'>
-                        <button type='button' onClick={setToAnnouncement}>Comunicado</button>
-                        <button type='button' onClick={setToUrgent}>Urgente</button>
-                        <button type='button' onClick={setToVote}>Votação</button>
+                        <button type='button' style={{ backgroundColor: announcementColor }} onClick={setToAnnouncement}>Comunicado</button>
+                        <button type='button' style={{ backgroundColor: urgentColor }} onClick={setToUrgent}>Urgente</button>
+                        <button type='button' style={{ backgroundColor: voteColor }} onClick={setToVote}>Votação</button>
                     </div>
                     <div className='btnPost'>
                         <button type='submit'>Postar</button>

@@ -9,7 +9,7 @@ import postFetch from '../../../hooks/postFetch';
 const Communique = (props) => {
 
     const [posts, setPosts] = useState([]);
-
+    const [isAdm, setIsAdm] = useState(props.isAdm)
     useEffect(() => {
         postFetch.get('')
             .then((response) => {
@@ -46,6 +46,7 @@ const Communique = (props) => {
                                     hour={post.dateTimePost.substring(10)}
                                     content={post.textContent}
                                     typeMessage={post.typeMessage}
+                                    isAdm={props.isAdm}
                                     funcaoDeletar={() => deletePost(post.id)} />
                             </React.Fragment>
                         )

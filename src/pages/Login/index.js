@@ -30,16 +30,22 @@ const Login = () => {
     userFetch.post('/login', loginUser)
       .then((res) => {
         saveData(res.data);
-        navigate("/homeAdm");
+        validateAdmin(res.data);
       }).catch((err) => {
         console.clear();
         errorMessage(err.response.status);
-        console.log(err);
       });
+  }
+
+  function validateAdmin(data) {
+    if (data.isAdmin === 1) navigate('/homeAdm');
+    else if (data.isAdmin === null) navigate('/paymentTenant');
   }
 
   function saveData(data) {
     sessionStorage.ID = data.id;
+    sessionStorage.AUTH = data.authenticated;
+    sessionStorage.ADMIN = data.isAdmin;
     sessionStorage.TOKEN = data.token;
     sessionStorage.NAME = data.name;
     sessionStorage.EMAIL = data.email;

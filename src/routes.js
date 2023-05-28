@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import RegisterPart1 from './pages/register/RegisterPart1';
@@ -58,6 +58,7 @@ const RoutesSystem = () => {
                 <Route path='/servicesTenant' element={<Private Item={ServicesTenant} />} />
                 <Route path='/configurationTenant' element={<Private Item={ConfigTenant} />} />
                 <Route path='/forumTenant' element={<ForumTenant />} />
+
                 {/* Error screens */}
                 <Route path='/notAutorized' element={<NotAutorized />} />
                 <Route path='*' element={<NotFound />} />

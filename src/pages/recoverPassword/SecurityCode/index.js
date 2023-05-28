@@ -10,7 +10,7 @@ const SecurityCode = () => {
     const [token, setToken] = useState();
 
     function validateField() {
-        if (token == undefined || token == "") modal("O campo não pode estar vazio!");
+        if (token === undefined || token === "") modal("O campo não pode estar vazio!");
         else verifyToken();
     }
 

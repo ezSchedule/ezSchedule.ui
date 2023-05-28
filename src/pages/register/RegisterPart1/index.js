@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './registerPart1.css'
 import { useState } from 'react';
 import MaskCpf from '../../../masks/MaskCpf';
@@ -10,13 +10,13 @@ const RegisterPart1 = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  location.state = location.state == null ? {} : location.state;
+  location.state = location.state === null ? {} : location.state;
 
   const [name, setName] = useState(location.state.name);
   const [cpf, setCpf] = useState(location.state.cpf);
   const [apartment, setApartment] = useState(location.state.apartmentNumber);
   const [block, setBlock] = useState(location.state.residentsBlock);
-  const [subscribed, setSubscribed] = useState(location.state.subscribed == undefined ? 0 : location.state.subscribed);
+  const [subscribed, setSubscribed] = useState(location.state.subscribed === undefined ? 0 : location.state.subscribed);
 
   const body = {
     name: name,
@@ -27,13 +27,13 @@ const RegisterPart1 = () => {
   }
 
   function validateField() {
-    if (name == "" || name == undefined) {
+    if (name === "" || name === undefined) {
       modal("O campo nome não pode ser vazio!");
-    } else if (cpf == "" || cpf == undefined) {
+    } else if (cpf === "" || cpf === undefined) {
       modal("O campo cpf não pode ser vazio!");
-    } else if (apartment == "" || apartment == undefined) {
+    } else if (apartment === "" || apartment === undefined) {
       modal("O campo número do apartamento não pode ser vazio!");
-    } else if (block == "" || block == undefined) {
+    } else if (block === "" || block === undefined) {
       modal("O campo bloco não pode ser vazio!");
     } else if (name.length < 3) {
       modal("O campo nome não pode ter menos que 3 caracteres!");
@@ -64,7 +64,7 @@ const RegisterPart1 = () => {
         <form>
 
           <div className='headerForm'>
-            <img className='onBack' src={onBackPressed} onClick={() => navigate("/")} />
+            <img className='onBack' src={onBackPressed} onClick={() => navigate("/")} alt='Back button' />
             <h1>Cadastro</h1>
           </div>
 

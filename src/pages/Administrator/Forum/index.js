@@ -15,7 +15,7 @@ const Forum = () => {
             <div className='forum'>
                 <div className='forumDiv'>
                     <ForumTextField />
-                    <Communique />
+                    <Communique isAdm={true}/>
                 </div>
             </div>
         </>

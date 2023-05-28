@@ -21,6 +21,7 @@ import NotAutorized from './pages/NotAuthorized';
 import PaymentTenant from './pages/Tenant/PaymentTenant';
 import ConfigTenant from './pages/Tenant/ConfigTenant';
 import ServicesTenant from './pages/Tenant/ServicesTenant';
+import ForumTenant from './pages/Tenant/ForumTenant';
 
 const Private = ({ Item }) => {
     const signed = sessionStorage.AUTH;
@@ -56,7 +57,7 @@ const RoutesSystem = () => {
                 <Route path='/paymentTenant' element={<Private Item={PaymentTenant} />} />
                 <Route path='/servicesTenant' element={<Private Item={ServicesTenant} />} />
                 <Route path='/configurationTenant' element={<Private Item={ConfigTenant} />} />
-
+                <Route path='/forumTenant' element={<ForumTenant />} />
                 {/* Error screens */}
                 <Route path='/notAutorized' element={<NotAutorized />} />
                 <Route path='*' element={<NotFound />} />

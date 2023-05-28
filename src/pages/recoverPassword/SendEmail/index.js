@@ -11,8 +11,8 @@ const SendEmail = () => {
     sessionStorage.EMAIL = email;
 
     function validateField() {
-        if (email == undefined || email == "") modal("O campo não pode estar vazio!"); 
-        else if (email.indexOf("@") == -1) modal("O email precisa estar neste formato: nome@dominio.com"); 
+        if (email === undefined || email === "") modal("O campo não pode estar vazio!"); 
+        else if (email.indexOf("@") === -1) modal("O email precisa estar neste formato: nome@dominio.com"); 
         else sendToEmail();
     }
 

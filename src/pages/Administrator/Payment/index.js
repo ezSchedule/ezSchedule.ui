@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './payment.css';
 import Sidebar from '../../../components/internal/SideBar/index';
 import HeaderInternal from '../../../components/internal/Header';

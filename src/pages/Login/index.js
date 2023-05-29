@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import onBackPressed from '../../components/assets/left-arrow.png';
@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState();
 
   function validateInputs() {
-    if (email == "" || email == undefined || password == "" || password == undefined) {
+    if (email === "" || email === undefined || password === "" || password === undefined) {
       Swal.fire({
         position: 'top-center',
         icon: 'error',
@@ -30,16 +30,22 @@ const Login = () => {
     userFetch.post('/login', loginUser)
       .then((res) => {
         saveData(res.data);
-        navigate("/homeAdm");
+        validateAdmin(res.data);
       }).catch((err) => {
         console.clear();
         errorMessage(err.response.status);
-        console.log(err);
       });
+  }
+
+  function validateAdmin(data) {
+    if (data.isAdmin === 1) navigate('/homeAdm');
+    else if (data.isAdmin === 0) navigate('/paymentTenant');
   }
 
   function saveData(data) {
     sessionStorage.ID = data.id;
+    sessionStorage.AUTH = data.authenticated;
+    sessionStorage.ADMIN = data.isAdmin;
     sessionStorage.TOKEN = data.token;
     sessionStorage.NAME = data.name;
     sessionStorage.EMAIL = data.email;
@@ -48,12 +54,13 @@ const Login = () => {
     sessionStorage.PHONE = data.phoneNumber;
     sessionStorage.CPF = data.cpf;
     sessionStorage.CONDOMINIUM = data.idCondominium;
+    sessionStorage.IMAGE = "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + data.image;
   }
 
   function errorMessage(status) {
-    if (status == 500) {
+    if (status === 500) {
       alert("Error 500");
-    } else if (status == 403) {
+    } else if (status === 403) {
       Swal.fire({
         position: 'top-center',
         icon: 'error',
@@ -61,7 +68,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500
       });
-    } else if (status == 404) {
+    } else if (status === 404) {
       Swal.fire({
         position: 'top-center',
         icon: 'error',
@@ -78,7 +85,7 @@ const Login = () => {
         <div className='container'>
 
           <div className='headerForm'>
-            <img className='onBack' src={onBackPressed} onClick={() => navigate("/")} />
+            <img className='onBack' src={onBackPressed} onClick={() => navigate("/")} alt='Back button' />
             <h1>Login</h1>
           </div>
 

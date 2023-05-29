@@ -6,6 +6,8 @@ import SectionTenantData from '../SectionTenantData';
 import CardService from '../CardService/CardService';
 import serviceFetch from '../../../hooks/serviceFetch';
 import Swal from 'sweetalert2';
+import defaultImage from '../../assets/Perfil.png'
+
 const ServiceList = () => {
     const [openModal, setOpenModal] = useState(false);
     const [serviceList, setServiceList] = useState([]);
@@ -107,7 +109,7 @@ const ServiceList = () => {
                                         idService={service.id}
                                         service={service.serviceName}
                                         nameTenant={service.tenant.name}
-                                        imgTenant=""
+                                        imgTenant={service.tenant.nameBlobImage == null ? defaultImage : ("https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + service.tenant.nameBlobImage)}
                                         phoneTenant={service.tenant.phoneNumber}
                                         deleteFunction={deleteService} 
                                         showImage={true}/>
@@ -128,7 +130,7 @@ const ServiceList = () => {
                                 <React.Fragment key={tenant.id}>
                                     <SectionTenantData
                                         insertId={setIdTenant}
-                                        img=""
+                                        img={tenant.nameBlobImage == null ? defaultImage : ("https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + tenant.nameBlobImage)}
                                         id={tenant.id}
                                         name={tenant.name}
                                         apartment={tenant.apartmentNumber}

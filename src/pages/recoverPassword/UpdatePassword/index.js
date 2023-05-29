@@ -17,9 +17,9 @@ const UpdatePassword = () => {
     }
 
     function validateField() {
-        if (password == undefined || password == "") modal("O campo senha não pode estar vazio!");
-        else if (confirm == undefined || confirm == "") modal("O campo confirmar senha não pode estar vazio!");
-        else if (password != confirm) modal("A senha e a confimação precisam ser iguais!");
+        if (password === undefined || password === "") modal("O campo senha não pode estar vazio!");
+        else if (confirm === undefined || confirm === "") modal("O campo confirmar senha não pode estar vazio!");
+        else if (password !== confirm) modal("A senha e a confimação precisam ser iguais!");
         else sendNewPassword();
     }
 

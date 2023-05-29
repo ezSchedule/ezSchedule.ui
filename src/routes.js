@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import RegisterPart1 from './pages/register/RegisterPart1';
@@ -21,37 +21,45 @@ import NotAutorized from './pages/NotAuthorized';
 import PaymentTenant from './pages/Tenant/PaymentTenant';
 import ConfigTenant from './pages/Tenant/ConfigTenant';
 import ServicesTenant from './pages/Tenant/ServicesTenant';
+import ForumTenant from './pages/Tenant/ForumTenant';
+
+const Private = ({ Item }) => {
+    const signed = sessionStorage.AUTH;
+
+    return signed ? <Item /> : <NotAutorized />;
+}
 
 const RoutesSystem = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-    useState(() => {
-        if (sessionStorage.TOKEN != null) {
-            setIsLoggedIn(true)
-        }
-    });
     return (
         <BrowserRouter>
             <Routes>
+                {/* Screen routes */}
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/registerPart1' element={<RegisterPart1 />} />
                 <Route path='/registerPart2' element={<RegisterPart2 />} />
                 <Route path='/registerPart3' element={<RegisterPart3 />} />
-                <Route path="/homeAdm" element={isLoggedIn ? <Calendar /> : <NotAutorized />} />
-                <Route path='/graphicAdm' element={isLoggedIn ? <Graphic /> : <NotAutorized />} />
                 <Route path='/sendEmail' element={<SendEmail />} />
                 <Route path='/securityCode' element={<SecurityCode />} />
                 <Route path='/updatePassword' element={<UpdatePassword />} />
-                <Route path='/servicesAdm' element={isLoggedIn ? <Service /> : <NotAutorized />} />
-                <Route path='/paymentAdm' element={isLoggedIn ? <Payment /> : <NotAutorized />} />
-                <Route path='/forumAdm' element={isLoggedIn ? <Forum /> : <NotAutorized />} />
-                <Route path='/configurationAdm' element={isLoggedIn ? <Configuration /> : <NotAutorized />} />
-                <Route path='/personSettingsAdm' element={isLoggedIn ? <PersonalSettings /> : <NotAutorized />} />
-                <Route path='/condominiumSettings' element={isLoggedIn ? <CondominiumSettings /> : <NotAutorized />} />
-                <Route path='/paymentTenant' element={<PaymentTenant />} />
-                <Route path='/servicesTenant' element={<ServicesTenant />} />
-                <Route path='/configurationTenant' element={<ConfigTenant />} />
+
+                {/* Syndicate routes */}
+                <Route path="/homeAdm" element={<Private Item={Calendar} />} />
+                <Route path='/graphicAdm' element={<Private Item={Graphic} />} />
+                <Route path='/servicesAdm' element={<Private Item={Service} />} />
+                <Route path='/paymentAdm' element={<Private Item={Payment} />} />
+                <Route path='/forumAdm' element={<Private Item={Forum} />} />
+                <Route path='/configurationAdm' element={<Private Item={Configuration} />} />
+                <Route path='/personSettingsAdm' element={<Private Item={PersonalSettings} />} />
+                <Route path='/condominiumSettings' element={<Private Item={CondominiumSettings} />} />
+
+                {/* Tenant routes */}
+                <Route path='/paymentTenant' element={<Private Item={PaymentTenant} />} />
+                <Route path='/servicesTenant' element={<Private Item={ServicesTenant} />} />
+                <Route path='/configurationTenant' element={<Private Item={ConfigTenant} />} />
+                <Route path='/forumTenant' element={<ForumTenant />} />
+
+                {/* Error screens */}
                 <Route path='/notAutorized' element={<NotAutorized />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>

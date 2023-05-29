@@ -15,6 +15,7 @@
 .headerInternal .insideHeader div{
     width: 90%;
     height: 90%;
+
     justify-content: space-between;
     display: flex;
     align-items: center;
@@ -26,7 +27,19 @@
     font-weight: 900;
 }
 
-.headerInternal .insideHeader div img{
-    width: 60px;
-    height: 60px;
+.headerInternal .insideHeader div .container-image {
+    width: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.headerInternal .insideHeader div .container-image .image-user{
+    width: 80px;
+    height: 80px;
+
+    border-radius: 100px;
+    border: 1px solid black;
+
+    cursor: pointer;
 }

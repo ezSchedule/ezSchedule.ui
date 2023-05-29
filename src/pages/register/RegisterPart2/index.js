@@ -33,15 +33,15 @@ const RegisterPart2 = () => {
   }
 
   function validateField() {
-    if (phone == "" || phone == undefined) {
+    if (phone === "" || phone === undefined) {
       modal("O campo telefone não pode ser vazio!");
-    } else if (email == "" || email == undefined) {
+    } else if (email === "" || email === undefined) {
       modal("O campo email não pode ser vazio!");
-    } else if (password == "" || password == undefined) {
+    } else if (password === "" || password === undefined) {
       modal("O campo senha não pode ser vazio!");
-    } else if (confirmPassword == "" || confirmPassword == undefined) {
+    } else if (confirmPassword === "" || confirmPassword === undefined) {
       modal("O campo confirmar senha não pode ser vazio!");
-    } else if (password != confirmPassword) {
+    } else if (password !== confirmPassword) {
       modal("O campo senha não pode ser diferente da confirmação!");
     } else {
       nextPage();
@@ -68,7 +68,7 @@ const RegisterPart2 = () => {
         <form>
 
           <div className='headerForm'>
-            <img className='onBack' src={onBackPressed} onClick={() => navigate("/registerPart1", { state: body })} />
+            <img className='onBack' src={onBackPressed} onClick={() => navigate("/registerPart1", { state: body })} alt='Back button' />
             <h1>Cadastro</h1>
           </div>
 

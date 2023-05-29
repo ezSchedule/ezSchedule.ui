@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
-import './columSettings.css'
-import InputInformation from '../InputInformation'
-import ImgPerfil from "../../assets/Perfil.png"
+import React from 'react';
+import './columSettings.css';
+import InputInformation from '../InputInformation';
+import ImgPerfil from "../../assets/user.png";
 import userFetch from '../../../hooks/userFetch';
 import { useState } from 'react'
 import Swal from 'sweetalert2';
+
 const ColumSettings = (props) => {
   const id = sessionStorage.ID;
   const token = sessionStorage.TOKEN;
@@ -36,21 +37,21 @@ const ColumSettings = (props) => {
   }
 
   function errorMessage(status) {
-    if (status == 500) {
+    if (status === 500) {
       alert("Error 500");
-    } else if (status == 401) {
+    } else if (status === 401) {
       Swal.fire({
         position: 'top-center',
         icon: 'error',
-        title: 'Você não tem permissão para isso',
+        title: 'Você não tem permissão para isso.',
         showConfirmButton: false,
         timer: 1500
       });
-    } else if (status == 404) {
+    } else if (status === 404) {
       Swal.fire({
         position: 'top-center',
         icon: 'error',
-        title: 'Informações com erros ortográficos',
+        title: 'Informações com erros ortográficos.',
         showConfirmButton: false,
         timer: 1500
       });
@@ -68,31 +69,21 @@ const ColumSettings = (props) => {
 
   function inputValidation() {
     if (name.length == 0 || cpf.length == 0 || apartmentNumber == 0 || residentsBlock.length == 0 || phoneNumber.length == 0) {
-      Swal.fire({
-        position: 'top-center',
-        icon: 'error',
-        title: 'As informações não podem estar vazias!',
-        showConfirmButton: false,
-        timer: 1500
-      });
+      modal('As informações não podem estar vazias!');
     }
-    else if (name.length > 100) 
-    Swal.fire({
-      position: 'top-center',
-      icon: 'error',
-      title: 'A informação do nome tem muitos caracteres!',
-      showConfirmButton: false,
-      timer: 1500
-    });
-    else if (cpf.length > 14) 
-    Swal.fire({
-      position: 'top-center',
-      icon: 'error',
-      title: 'CPF inválido, contém muitos caracteres!',
-      showConfirmButton: false,
-      timer: 1500
-    });
+    else if (name.length > 100) modal('A informação do nome tem muitos caracteres!');
+    else if (cpf.length > 14) modal('CPF inválido, contém muitos caracteres!');
     else updateTenant()
+  }
+
+  function modal(text) {
+    Swal.fire({
+      position: 'top-center',
+      icon: 'error',
+      title: text,
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   function cancelChanges() {
@@ -111,7 +102,10 @@ const ColumSettings = (props) => {
           <InputInformation attribute="Email" information={email} insert={setEmail} editable={true} />
         </div>
         <div className='settingsImg'>
-          <img src={ImgPerfil} />
+          {
+            <img src={sessionStorage.IMAGE === "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/null" ? 
+              ImgPerfil : sessionStorage.IMAGE} />
+          }
           <p>{props.name}</p>
         </div>
       </div>

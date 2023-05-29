@@ -12,6 +12,7 @@ const PostSindicate = (props) => {
     const [date, setDate] = useState(props.date)
     const [hour, setHour] = useState(props.hour);
     const [typeMessage, setTypeMessage] = useState(props.typeMessage);
+    const [isAdm, setIsAdm] = useState(props.isAdm);
 
     function updatePost() {
         const postUpdated = {
@@ -38,22 +39,24 @@ const PostSindicate = (props) => {
     return (
         <>
             <div className='mainCommunique'>
-                <div className='line'></div>
+                {isAdm? <div className='line'></div> : ''}
                 <header>
                     <input type="text" disabled value={props.date} />
-                    <img src={Filter} alt="" />
+                    {isAdm? <img src={Filter} alt="" /> : ''}
                 </header>
                 <div className='communiqueText'>
                     <div>
                         <h4 className='h4'>
-                            <span className='btnSpan'>
-                                <button onClick={() => setEditing(true)}>
-                                    <img src={ImgEdit} />
-                                </button>
-                                <button onClick={() => props.funcaoDeletar(props.id)}>
-                                    <img src={ImgDelete} />
-                                </button>
-                            </span>
+                            {isAdm ?
+                                <span className='btnSpan'>
+                                    <button onClick={() => setEditing(true)}>
+                                        <img src={ImgEdit} />
+                                    </button>
+                                    <button onClick={() => props.funcaoDeletar(props.id)}>
+                                        <img src={ImgDelete} />
+                                    </button>
+                                </span>
+                                : ''}
                         </h4>
                         <textarea disabled={!editing}
                             className={editing ? "textAreaEnable"

@@ -50,7 +50,10 @@
 }
 
 .settingsImg img{
-    height: 370px;
+    width: 300px;
+
+    border-radius: 200px;
+    border: 2px solid black;
 }
 
 .settingsImg p{

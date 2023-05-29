@@ -2,23 +2,17 @@ import React from 'react';
 import './graphic.css';
 import Chart from 'react-google-charts';
 
+const GraphicInside = ({data}) => {
 
-const GraphicInside = ({totalGuestsByMonth, totalEventsByMonth}) => {
-
-  const data = [
+  const chartData = [
     ['Year', 'Eventos', 'Pessoas'],
-    ['Janeiro', 15, 132],
-    ['Fevereiro', 12, 60],
-    ['Março', 11, 44],
-    ['Abril', 0, 0],
-    ['Maio', 19, 54],
-    ['Junho', 21, 344]
+    ...data.map(item => [item.month, item.totalEvents, item.totalGuests]),
   ];
 
   const options = {
     curveType: 'function',
     legend: { position: 'bottom' },
-    colors: ['#fff', '#fff'],
+    colors: ['#0A0C10', '#fff'],
     backgroundColor: 'transparent',
     is3D: true,
     fontName: 'Arial',
@@ -38,7 +32,7 @@ const GraphicInside = ({totalGuestsByMonth, totalEventsByMonth}) => {
           chartType="LineChart"
           width="80vw"
           height="45vh"
-          data={data}
+          data={chartData}
           options={options}
           style={{borderRadius: '20px'}}
           

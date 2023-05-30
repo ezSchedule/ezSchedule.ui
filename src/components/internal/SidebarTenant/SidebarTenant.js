@@ -19,7 +19,7 @@ const SidebarTenant = () => {
             <NavLink to="/*">
                 <img className='img' src={imgMoney} />
             </NavLink>
-            <NavLink to="/*">
+            <NavLink to="/forumTenant">
                 <img className='img' src={imgForum} />
             </NavLink>
             <NavLink to="/configurationTenant">

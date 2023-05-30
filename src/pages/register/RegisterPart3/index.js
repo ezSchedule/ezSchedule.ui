@@ -73,6 +73,7 @@ const RegisterPart3 = () => {
         navigate('/');
       })
       .catch((err) => {
+        modal("Token inválido!");
         console.log(err);
       });
   }

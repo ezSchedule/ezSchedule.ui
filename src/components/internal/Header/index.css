@@ -32,14 +32,15 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .headerInternal .insideHeader div .container-image .image-user{
-    width: 80px;
-    height: 80px;
+    width: 45px;
+    height: 45px;
 
     border-radius: 100px;
-    border: 1px solid black;
+    background-color: #d8f7ce;
 
     cursor: pointer;
 }

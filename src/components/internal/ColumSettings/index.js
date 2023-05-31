@@ -3,7 +3,7 @@ import './columSettings.css';
 import InputInformation from '../InputInformation';
 import ImgPerfil from "../../assets/user.png";
 import userFetch from '../../../hooks/userFetch';
-import { useState } from 'react'
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 
 const ColumSettings = (props) => {
@@ -15,13 +15,29 @@ const ColumSettings = (props) => {
   const [residentsBlock, setBlock] = useState(sessionStorage.BLOCK);
   const [phoneNumber, setPhone] = useState(sessionStorage.PHONE);
   const [email, setEmail] = useState(sessionStorage.EMAIL);
+  const [image, setImage] = useState({
+    selectedFile: null
+  });
+
+  function fileSelectedHandler(event) {
+    setImage({
+      selectedFile: event.target.files[0]
+    })
+  }
 
   function updateTenant() {
-    const updateTenant = { name, cpf, apartmentNumber, residentsBlock, phoneNumber, email }
+    const fd = new FormData();
+    fd.append('name', name);
+    fd.append('cpf', cpf);
+    fd.append('apartmentNumber', apartmentNumber);
+    fd.append('residentsBlock', residentsBlock);
+    fd.append('phoneNumber', phoneNumber);
+    fd.append('email', email);
+    if (image.selectedFile != null) fd.append('image', image.selectedFile, image.selectedFile.name);
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    userFetch.put(`/update-tenant?id=${id}`, updateTenant, config)
-      .then(() => {
+    userFetch.put(`/update-tenant?id=${id}`, fd)
+      .then((res) => {
         Swal.fire({
           position: 'top-center',
           icon: 'success',
@@ -29,7 +45,8 @@ const ColumSettings = (props) => {
           showConfirmButton: false,
           timer: 1500
         });
-        updateSession(updateTenant);
+        updateSession(res.data);
+        setInterval(() => window.location.reload(false), 1500);
       }).catch((err) => {
         console.clear();
         errorMessage(err.response.status)
@@ -58,13 +75,14 @@ const ColumSettings = (props) => {
     }
   }
 
-  function updateSession(updateTenant) {
-    sessionStorage.NAME = updateTenant.name;
-    sessionStorage.CPF = updateTenant.cpf;
-    sessionStorage.APARTMENT = updateTenant.apartmentNumber;
-    sessionStorage.BLOCK = updateTenant.residentsBlock;
-    sessionStorage.PHONE = updateTenant.phoneNumber;
-    sessionStorage.EMAIL = updateTenant.email;
+  function updateSession(data) {
+    sessionStorage.NAME = data.name;
+    sessionStorage.CPF = data.cpf;
+    sessionStorage.APARTMENT = data.apartmentNumber;
+    sessionStorage.BLOCK = data.residentsBlock;
+    sessionStorage.PHONE = data.phoneNumber;
+    sessionStorage.EMAIL = data.email;
+    sessionStorage.IMAGE = "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + data.nameBlobImage;
   }
 
   function inputValidation() {
@@ -102,10 +120,13 @@ const ColumSettings = (props) => {
           <InputInformation attribute="Email" information={email} insert={setEmail} editable={true} />
         </div>
         <div className='settingsImg'>
-          {
-            <img src={sessionStorage.IMAGE === "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/null" ? 
-              ImgPerfil : sessionStorage.IMAGE} />
-          }
+          <label className='set-image'>
+            <input type="file" onChange={fileSelectedHandler} />
+            {
+              <img src={sessionStorage.IMAGE === "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/null" ?
+                ImgPerfil : sessionStorage.IMAGE} />
+            }
+          </label>
           <p>{props.name}</p>
         </div>
       </div>

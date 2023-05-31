@@ -10,7 +10,7 @@ const HeaderInternal = (props) => {
     < >
       <div className='headerInternal'>
         <div className='insideHeader'>
-          <div>
+          <div className='content'>
             <h3>{props.text}</h3>
 
             <div className='container-image'>

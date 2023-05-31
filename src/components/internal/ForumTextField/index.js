@@ -36,7 +36,7 @@ const ForumTextField = () => {
             textContent: e.target.content.value,
             typeMessage: typeMessageValue,
             condominium: {
-                id: sessionStorage.ID
+                id: sessionStorage.CONDOMINIUM
             }
         }
 

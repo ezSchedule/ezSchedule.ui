@@ -2,7 +2,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import Card from '../CardCarousel/card';
 import './carousel.css';
 
-const Carousel = () => {
+const Carousel = ({data}) => {
+
+
   const carouselRef = useRef(null);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -49,18 +51,14 @@ const Carousel = () => {
   return (
     <div className="carousel" ref={carouselRef}>
       <div className="container" >
-          <Card textNome="Janeiro"/>
-          <Card text="Fevereiro"/>
-          <Card text="Março"/>
-          <Card text="Abril"/>
-          <Card text="Maio"/>
-          <Card text="Junho"/>
-          <Card text="Julho"/>
-          <Card text="Agosto"/>
-          <Card text="Setembro"/>
-          <Card text="Outubro"/>
-          <Card text="Novembro"/>
-          <Card text="Dezembro"/>
+      {data.map((item, index) => (
+          <Card
+            key={index}
+            month={item.month}
+            totalGuests={item.totalGuests}
+            totalEvents={item.totalEvents}
+          />
+        ))}
       </div>
     </div>
   );

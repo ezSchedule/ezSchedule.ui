@@ -41,7 +41,7 @@ const PostSindicate = (props) => {
             <div className='mainCommunique'>
                 {isAdm? <div className='line'></div> : ''}
                 <header>
-                    <input type="text" disabled value={props.date} />
+                    <input type="text" disabled defaultValue={props.date} />
                     {isAdm? <img src={Filter} alt="" /> : ''}
                 </header>
                 <div className='communiqueText'>

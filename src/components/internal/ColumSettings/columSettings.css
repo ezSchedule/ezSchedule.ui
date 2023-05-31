@@ -49,11 +49,22 @@
     background-color: #dadada;
 }
 
-.settingsImg img{
-    width: 300px;
+.settingsImg .set-image {
+    width: auto;
+    height: auto;
+}
 
+.settingsImg .set-image input[type="file"] {
+    display: none;
+}
+
+.settingsImg .set-image img{
+    width: 300px;
+    
     border-radius: 200px;
     border: 2px solid black;
+    
+    cursor: pointer;
 }
 
 .settingsImg p{

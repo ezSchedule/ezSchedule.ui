@@ -3,7 +3,7 @@ import './columSettings.css';
 import InputInformation from '../InputInformation';
 import ImgPerfil from "../../assets/user.png";
 import userFetch from '../../../hooks/userFetch';
-import { useState } from 'react'
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 
 const ColumSettings = (props) => {
@@ -15,6 +15,15 @@ const ColumSettings = (props) => {
   const [residentsBlock, setBlock] = useState(sessionStorage.BLOCK);
   const [phoneNumber, setPhone] = useState(sessionStorage.PHONE);
   const [email, setEmail] = useState(sessionStorage.EMAIL);
+  const [image, setImage] = useState({
+    selectedFile: null
+  });
+
+  function fileSelectedHandler(event) {
+    setImage({
+      selectedFile: event.target.files[0]
+    })
+  }
 
   function updateTenant() {
     const fd = new FormData();
@@ -24,7 +33,7 @@ const ColumSettings = (props) => {
     fd.append('residentsBlock', residentsBlock);
     fd.append('phoneNumber', phoneNumber);
     fd.append('email', email);
-    // const updateTenant = { name, cpf, apartmentNumber, residentsBlock, phoneNumber, email }
+    if (image.selectedFile != null) fd.append('image', image.selectedFile, image.selectedFile.name);
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
     userFetch.put(`/update-tenant?id=${id}`, fd)
@@ -37,6 +46,7 @@ const ColumSettings = (props) => {
           timer: 1500
         });
         updateSession(res.data);
+        setInterval(() => window.location.reload(false), 1500);
       }).catch((err) => {
         console.clear();
         errorMessage(err.response.status)
@@ -72,6 +82,7 @@ const ColumSettings = (props) => {
     sessionStorage.BLOCK = data.residentsBlock;
     sessionStorage.PHONE = data.phoneNumber;
     sessionStorage.EMAIL = data.email;
+    sessionStorage.IMAGE = "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + data.nameBlobImage;
   }
 
   function inputValidation() {
@@ -109,10 +120,13 @@ const ColumSettings = (props) => {
           <InputInformation attribute="Email" information={email} insert={setEmail} editable={true} />
         </div>
         <div className='settingsImg'>
-          {
-            <img src={sessionStorage.IMAGE === "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/null" ? 
-              ImgPerfil : sessionStorage.IMAGE} />
-          }
+          <label className='set-image'>
+            <input type="file" onChange={fileSelectedHandler} />
+            {
+              <img src={sessionStorage.IMAGE === "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/null" ?
+                ImgPerfil : sessionStorage.IMAGE} />
+            }
+          </label>
           <p>{props.name}</p>
         </div>
       </div>

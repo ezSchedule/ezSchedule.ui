@@ -45,7 +45,7 @@ const ServiceList = () => {
         const config = { headers: { Authorization: `Bearer ${token}` } };
         const service = {
             serviceName: serviceName,
-            tenant: { idUser: idTenant }
+            tenant: { id: idTenant }
         };
 
         serviceFetch.post(``, service)

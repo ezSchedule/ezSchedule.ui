@@ -17,11 +17,18 @@ const ColumSettings = (props) => {
   const [email, setEmail] = useState(sessionStorage.EMAIL);
 
   function updateTenant() {
-    const updateTenant = { name, cpf, apartmentNumber, residentsBlock, phoneNumber, email }
+    const fd = new FormData();
+    fd.append('name', name);
+    fd.append('cpf', cpf);
+    fd.append('apartmentNumber', apartmentNumber);
+    fd.append('residentsBlock', residentsBlock);
+    fd.append('phoneNumber', phoneNumber);
+    fd.append('email', email);
+    // const updateTenant = { name, cpf, apartmentNumber, residentsBlock, phoneNumber, email }
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    userFetch.put(`/update-tenant?id=${id}`, updateTenant, config)
-      .then(() => {
+    userFetch.put(`/update-tenant?id=${id}`, fd)
+      .then((res) => {
         Swal.fire({
           position: 'top-center',
           icon: 'success',
@@ -29,7 +36,7 @@ const ColumSettings = (props) => {
           showConfirmButton: false,
           timer: 1500
         });
-        updateSession(updateTenant);
+        updateSession(res.data);
       }).catch((err) => {
         console.clear();
         errorMessage(err.response.status)
@@ -58,13 +65,13 @@ const ColumSettings = (props) => {
     }
   }
 
-  function updateSession(updateTenant) {
-    sessionStorage.NAME = updateTenant.name;
-    sessionStorage.CPF = updateTenant.cpf;
-    sessionStorage.APARTMENT = updateTenant.apartmentNumber;
-    sessionStorage.BLOCK = updateTenant.residentsBlock;
-    sessionStorage.PHONE = updateTenant.phoneNumber;
-    sessionStorage.EMAIL = updateTenant.email;
+  function updateSession(data) {
+    sessionStorage.NAME = data.name;
+    sessionStorage.CPF = data.cpf;
+    sessionStorage.APARTMENT = data.apartmentNumber;
+    sessionStorage.BLOCK = data.residentsBlock;
+    sessionStorage.PHONE = data.phoneNumber;
+    sessionStorage.EMAIL = data.email;
   }
 
   function inputValidation() {

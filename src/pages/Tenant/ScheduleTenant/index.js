@@ -1,19 +1,19 @@
 import React from 'react'
-import './paymentTenant.css'
+import './scheduleTenant.css'
 import HeaderInternal from '../../../components/internal/Header'
 import ScheduleBox from '../../../components/internal/ScheduledBox'
 import ScheduleBoxAdd from '../../../components/internal/ScheduleBoxAdd'
 import SidebarTenant from '../../../components/internal/SidebarTenant/SidebarTenant'
-const PaymentTenant = () => {
+const ScheduleTenant = () => {
     return (
         <>
-            <div className='mainPaymentTenant'>
+            <div className='mainScheduleTenant'>
                 <SidebarTenant />
                 <HeaderInternal text="Datas Agendadas" />
             </div>
-            <div className='paymentTenant'>
-                <div className='paymentTenantScroll'>
-                    <div className='paymentTenantScrollBoxes'>
+            <div className='ScheduleTenant'>
+                <div className='ScheduleTenantScroll'>
+                    <div className='ScheduleTenantScrollBoxes'>
                         <ScheduleBox />
                         <ScheduleBoxAdd />
                     </div>
@@ -23,4 +23,4 @@ const PaymentTenant = () => {
     )
 }
 
-export default PaymentTenant
+export default ScheduleTenant

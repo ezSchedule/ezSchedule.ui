@@ -39,7 +39,7 @@ const Login = () => {
 
   function validateAdmin(data) {
     if (data.isAdmin === 1) navigate('/homeAdm');
-    else if (data.isAdmin === 0) navigate('/paymentTenant');
+    else if (data.isAdmin === 0) navigate('/scheduleTenant');
   }
 
   function saveData(data) {

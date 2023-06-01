@@ -18,7 +18,7 @@ import Configuration from './pages/Administrator/Configuration';
 import PersonalSettings from './pages/Administrator/SettingsPerson';
 import CondominiumSettings from './pages/Administrator/SettingsCondominium';
 import NotAutorized from './pages/NotAuthorized';
-import PaymentTenant from './pages/Tenant/PaymentTenant';
+import ScheduleTenant from './pages/Tenant/ScheduleTenant';
 import ConfigTenant from './pages/Tenant/ConfigTenant';
 import ServicesTenant from './pages/Tenant/ServicesTenant';
 import ForumTenant from './pages/Tenant/ForumTenant';
@@ -54,7 +54,7 @@ const RoutesSystem = () => {
                 <Route path='/condominiumSettings' element={<Private Item={CondominiumSettings} />} />
 
                 {/* Tenant routes */}
-                <Route path='/paymentTenant' element={<Private Item={PaymentTenant} />} />
+                <Route path='/scheduleTenant' element={<Private Item={ScheduleTenant} />} />
                 <Route path='/servicesTenant' element={<Private Item={ServicesTenant} />} />
                 <Route path='/configurationTenant' element={<Private Item={ConfigTenant} />} />
                 <Route path='/forumTenant' element={<ForumTenant />} />

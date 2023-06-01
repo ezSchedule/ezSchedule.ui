@@ -5,6 +5,7 @@ import imgMoney from '../../assets/dinheiro.png'
 import imgForum from '../../assets/forum.png'
 import imgSettings from '../../assets/configuracoes.png'
 import { NavLink } from 'react-router-dom'
+
 const SidebarTenant = () => {
   return (
     <>
@@ -15,7 +16,7 @@ const SidebarTenant = () => {
             <NavLink to="/scheduleTenant">
                 <img className='img' src={imgCalendarClock} />
             </NavLink>
-            <NavLink to="/*">
+            <NavLink to="/paymentTenant">
                 <img className='img' src={imgMoney} />
             </NavLink>
             <NavLink to="/forumTenant">

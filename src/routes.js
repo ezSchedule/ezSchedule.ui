@@ -22,6 +22,7 @@ import ScheduleTenant from './pages/Tenant/ScheduleTenant';
 import ConfigTenant from './pages/Tenant/ConfigTenant';
 import ServicesTenant from './pages/Tenant/ServicesTenant';
 import ForumTenant from './pages/Tenant/ForumTenant';
+import PaymentTenant from './pages/Tenant/PaymentTenant';
 
 const Private = ({ Item }) => {
     const signed = sessionStorage.AUTH;
@@ -57,6 +58,7 @@ const RoutesSystem = () => {
                 <Route path='/scheduleTenant' element={<Private Item={ScheduleTenant} />} />
                 <Route path='/servicesTenant' element={<Private Item={ServicesTenant} />} />
                 <Route path='/configurationTenant' element={<Private Item={ConfigTenant} />} />
+                <Route path='/paymentTenant' element={<Private Item={PaymentTenant} />} />
                 <Route path='/forumTenant' element={<ForumTenant />} />
 
                 {/* Error screens */}

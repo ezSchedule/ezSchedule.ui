@@ -1,0 +1,43 @@
+section:hover {
+    background-color: #B6B6B7;
+    border: 1px solid black;
+}
+
+section{
+    width: 95%;
+    height: 50px;
+    margin: 0px 20px 20px 20px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    border-radius: 10px;
+    background-color: #E9E9E9;
+
+    cursor: pointer;
+}
+
+section div, p{
+    margin: 30px;
+    font-weight: bold;
+}
+
+section div{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+section div span{
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+section div img{
+    width: 40px;
+    height: 40px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    border: 0.1px solid #ddd;
+}

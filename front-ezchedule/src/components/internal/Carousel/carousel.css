@@ -1,0 +1,25 @@
+.carousel {
+    width: 80vw;
+    display: flex;
+    overflow-x: auto;
+    cursor: grab;
+    z-index:1;
+  }
+
+
+  .carousel:active {
+    cursor: grabbing;
+  }
+  
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+
+  

@@ -5,13 +5,11 @@ import HeaderInternal from '../../../components/internal/Header';
 import serviceFetch from '../../../hooks/serviceFetch';
 import CardService from '../../../components/internal/CardService/CardService';
 import { useState, useEffect } from 'react';
+import defaultImage from '../../../components/assets/Perfil.png'
+
 const ServicesTenant = () => {
     const [serviceList, setServiceList] = useState([]);
-    const [tenantList, setTenantList] = useState([]);
-
-    const [serviceName, setServiceName] = useState();
-    const [idTenant, setIdTenant] = useState();
-    const [idService, setIdService] = useState();
+    
     const token = sessionStorage.TOKEN;
     const idCondominium = sessionStorage.CONDOMINIUM;
 
@@ -27,15 +25,8 @@ const ServicesTenant = () => {
             .catch((err) => {
                 console.log(err);
             });
-
-        serviceFetch.get(`/tenant?id=${idCondominium}`)
-            .then((res) => {
-                setTenantList(res.data)
-            })
-            .catch((err) => {
-                console.log(err)
-            });
     }, []);
+
     return (
         <>
             <div className='main-services-tenant'>
@@ -53,7 +44,7 @@ const ServicesTenant = () => {
                                             idService={service.id}
                                             service={service.serviceName}
                                             nameTenant={service.tenant.name}
-                                            imgTenant=""
+                                            imgTenant={service.tenant.nameBlobImage == null ? defaultImage : ("https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + service.tenant.nameBlobImage)}
                                             phoneTenant={service.tenant.phoneNumber}
                                             showImage={false} />
                                     </React.Fragment>

@@ -19,7 +19,7 @@ const MyCalendar = () => {
     const calenderStyle = { display: displayCalendar }
     const canceledStyle = { display: displayCanceled }
 
-    const listDate = [ new Date(2023, 5 - 1, 25) ];
+    const listDate = [new Date(2023, 5 - 1, 25)];
     useEffect(() => {
         console.log(listDate[0].toLocaleDateString())
         console.log(day.toLocaleDateString())
@@ -41,7 +41,23 @@ const MyCalendar = () => {
                     onClickDay={() => setOpenModal(true)}
                     locale='pt-br' />
             </div>
-            <div className='content-canceled' style={canceledStyle}></div>
+
+            <div className='container-canceled' style={canceledStyle}>
+                <div className='header-canceled'>
+                    <div id='date' className='information-header-canceled'>Data</div>
+                    <div id='cause' className='information-header-canceled'>Motivo</div>
+                </div>
+                <div className='body-canceled'>
+                    <div className='content-body-canceled'>
+                        <abbr id='body-date'>
+                            12/12/2012
+                        </abbr>
+                        <abbr id='body-cause' title='O estilo da fonte pode variar de acordo com as letras escolhidas. Algumas fontes não aceitam caracteres especiais ou foram criadas para uma ação pontual. Através da imagem a seguir, é possível ver o conceito de cada letra. Além disso, você pode verificar a tipografia de todas as letras abaixo ou fazer o teste online antes de baixar a fonte.'>
+                            O estilo da fonte pode variar de acordo com as letras escolhidas. Algumas fontes não aceitam caracteres especiais ou foram criadas para uma ação pontual. Através da imagem a seguir, é possível ver o conceito de cada letra. Além disso, você pode verificar a tipografia de todas as letras abaixo ou fazer o teste online antes de baixar a fonte.
+                        </abbr>
+                    </div>
+                </div>
+            </div>
 
             <div className='container-button' >
                 <button

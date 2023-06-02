@@ -14,7 +14,7 @@ const ServicesTenant = () => {
     const idCondominium = sessionStorage.CONDOMINIUM;
 
     useEffect(() => {
-        serviceFetch.get(`?id=${idCondominium}`)
+        serviceFetch.get(`/condominium/${idCondominium}`)
             .then((res) => {
                 if (res.status === 204) {
                     setServiceList(0);

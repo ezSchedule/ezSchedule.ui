@@ -45,20 +45,6 @@
     align-items: center;
 }
 
-.content-schedules {
-    width: 60%;
-    height: 90%;
-
-    background-color: #5AE982;
-}
-
-.content-canceled {
-    width: 60%;
-    height: 90%;
-
-    background-color: black;
-}
-
 /* Calendário */
 .container-calendar .react-calendar {
     width: 60%;
@@ -171,3 +157,107 @@
     border: 1px solid #00ff37;
     color: white;
 } */
+
+/* Lista de dias cancelados */
+.container-canceled {
+    width: 60%;
+    height: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #5AE982;
+    border-radius: 20px;
+}
+
+.container-canceled .header-canceled {
+    width: 100%;
+    height: 15%;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.container-canceled .header-canceled .information-header-canceled {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 1.1rem;
+
+    border-bottom: 2px solid white;
+}
+
+.container-canceled .header-canceled .information-header-canceled#date {
+    width: 30%;
+}
+
+.container-canceled .header-canceled .information-header-canceled#cause {
+    width: 70%;
+}
+
+.container-canceled .body-canceled {
+    width: 100%;
+    height: 90%;
+
+    display: flex;
+    flex-direction: column;
+    
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.body-canceled .content-body-canceled {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border-bottom: 2px solid white;
+
+    cursor: default;
+}
+
+.body-canceled .content-body-canceled:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.content-body-canceled abbr {
+    height: 50px;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    color: #717171;
+}
+
+.content-body-canceled #body-date {
+    width: 30%;
+
+    justify-content: center;
+}
+
+.content-body-canceled #body-cause {
+    width: 70%;
+    height: auto;
+
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    direction: ltr;
+}
+
+.body-canceled::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px #5AE982;
+}
+
+.body-canceled::-webkit-scrollbar-thumb{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.5);
+    border-radius: 10px;
+}

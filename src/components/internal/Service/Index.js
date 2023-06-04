@@ -5,13 +5,18 @@ import { useState } from 'react';
 import SectionTenantData from '../SectionTenantData';
 import CardService from '../CardService/CardService';
 import serviceFetch from '../../../hooks/serviceFetch';
+import userFetch from '../../../hooks/userFetch';
 import Swal from 'sweetalert2';
-import defaultImage from '../../assets/Perfil.png'
+import defaultImage from '../../assets/Perfil.png';
+import importFile from '../../assets/import.png';
+import sendFile from '../../assets/send.png';
 
 const ServiceList = () => {
     const [openModal, setOpenModal] = useState(false);
     const [serviceList, setServiceList] = useState([]);
     const [tenantList, setTenantList] = useState([]);
+    const [file, setFile] = useState(null);
+    const [fileName, setFileName] = useState();
 
     const [serviceName, setServiceName] = useState();
     const [idTenant, setIdTenant] = useState();
@@ -94,12 +99,55 @@ const ServiceList = () => {
         else registerService();
     }
 
+    function exportTxt() {
+        window.location.href = `http://localhost:8080/users/export-txt/${sessionStorage.CONDOMINIUM}`;
+    }
+
+    function importTxt() {
+        const fd = new FormData();
+        fd.append('file', file, fileName);
+
+        userFetch.post(`/import-txt`, fd)
+            .then(() => {
+                window.location.reload(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     return (
         <>
             <div className='main-service-list'>
                 <div className='div-add-service' onClick={() => setOpenModal(!openModal)}>
                     +
                 </div>
+
+                <div id='import-export' className='div-add-service'>
+                    <div id='export' className='div-txt'>
+                        <button onClick={() => exportTxt()}>Export</button>
+                    </div>
+
+                    <form id='import' className='div-txt' onClick={() => document.querySelector(".input-file").click()}>
+                        {
+                            file == null ?
+                                <>
+                                    <img className='import-image' title='Arquivo TXT' src={importFile} />
+                                    <p>Clique para inserir o arquivo .txt</p>
+                                </>
+                                :
+                                <>
+                                    <img className='send-txt' title='Send' src={sendFile} onClick={() => importTxt()} />
+                                    <p>{fileName}</p>
+                                </>
+                        }
+                        <input type='file' className='input-file' onChange={({ target: { files } }) => {
+                            files[0] && setFileName(files[0].name)
+                            if (files) setFile(files[0]);
+                        }} hidden />
+                    </form>
+                </div>
+
                 {
                     serviceList ?
                         serviceList.map(
@@ -111,8 +159,8 @@ const ServiceList = () => {
                                         nameTenant={service.tenant.name}
                                         imgTenant={service.tenant.nameBlobImage == null ? defaultImage : ("https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + service.tenant.nameBlobImage)}
                                         phoneTenant={service.tenant.phoneNumber}
-                                        deleteFunction={deleteService} 
-                                        showImage={true}/>
+                                        deleteFunction={deleteService}
+                                        showImage={true} />
                                 </React.Fragment>
                             )
                         )

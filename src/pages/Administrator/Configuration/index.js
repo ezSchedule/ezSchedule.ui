@@ -16,6 +16,10 @@ const Configuration = () => {
         });
     }
 
+    function exportCSV() {
+        window.location.href = `http://localhost:8080/users/generate-csv/${sessionStorage.CONDOMINIUM}/desc`;
+    }
+
     return (
         <>
             <div className='mainConfiguraton'>
@@ -28,6 +32,7 @@ const Configuration = () => {
                         <Link className='button' to="/personSettingsAdm">Meu perfil</Link>
                         <Link className='button' to="/condominiumSettings">Condominío</Link>
                         <button className='button' onClick={() => generateToken()}>Gerar token</button>
+                        <button className='button' onClick={() => exportCSV()}>Exportar .csv</button>
                     </div>
                 </div>
             </div>

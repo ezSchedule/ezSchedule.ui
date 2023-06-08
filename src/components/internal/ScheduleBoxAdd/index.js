@@ -6,6 +6,7 @@ import PIX from 'react-qrcode-pix'
 import imgAdd from '../../assets/+.png'
 import Swal from 'sweetalert2';
 import salonsFetch from '../../../hooks/salonsFetch'
+import scheduleFetch from '../../../hooks/scheduleFetch'
 
 const ScheduleBoxAdd = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -25,18 +26,33 @@ const ScheduleBoxAdd = () => {
   const [amountOfGuests, setAmountOfGuests] = useState();
   const [details, setDetails] = useState();
   const [selectTypePaymennt, setSelectTypePaymennt] = useState();
-
+  const [saloonPrice, setSaloonPrice] = useState(null);
+  const [test, setTest] = useState();
   useEffect(() => {
     salonsFetch.get('')
       .then((response) => {
         console.log(response.data)
         setSalons(response.data)
+        const price = response.data[0].saloonPrice;
+        setSaloonPrice(price);
       }).catch((err) => {
         console.log(err);
       });
     console.log(salons)
   }, [])
 
+  const newSchedule = {
+    nameEvent: eventName,
+    typeEvent: eventType,
+    dateEvent: "2019-01-21T06:47:22.756",
+    totalNumberGuests: amountOfGuests,
+    saloon: {
+      id: 1
+    },
+    tenant: {
+      id: sessionStorage.ID
+    }
+  }
 
   function modal(text) {
     Swal.fire({
@@ -74,6 +90,12 @@ const ScheduleBoxAdd = () => {
 
   function openPayment() {
     setOpenModal3(false);
+    scheduleFetch.post('', newSchedule)
+      .then(() => {
+      })
+      .catch((err) => {
+        console.log(err);
+      })
 
     if (selectTypePaymennt === 'pix') {
       return setOpenModal4(true);
@@ -84,7 +106,6 @@ const ScheduleBoxAdd = () => {
   function closeModal4() {
     setOpenModal4(false);
   }
-
 
   return (
     <>
@@ -99,12 +120,8 @@ const ScheduleBoxAdd = () => {
             <input type="text"
               onChange={(e) => setEventName(e.target.value)}
               placeholder='Nome do Evento' />
-            <select onChange={(e) => setEventType(e.target.value)}>
-              <option value="Tipo do Evento">Tipo do Evento</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
+            <input onChange={(e) => setEventType(e.target.value)}
+              placeholder='Tipo de Evento' />
             <input type="date"
               onChange={(e) => setEventDate(e.target.value)}
               placeholder='Data do Evento' />
@@ -132,7 +149,8 @@ const ScheduleBoxAdd = () => {
               onChange={(e) => setDetails(e.target.value)}
               placeholder='Deseja adionar mais detalhes? (opcional)' />
             <div className='final-price'>
-              <span>Valor:</span><span>R$ 60,00</span>
+              <span>Valor:</span><span>R$ {saloonPrice}</span>
+
             </div>
           </div>
         </div>
@@ -157,7 +175,7 @@ const ScheduleBoxAdd = () => {
               <span> &gt;</span>
             </div>
             <div className='final-price'>
-              <span>Valor:</span><span>R$ 60,00</span>
+              <span>Valor:</span><span>R$ {saloonPrice}</span>
             </div>
           </div>
         </div>
@@ -167,17 +185,18 @@ const ScheduleBoxAdd = () => {
       <ModalPamyment title="Pix" isOpen={openModal4} setModalOpen={() => setOpenModal3(!openModal4)}>
         <div className='container-payment-pix'>
           <PIX
-            pixkey="estudosviny@gmail.com"
+            pixkey="44717959884"
             merchant="Vinicius A Nunes"
             city="São Paulo, Sp"
             onLoad={setMinimalPIX}
+            amount={0.01}
           />
           <p className='text-pix-code'>
             Escaneie o Qr Code ou utilize a chave pix para realizar o pagamento.
           </p>
           <input type="text" className='pix-final-code' value={minimalPIX} />
           <div className='pix-final-value'>
-            <span>Valor</span> <span>R$ 60,00</span>
+            <span>Valor</span> <span>R$ {saloonPrice}</span>
           </div>
           <button className='btn-cancel' onClick={closeModal4}>Cancelar</button>
         </div>

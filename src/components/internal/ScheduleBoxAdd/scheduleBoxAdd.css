@@ -95,6 +95,7 @@
     align-items: center;
     justify-content: space-between;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .inputs-payment-choice span{

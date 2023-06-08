@@ -4,8 +4,10 @@ import { Calendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import MiniModal from '../MiniModal';
 import { useNavigate } from 'react-router-dom';
+import scheduleFetch from '../../../hooks/scheduleFetch';
 
 const MyCalendar = () => {
+    const [canceledList, setCanceledList] = useState([]);
     const [day, setDay] = useState(new Date());
     const navigate = useNavigate();
 
@@ -24,7 +26,16 @@ const MyCalendar = () => {
         console.log(listDate[0].toLocaleDateString())
         console.log(day.toLocaleDateString())
         console.log(listDate[0].toLocaleDateString() === day.toLocaleDateString() ? "É igual" : "Não é igual");
-    });
+
+        scheduleFetch.get(`/type`)
+            .then((res) => {
+                setCanceledList(res.data);
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
 
     function showContent(calendar, canceled) {
         setDisplayCalendar(calendar);

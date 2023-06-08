@@ -162,6 +162,7 @@
 .container-canceled {
     width: 60%;
     height: 90%;
+    max-height: 82%;
 
     display: flex;
     flex-direction: column;
@@ -195,6 +196,7 @@
 
 .container-canceled .header-canceled .information-header-canceled#cause {
     width: 70%;
+    max-width: 70%;
 }
 
 .container-canceled .body-canceled {
@@ -243,7 +245,7 @@
 }
 
 .content-body-canceled #body-cause {
-    width: 70%;
+    width: 65%;
     height: auto;
 
     display: inline-block;
@@ -251,6 +253,12 @@
     text-overflow: ellipsis;
     overflow: hidden;
     direction: ltr;
+}
+
+.content-body-canceled img {
+    margin-right: 2%;
+
+    cursor: pointer;
 }
 
 .body-canceled::-webkit-scrollbar-track{

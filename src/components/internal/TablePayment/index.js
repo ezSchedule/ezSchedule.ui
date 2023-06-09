@@ -12,7 +12,7 @@ const TablePayment = (props) => {
 
     useEffect(() => {
         const typeRequest = sessionStorage.ADMIN == 1 ? `/condominium/${sessionStorage.CONDOMINIUM}` : `/tenant/${sessionStorage.ID}`;
-        reportFetch.get(typeRequest, config)
+        reportFetch.get(typeRequest)
             .then((res) => {
                 setPayment(res.data);
             })

@@ -2,11 +2,11 @@ import React from "react";
 import "./miniModal.css";
 import Close from "../../assets/fechar.png";
 
-const MiniModal = ({ isOpen, children, setModalOpen, title }) => {
+const MiniModal = ({ isOpen, children, setModalOpen, title, saloon }) => {
     if (isOpen) {
         return (
             <div className="bg-mini-modal">
-                <div className="card-mini-modal">
+                <div className="card-mini-modal" id={saloon}>
                     <div className="header-mini-modal">
                         <h2>{title}</h2>
                         <img onClick={setModalOpen} src={Close} />

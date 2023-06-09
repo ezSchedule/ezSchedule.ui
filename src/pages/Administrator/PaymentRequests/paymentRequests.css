@@ -1,0 +1,22 @@
+.main-payment-requests {
+    background-color: #f5f5f5;
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+}
+
+.payment-requests {
+    background-color: #f5f5f5;
+    width: 100vw;
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.payment-requests div{
+    width: 80%;
+    height: 65vh;
+    margin-left: 3%;
+}

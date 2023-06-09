@@ -5,16 +5,16 @@ import Chart from 'react-google-charts';
 const GraphicInside = ({data}) => {
 
   const chartData = [
-    ['Year', 'Eventos', 'Pessoas'],
+    ['Mês', 'Eventos', 'Pessoas'],
     ...data.map(item => [item.month, item.totalEvents, item.totalGuests]),
   ];
 
   const options = {
     curveType: 'function',
-    legend: { position: 'bottom' },
+    legend: {position: 'bottom', textStyle: {fontSize: 10}},
     colors: ['#0A0C10', '#fff'],
     backgroundColor: 'transparent',
-    is3D: true,
+    is3D: false,
     fontName: 'Arial',
     vAxis: {
       gridlines: {
@@ -30,12 +30,10 @@ const GraphicInside = ({data}) => {
       <div className='mainGraphicInside'>
         <Chart
           chartType="LineChart"
-          width="80vw"
-          height="45vh"
+          width='105%'
           data={chartData}
           options={options}
-          style={{borderRadius: '20px'}}
-          
+        
         />
       </div>
     </>

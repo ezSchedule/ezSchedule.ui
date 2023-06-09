@@ -14,13 +14,13 @@ const ColumnSettingsCondominium = () => {
 
   useEffect(() => {
     condominiumFetch.get(`/settings?id=${id}`, config)
-    .then((res) => {
-      setTenantQuantity(res.data.amountTenants);
-      setApartmentQuantity(res.data.amountApartments);
-      setSaloonQuantity(res.data.amountSaloons);
-    }).catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        setTenantQuantity(res.data.amountTenants);
+        setApartmentQuantity(res.data.amountApartments);
+        setSaloonQuantity(res.data.amountSaloons);
+      }).catch((err) => {
+        console.log(err);
+      });
   });
 
   return (
@@ -28,8 +28,9 @@ const ColumnSettingsCondominium = () => {
       <div className='mainColumSettings'>
         <div className='settingsInformation'>
           <InputInformation attribute="Moradores" information={tenantQuantity} editable={true} />
-          <InputInformation attribute="Apartamentos" information={apartmentQuantity} editable={true}/>
-          <InputInformation attribute="Salões" information={saloonQuantity} editable={true}/>
+          <InputInformation attribute="Apartamentos" information={apartmentQuantity} editable={true} />
+          <InputInformation attribute="Salões" information={saloonQuantity} editable={true} />
+          <InputInformation attribute="Adicionar salões" information="+" editable={false} button={true} />
         </div>
         <div className='settingsImg'>
           <img src={ImgPerfil} />

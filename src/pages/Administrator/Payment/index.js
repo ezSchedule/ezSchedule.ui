@@ -6,6 +6,7 @@ import TablePayment from '../../../components/internal/TablePayment';
 import Modal from '../../../components/Modal';
 import { useState } from 'react';
 import Label from '../../../components/Labels';
+import { Link } from 'react-router-dom';
 
 const Payment = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -23,6 +24,13 @@ const Payment = () => {
                         modalEdit={setOpenModal}
                         modalInformation={setModalInformation}
                     />
+                    <span className='btn-div'>
+                        <Link to="/paymentRequests">
+                            <button className='btn-requests'>
+                                Solicitações
+                            </button>
+                        </Link>
+                    </span>
                 </div>
             </div>
             <Modal title="Detalhes do pedido" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>

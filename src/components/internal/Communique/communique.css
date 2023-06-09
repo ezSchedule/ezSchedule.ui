@@ -4,6 +4,17 @@
     margin-top: 6%;
 }
 
+.container-chat{
+    position:relative;
+}
+
+.filter{
+    position: absolute;
+    top: -100px;
+    left: 10px;
+}
+
+
 .line{
     width: 100%;
     height: 0.5px;

@@ -1,4 +1,14 @@
 .mainGraphicInside{
     border-radius: 20px;
     background-color: #5AE982;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+    width: 80vw;
+    height: 40vh;
+    margin: auto;
 }
+
+

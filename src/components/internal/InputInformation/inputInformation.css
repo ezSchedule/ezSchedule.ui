@@ -1,4 +1,39 @@
-.mainInputInformation{
+.main-button-information {
+    width: 95%;
+    height: 50px;
+
+    color: #5AE982;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.1px solid #bebcbc;
+    margin: 5px;
+
+    cursor: pointer;
+}
+
+.main-button-information p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.main-button-information input {
+    width: 70%;
+
+    font-size: 1.2rem;
+
+    outline: none;
+    border: none;
+    background-color: #f5f5f5;
+    color: #5AE982;
+    text-align: end;
+
+    cursor: pointer;
+}
+
+.main-input-information {
     width: 95%;
     height: 50px;
 
@@ -8,7 +43,7 @@
     margin: 5px;
 }
 
-.mainInputInformation p{
+.main-input-information p {
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
@@ -16,11 +51,11 @@
     align-items: center;
 }
 
-.mainInputInformation .result {
+.main-input-information .result {
     color: #757575;
 }
 
-.mainInputInformation input {
+.main-input-information input {
     width: 70%;
 
     font-size: 1.2rem;
@@ -29,4 +64,51 @@
     border: none;
     background-color: #f5f5f5;
     text-align: end;
+}
+
+.card-mini-modal#saloon input {
+    width: 80%;
+    height: 50px;
+
+    color: black;
+    font-weight: 700;
+    background-color: #0A0C1020;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-indent: 16px;
+}
+
+.card-mini-modal#saloon button {
+    width: 40%;
+    height: 50px;
+    margin-bottom: 20px;
+
+    font-size: 1.3rem;
+    font-weight: 900;
+    background-color: #5AE982;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.card-mini-modal#saloon .div-block {
+    width: 80%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-mini-modal#saloon .div-block label {
+    font-weight: 900;
+    font-size: 1.3rem;
+}
+
+.card-mini-modal#saloon .div-block input {
+    width: 75%;
 }

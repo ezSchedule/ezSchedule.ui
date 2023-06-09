@@ -5,11 +5,15 @@ import 'react-calendar/dist/Calendar.css';
 import MiniModal from '../MiniModal';
 import { useNavigate } from 'react-router-dom';
 import scheduleFetch from '../../../hooks/scheduleFetch';
+import Swal from 'sweetalert2';
+import deleteIcon from '../../assets/delete-icon.png';
 
 const MyCalendar = () => {
+    const navigate = useNavigate();
+
     const [canceledList, setCanceledList] = useState([]);
     const [day, setDay] = useState(new Date());
-    const navigate = useNavigate();
+    const [cause, setCause] = useState('');
 
     const [displayCalendar, setDisplayCalendar] = useState('flex');
     const [displayCanceled, setDisplayCanceled] = useState('none');
@@ -21,16 +25,10 @@ const MyCalendar = () => {
     const calenderStyle = { display: displayCalendar }
     const canceledStyle = { display: displayCanceled }
 
-    const listDate = [new Date(2023, 5 - 1, 25)];
     useEffect(() => {
-        console.log(listDate[0].toLocaleDateString())
-        console.log(day.toLocaleDateString())
-        console.log(listDate[0].toLocaleDateString() === day.toLocaleDateString() ? "É igual" : "Não é igual");
-
         scheduleFetch.get(`/type`)
             .then((res) => {
                 setCanceledList(res.data);
-                console.log(res.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -40,6 +38,37 @@ const MyCalendar = () => {
     function showContent(calendar, canceled) {
         setDisplayCalendar(calendar);
         setDisplayCanceled(canceled);
+    }
+
+    function cancelDay() {
+        const cancel = { nameEvent: cause, totalNumberGuests: 0, dateEvent: day.toISOString(), isCanceled: 1 };
+
+        scheduleFetch.post(``, cancel)
+            .then(() => {
+                modal("Dia cancelado com sucesso!")
+                setInterval(() => window.location.reload(false), 2000);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    function deleteCancelDay(id) {
+        scheduleFetch.delete(`/delete/${id}`)
+            .then(() => {
+                setCanceledList(canceledList.filter(canceled => canceled.id !== id))
+            })
+            .catch((err) => console.log(err))
+    }
+
+    function modal(text) {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: text,
+            showConfirmButton: false,
+            timer: 2000
+        });
     }
 
     return (
@@ -59,14 +88,27 @@ const MyCalendar = () => {
                     <div id='cause' className='information-header-canceled'>Motivo</div>
                 </div>
                 <div className='body-canceled'>
-                    <div className='content-body-canceled'>
-                        <abbr id='body-date'>
-                            12/12/2012
-                        </abbr>
-                        <abbr id='body-cause' title='O estilo da fonte pode variar de acordo com as letras escolhidas. Algumas fontes não aceitam caracteres especiais ou foram criadas para uma ação pontual. Através da imagem a seguir, é possível ver o conceito de cada letra. Além disso, você pode verificar a tipografia de todas as letras abaixo ou fazer o teste online antes de baixar a fonte.'>
-                            O estilo da fonte pode variar de acordo com as letras escolhidas. Algumas fontes não aceitam caracteres especiais ou foram criadas para uma ação pontual. Através da imagem a seguir, é possível ver o conceito de cada letra. Além disso, você pode verificar a tipografia de todas as letras abaixo ou fazer o teste online antes de baixar a fonte.
-                        </abbr>
-                    </div>
+                    {
+                        canceledList ?
+                            canceledList.map(
+                                (canceled) => (
+                                    <div className='content-body-canceled' key={canceled.id}>
+                                        <abbr id='body-date'> {canceled.dateEvent} </abbr>
+                                        <abbr 
+                                            id='body-cause'
+                                            title={canceled.nameEvent != "" ? canceled.nameEvent : "Cancelamento cadastrado sem motivo."}>
+                                            {canceled.nameEvent != "" ? canceled.nameEvent : "Cancelamento cadastrado sem motivo."}
+                                        </abbr>
+                                        <img src={deleteIcon} width={20} onClick={() => deleteCancelDay(canceled.id)} />
+                                    </div>
+                                )
+                            )
+                            :
+                            <div className='content-body-canceled'>
+                                <abbr id='body-date'> Sem data. </abbr>
+                                <abbr id='body-cause' title='Nenhum dia está cancelado!'> Nenhum dia está cancelado! </abbr>
+                            </div>
+                    }
                 </div>
             </div>
 
@@ -96,8 +138,8 @@ const MyCalendar = () => {
             </div>
 
             <MiniModal title="Cancelar dia" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} >
-                <input className='input-mini-modal' placeholder='Motivo:' />
-                <button className='button-mini-modal'>Cancelar</button>
+                <input className='input-mini-modal' maxLength={100} placeholder='Motivo:' onChange={(e) => setCause(e.target.value)} />
+                <button className='button-mini-modal' onClick={() => cancelDay()}>Cancelar</button>
             </MiniModal>
         </div>
     );

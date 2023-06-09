@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 const Toggle = ({ isOpen }) => {
     const navigate = useNavigate();
+    const token = sessionStorage.TOKEN;
+    const config = { headers: { Authorization: `Bearer ${token}` } };
 
     function logout() {
-        userFetch.post(`/logout/${sessionStorage.EMAIL}`)
+        userFetch.post(`/logout/${sessionStorage.EMAIL}`, config)
         .then(() => {
             sessionStorage.clear();
             navigate('/');

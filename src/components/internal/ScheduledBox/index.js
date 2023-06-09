@@ -19,17 +19,24 @@ const ScheduleBox = () => {
   }, [])
   return (
     <>
-      {schedules.map((schedule) => (
-        <div key={schedule.id} className="schedule-box-main">
-          <h2>{schedule.saloon.saloonName}</h2>
-          <div className="infomations-party">
-            <h2>{schedule.nameEvent}</h2>
-            <div><img src={imgClock} alt="" /> <span>O dia todo</span></div>
-            <div><img src={imgSchedule} alt="" /> <span>{schedule.dateEvent}</span></div>
-            <div><img src={imgPerfil} alt="" /> <span>{schedule.totalNumberGuests} Convidados</span></div>
-          </div>
-        </div>
-      ))}
+      {
+        schedules ?
+          schedules.map(
+            (schedule) => (
+              <div key={schedule.id} className="schedule-box-main">
+                <h2>{schedule.saloon.saloonName}</h2>
+                <div className="infomations-party">
+                  <h2>{schedule.nameEvent}</h2>
+                  <div><img src={imgClock} alt="" /> <span>O dia todo</span></div>
+                  <div><img src={imgSchedule} alt="" /> <span>{schedule.dateEvent}</span></div>
+                  <div><img src={imgPerfil} alt="" /> <span>{schedule.totalNumberGuests} Convidados</span></div>
+                </div>
+              </div>
+            )
+          )
+        :
+        ''
+      }
     </>
   )
 }

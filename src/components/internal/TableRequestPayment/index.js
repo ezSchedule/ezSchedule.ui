@@ -9,7 +9,7 @@ const TableRequestPayment = () => {
     const [id, setId] = useState();
 
     useEffect(() => {
-        setId(sessionStorage.ID);
+        setId(sessionStorage.CONDOMINIUM);
     }, []);
 
     useEffect(() => {

@@ -28,6 +28,7 @@ const ScheduleBoxAdd = () => {
   const [selectTypePaymennt, setSelectTypePaymennt] = useState();
   const [saloonPrice, setSaloonPrice] = useState(null);
   const [test, setTest] = useState();
+
   useEffect(() => {
     salonsFetch.get('')
       .then((response) => {
@@ -47,7 +48,7 @@ const ScheduleBoxAdd = () => {
     dateEvent: "2019-01-21T06:47:22.756",
     totalNumberGuests: amountOfGuests,
     saloon: {
-      id: 1
+      id: salon
     },
     tenant: {
       id: sessionStorage.ID
@@ -128,7 +129,7 @@ const ScheduleBoxAdd = () => {
             <select onChange={(e) => setSalon(e.target.value)}>
               <option value="">Escolher Salão</option>
               {salons.map((salon) => (
-                <option key={salon.id} value={salon.saloonName}>
+                <option key={salon.id} value={salon.id}>
                   {salon.saloonName}
                 </option>
               ))}

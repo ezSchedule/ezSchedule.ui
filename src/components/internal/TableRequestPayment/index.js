@@ -3,6 +3,7 @@ import './tableRequestPayment.css';
 import aceptImg from "../../assets/acept.png";
 import rejectImg from "../../assets/cancel.png";
 import noPaymentFetch from '../../../hooks/noPaymentFetch';
+import acceptPaymentFetch from '../../../hooks/acceptPaymentFetch';
 
 const TableRequestPayment = () => {
     const [payments, setPayments] = useState([]);
@@ -24,6 +25,17 @@ const TableRequestPayment = () => {
         }
     }, [id]);
 
+    function acceptSolicitationPayment(id) {
+        if (id) {
+            acceptPaymentFetch.put(`/${id}/Pago`)
+                .then((res) => {
+                    console.log(res);
+                }).catch((err) => {
+                    console.log(err);
+                })
+        }
+    }
+
     return (
         <>
             <table>
@@ -43,7 +55,11 @@ const TableRequestPayment = () => {
                             <td>R$ 90</td>
                             <td className='imgs-acept-or-reject'>
                                 <img className='img-reject' src={rejectImg} alt="deafult description" />
-                                <img className='img-acept' src={aceptImg} alt="deafult description" />
+                                <img
+                                    className='img-acept'
+                                    src={aceptImg}
+                                    onClick={() => acceptSolicitationPayment(payment.id)}
+                                    alt="deafult description" />
                             </td>
                         </tr>
                     ))}

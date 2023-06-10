@@ -10,41 +10,24 @@ const Communique = (props) => {
   const [posts, setPosts] = useState([]);
   const [isAdm, setIsAdm] = useState(props.isAdm)
   const [toggleFilter, setToggleFilter] = useState(false);
+  
   useEffect(() => {
     postFetch.get('')
-      .then((response) => {
-        console.log(response.data)
-        setPosts(response.data)
-      }).catch((err) => {
-        console.log(err);
-      });
-    console.log(posts)
+      .then((response) => setPosts(response.data))
+      .catch((err) => console.log(err));
   }, [])
 
   function deletePost(id) {
-    console.log(id);
-    setPosts(posts.filter(post => post.id !== id))
-
     postFetch.delete(`/delete/${id}`)
-      .then(() => {
-
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+      .then(() => setPosts(posts.filter(post => post.id !== id)))
+      .catch((err) => console.log(err));
   }
-
-
 
   const [selectedOption, setSelectedOption] = useState('');
 
-  function handleOptionSelect(option) {
-    setSelectedOption(option);
-  }
-
   return (
     <div className='container-chat'>
-      
+
       <img
         className='filter'
         src={Filter}
@@ -53,6 +36,7 @@ const Communique = (props) => {
       />
 
       <ToggleFilter isOpen={toggleFilter} setOpen={setToggleFilter} setPosts={setPosts} />
+
       {
         posts ? (
           posts.map((post) => {

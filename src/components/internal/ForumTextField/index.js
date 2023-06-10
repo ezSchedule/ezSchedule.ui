@@ -28,50 +28,40 @@ const ForumTextField = () => {
         setTypeMessageValue("Votação");
     }
 
+    function validate(e) {
+        if (e.target.content.value == "") {
+            modal("Campos em branco", "Para realizar uma postagem no forum é necessario preencher todos os campos.");
+            e.preventDefault();
+        } else if (typeMessageValue == undefined) {
+             modal("Tipo de post em branco", "Escolha o tipo de publição deseja postar!");
+             e.preventDefault();
+        } else addNewPost(e);
+    }
+
 
     function addNewPost(e) {
-        e.preventDefault();
-
         const newPost = {
             textContent: e.target.content.value,
             typeMessage: typeMessageValue,
-            condominium: {
-                id: sessionStorage.CONDOMINIUM
-            }
-        }
+            condominium: { id: sessionStorage.CONDOMINIUM }
+        };
 
-        if (e.target.content.value == "") {
-            Swal.fire({
-                title: "Campos em branco!",
-                text: "Para realizar uma postagem no forum é necessario preencher todos os campos.",
-                type: "warning",
-                confirmButtonColor: "#5AE982",
-                confirmButtonText: "ok",
-            })
-        }
-        else if (typeMessageValue == null) {
-            Swal.fire({
-                title: "Tipo de post em branco",
-                text: "Escolha o tipo de publição deseja postar!",
-                type: "warning",
-                confirmButtonColor: "#5AE982",
-                confirmButtonText: "ok",
-            })
-        }
-        else {
-            postFetch.post('', newPost)
-                .then(() => {
-                    window.location.reload(false);
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        }
+        postFetch.post('', newPost).catch((err) => console.log(err));
+    }
+
+    function modal(title, text) {
+        Swal.fire({
+            title: title,
+            text: text,
+            type: "warning",
+            confirmButtonColor: "#5AE982",
+            confirmButtonText: "ok",
+        })
     }
 
     return (
         <>
-            <form onSubmit={addNewPost} className='form'>
+            <form onSubmit={validate} className='form'>
                 <div className='textField'>
                     <div className='textArea'>
                         <textarea name="content" cols="30" rows="10" placeholder='Digite alguma coisa...'></textarea>

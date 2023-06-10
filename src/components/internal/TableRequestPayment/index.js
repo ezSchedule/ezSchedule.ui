@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './tableRequestPayment.css';
 import aceptImg from "../../assets/acept.png";
 import rejectImg from "../../assets/cancel.png";
-import noPaymentFetch from '../../../hooks/noPaymentFetch';
-import acceptPaymentFetch from '../../../hooks/acceptPaymentFetch';
+import noPaymentFetch from '../../../hooks/reportFetch';
+import acceptPaymentFetch from '../../../hooks/reportFetch';
 
 const TableRequestPayment = () => {
     const [payments, setPayments] = useState([]);
@@ -15,7 +15,7 @@ const TableRequestPayment = () => {
 
     useEffect(() => {
         if (id) {
-            noPaymentFetch.get(`/${id}`)
+            noPaymentFetch.get(`/condominium/no-payment/${id}`)
                 .then((response) => {
                     console.log(response.data);
                     setPayments(response.data);

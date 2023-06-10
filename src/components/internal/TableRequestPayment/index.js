@@ -5,6 +5,9 @@ import rejectImg from "../../assets/cancel.png";
 import noPaymentFetch from '../../../hooks/noPaymentFetch';
 
 const TableRequestPayment = () => {
+    const token = sessionStorage.TOKEN;
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+
     const [payments, setPayments] = useState([]);
     const [id, setId] = useState();
 
@@ -14,7 +17,7 @@ const TableRequestPayment = () => {
 
     useEffect(() => {
         if (id) {
-            noPaymentFetch.get(`/${id}`)
+            noPaymentFetch.get(`/${id}`, config)
                 .then((response) => {
                     console.log(response.data);
                     setPayments(response.data);

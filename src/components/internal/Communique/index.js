@@ -6,45 +6,35 @@ import ToggleFilter from '../ToggleFilter';
 import Filter from '../../assets/filter.png';
 
 const Communique = (props) => {
-
   const [posts, setPosts] = useState([]);
   const [isAdm, setIsAdm] = useState(props.isAdm)
   const [toggleFilter, setToggleFilter] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+  const token = sessionStorage.TOKEN;
+  const config = { headers: { Authorization: `Bearer ${token}` } };
+
   useEffect(() => {
-    postFetch.get('')
+    postFetch.get('', config)
       .then((response) => {
-        console.log(response.data)
         setPosts(response.data)
       }).catch((err) => {
         console.log(err);
       });
-    console.log(posts)
   }, [])
 
   function deletePost(id) {
-    console.log(id);
-    setPosts(posts.filter(post => post.id !== id))
-
-    postFetch.delete(`/delete/${id}`)
+    postFetch.delete(`/delete/${id}`, config)
       .then(() => {
-
+        setPosts(posts.filter(post => post.id !== id))
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
-
-
-  const [selectedOption, setSelectedOption] = useState('');
-
-  function handleOptionSelect(option) {
-    setSelectedOption(option);
-  }
-
   return (
     <div className='container-chat'>
-      
+
       <img
         className='filter'
         src={Filter}

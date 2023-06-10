@@ -5,10 +5,14 @@ import imgClock from '../../assets/relogio.png'
 import imgSchedule from '../../assets/calendario2.png'
 import imgPerfil from '../../assets/do-utilizador.png'
 import scheduleFetch from '../../../hooks/scheduleFetch'
+
 const ScheduleBox = () => {
+  const token = sessionStorage.TOKEN;
+  const config = { headers: { Authorization: `Bearer ${token}` } };
+
   const [schedules, setSchedules] = useState([]);
   useEffect(() => {
-    scheduleFetch.get(`/tenant/${1}`)
+    scheduleFetch.get(`/tenant/${1}`, config)
       .then((response) => {
         console.log(response.data)
         setSchedules(response.data)
@@ -34,8 +38,8 @@ const ScheduleBox = () => {
               </div>
             )
           )
-        :
-        ''
+          :
+          ''
       }
     </>
   )

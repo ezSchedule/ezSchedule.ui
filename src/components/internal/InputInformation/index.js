@@ -6,6 +6,9 @@ import Swal from 'sweetalert2';
 import salonsFetch from '../../../hooks/salonsFetch';
 
 const InputInformation = (props) => {
+  const token = sessionStorage.TOKEN;
+  const config = { headers: { Authorization: `Bearer ${token}` } };
+
   const [openModal, setOpenModal] = useState(false);
 
   const [saloonName, setSaloonName] = useState('');
@@ -14,7 +17,7 @@ const InputInformation = (props) => {
 
   function registerSaloon() {
     const saloon = { saloonName: saloonName, saloonPrice: saloonPrice, saloonBlock: saloonBlock, condominium: sessionStorage.CONDOMINIUM }
-    salonsFetch.post(``, saloon)
+    salonsFetch.post(``, saloon, config)
       .then(() => {
         modalSuccess();
         setInterval(window.location.reload(false), 2000);

@@ -6,6 +6,9 @@ import postFetch from '../../../hooks/postFetch';
 import Swal from 'sweetalert2';
 
 const PostSindicate = (props) => {
+  const token = sessionStorage.TOKEN;
+  const config = { headers: { Authorization: `Bearer ${token}` } };
+
   const [editing, setEditing] = useState(false);
   const [content, setContent] = useState(props.content);
   const [date, setDate] = useState(props.date);
@@ -20,7 +23,7 @@ const PostSindicate = (props) => {
     };
 
     postFetch
-      .put(`/${props.id}`, postUpdated)
+      .put(`/${props.id}`, postUpdated, config)
       .then((res) => {
         Swal.fire({
           position: 'top-center',
@@ -46,7 +49,7 @@ const PostSindicate = (props) => {
           {isAdm ? (
             <>
               <div className='filter-container'>
-            </div>
+              </div>
             </>
 
           ) : (

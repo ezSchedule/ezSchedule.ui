@@ -9,6 +9,9 @@ import salonsFetch from '../../../hooks/salonsFetch'
 import scheduleFetch from '../../../hooks/scheduleFetch'
 
 const ScheduleBoxAdd = () => {
+  const token = sessionStorage.TOKEN;
+  const config = { headers: { Authorization: `Bearer ${token}` } };
+
   const [openModal, setOpenModal] = useState(false);
   const [openModal2, setOpenModal2] = useState(false);
   const [openModal3, setOpenModal3] = useState(false);
@@ -30,7 +33,7 @@ const ScheduleBoxAdd = () => {
   const [test, setTest] = useState();
 
   useEffect(() => {
-    salonsFetch.get('')
+    salonsFetch.get('', config)
       .then((response) => {
         console.log(response.data)
         setSalons(response.data)

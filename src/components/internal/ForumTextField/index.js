@@ -3,6 +3,9 @@ import './forumTextField.css'
 import Swal from 'sweetalert2';
 import postFetch from '../../../hooks/postFetch';
 const ForumTextField = () => {
+    const token = sessionStorage.TOKEN;
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+
     const [typeMessageValue, setTypeMessageValue] = useState();
 
     const [announcementColor, setAnnouncementColor] = useState(''); // Estado para controlar a cor do botão 'Comunicado'
@@ -59,7 +62,7 @@ const ForumTextField = () => {
             })
         }
         else {
-            postFetch.post('', newPost)
+            postFetch.post('', newPost, config)
                 .then(() => {
                     window.location.reload(false);
                 })

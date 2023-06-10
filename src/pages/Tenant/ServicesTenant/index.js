@@ -12,9 +12,10 @@ const ServicesTenant = () => {
     
     const token = sessionStorage.TOKEN;
     const idCondominium = sessionStorage.CONDOMINIUM;
+    const config = { headers: { Authorization: `Bearer ${token}` } };
 
     useEffect(() => {
-        serviceFetch.get(`/condominium/${idCondominium}`)
+        serviceFetch.get(`/condominium/${idCondominium}`, config)
             .then((res) => {
                 if (res.status === 204) {
                     setServiceList(0);

@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import Card from '../CardCarousel/card';
 import './carousel.css';
 
-const Carousel = ({data}) => {
+const Carousel = ({ data }) => {
 
 
   const carouselRef = useRef(null);
@@ -51,14 +51,21 @@ const Carousel = ({data}) => {
   return (
     <div className="carousel" ref={carouselRef}>
       <div className="container" >
-      {data.map((item, index) => (
-          <Card
-            key={index}
-            month={item.month}
-            totalGuests={item.totalGuests}
-            totalEvents={item.totalEvents}
-          />
-        ))}
+        {
+          data == null ?
+            data.map((item, index) => (
+              <Card
+                key={index}
+                month={item.month}
+                totalGuests={item.totalGuests}
+                totalEvents={item.totalEvents}
+              />
+            ))
+            :
+            <Card
+              month="Não possui itens"
+            />
+        }
       </div>
     </div>
   );

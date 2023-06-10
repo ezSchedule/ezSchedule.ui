@@ -13,6 +13,9 @@ const Toggle = ({ isOpen }) => {
         .then(() => {
             sessionStorage.clear();
             navigate('/');
+        })
+        .catch((err) => {
+            console.log(err)
         });
     }
 

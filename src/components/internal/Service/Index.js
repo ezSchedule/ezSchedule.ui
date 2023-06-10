@@ -12,6 +12,10 @@ import importFile from '../../assets/import.png';
 import sendFile from '../../assets/send.png';
 
 const ServiceList = () => {
+    const idCondominium = sessionStorage.CONDOMINIUM;
+    const token = sessionStorage.TOKEN;
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+
     const [openModal, setOpenModal] = useState(false);
     const [serviceList, setServiceList] = useState([]);
     const [tenantList, setTenantList] = useState([]);
@@ -21,11 +25,9 @@ const ServiceList = () => {
     const [serviceName, setServiceName] = useState();
     const [idTenant, setIdTenant] = useState();
     const [idService, setIdService] = useState();
-    const token = sessionStorage.TOKEN;
-    const idCondominium = sessionStorage.CONDOMINIUM;
 
     useEffect(() => {
-        serviceFetch.get(`/condominium/${idCondominium}`)
+        serviceFetch.get(`/condominium/${idCondominium}`, config)
             .then((res) => {
                 if (res.status === 204) {
                     setServiceList(0);
@@ -37,7 +39,7 @@ const ServiceList = () => {
                 console.log(err);
             });
 
-        serviceFetch.get(`/tenant?id=${idCondominium}`)
+        serviceFetch.get(`/tenant?id=${idCondominium}`, config)
             .then((res) => {
                 setTenantList(res.data)
             })
@@ -47,13 +49,12 @@ const ServiceList = () => {
     }, []);
 
     function registerService() {
-        const config = { headers: { Authorization: `Bearer ${token}` } };
         const service = {
             serviceName: serviceName,
             tenant: { id: idTenant }
         };
 
-        serviceFetch.post(``, service)
+        serviceFetch.post(``, service, config)
             .then(() => {
                 Swal.fire({
                     position: 'top-center',
@@ -70,12 +71,12 @@ const ServiceList = () => {
     }
 
     function deleteService(id) {
-        serviceFetch.delete(`?id=${id}`)
+        serviceFetch.delete(`?id=${id}`, config)
             .then(() => {
                 setServiceList(serviceList.filter(service => service.id !== id));
             })
             .catch(() => {
-                alert("Went wrong!");
+                alert("Algo deu errado!");
             });
     }
 
@@ -107,7 +108,7 @@ const ServiceList = () => {
         const fd = new FormData();
         fd.append('file', file, fileName);
 
-        userFetch.post(`/import-txt`, fd)
+        userFetch.post(`/import-txt`, fd, config)
             .then(() => {
                 window.location.reload(false);
             })

@@ -2,22 +2,29 @@ import React from 'react';
 import './configuration.css';
 import Sidebar from '../../../components/internal/SideBar';
 import { Link } from 'react-router-dom';
+import condominiumFetch from '../../../hooks/condominiumFetch';
 import userFetch from '../../../hooks/userFetch';
 import Swal from 'sweetalert2';
 
 const Configuration = () => {
+    const token = sessionStorage.TOKEN;
+    const config = { headers: { Authorization: `Bearer ${token}` } };
+
     function generateToken() {
-        userFetch.get(`/generate-token/${sessionStorage.CONDOMINIUM}`)
-        .then((res) => {
-            Swal.fire(`${res.data}`);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+        condominiumFetch.get(`/generate-token/${sessionStorage.CONDOMINIUM}`, config)
+            .then((res) => {
+                Swal.fire(`${res.data}`);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     function exportCSV() {
-        window.location.href = `http://localhost:8080/users/generate-csv/${sessionStorage.CONDOMINIUM}/desc`;
+        userFetch.get(`/generate-csv/${sessionStorage.CONDOMINIUM}/desc`, config)
+            .then((res) => {
+                window.open(res.request.responseURL);
+            });
     }
 
     return (

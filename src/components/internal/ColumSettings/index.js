@@ -36,7 +36,7 @@ const ColumSettings = (props) => {
     if (image.selectedFile != null) fd.append('image', image.selectedFile, image.selectedFile.name);
     const config = { headers: { Authorization: `Bearer ${token}` } };
 
-    userFetch.put(`/update-tenant?id=${id}`, fd)
+    userFetch.put(`/update-tenant?id=${id}`, fd, config)
       .then((res) => {
         Swal.fire({
           position: 'top-center',

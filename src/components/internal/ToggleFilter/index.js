@@ -3,7 +3,8 @@ import './toggleFilter.css';
 import postFetch from "../../../hooks/postFetch";
 
 const ToggleFilter = ({ isOpen, setPosts, setOpen }) => {
-
+    const token = sessionStorage.TOKEN;
+    const config = { headers: { Authorization: `Bearer ${token}` } };
     const [selectedOption, setSelectedOption] = useState('');
 
     function all(){
@@ -12,7 +13,7 @@ const ToggleFilter = ({ isOpen, setPosts, setOpen }) => {
     }
 
     function communicate() {
-        postFetch.get(`/type/Comunicado`)
+        postFetch.get(`/type/Comunicado`, config)
         .then((res) => {
             setSelectedOption('Comunicado');
             setPosts(res.data)
@@ -20,7 +21,7 @@ const ToggleFilter = ({ isOpen, setPosts, setOpen }) => {
     }
 
     function urgent(){
-        postFetch.get(`/type/Urgente`)
+        postFetch.get(`/type/Urgente`, config)
         .then((res) => {
             setSelectedOption('Urgente');
             setPosts(res.data)
@@ -29,7 +30,7 @@ const ToggleFilter = ({ isOpen, setPosts, setOpen }) => {
     }
 
     function votation(){
-        postFetch.get(`/type/Votação`)
+        postFetch.get(`/type/Votação`, config)
         .then((res) => {
             setSelectedOption('Votação');
             setPosts(res.data)

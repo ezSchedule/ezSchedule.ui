@@ -10,6 +10,8 @@ import deleteIcon from '../../assets/delete-icon.png';
 
 const MyCalendar = () => {
     const navigate = useNavigate();
+    const token = sessionStorage.TOKEN;
+    const config = { headers: { Authorization: `Bearer ${token}` } };
 
     const [canceledList, setCanceledList] = useState([]);
     const [day, setDay] = useState(new Date());
@@ -26,7 +28,7 @@ const MyCalendar = () => {
     const canceledStyle = { display: displayCanceled }
 
     useEffect(() => {
-        scheduleFetch.get(`/type`)
+        scheduleFetch.get(`/type`, config)
             .then((res) => {
                 setCanceledList(res.data);
             })
@@ -43,7 +45,7 @@ const MyCalendar = () => {
     function cancelDay() {
         const cancel = { nameEvent: cause, totalNumberGuests: 0, dateEvent: day.toISOString(), isCanceled: 1 };
 
-        scheduleFetch.post(``, cancel)
+        scheduleFetch.post(``, cancel, config)
             .then(() => {
                 modal("Dia cancelado com sucesso!")
                 setInterval(() => window.location.reload(false), 2000);
@@ -54,7 +56,7 @@ const MyCalendar = () => {
     }
 
     function deleteCancelDay(id) {
-        scheduleFetch.delete(`/delete/${id}`)
+        scheduleFetch.delete(`/delete/${id}`, config)
             .then(() => {
                 setCanceledList(canceledList.filter(canceled => canceled.id !== id))
             })

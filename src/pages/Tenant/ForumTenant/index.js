@@ -12,7 +12,6 @@ const ForumTenant = () => {
                 <HeaderInternal text='Comunicados' />
             </div>
             <div className="forum-tenant">
-                <ButtonsTypeOfCommunique /> 
                 <div className='div-forum-tenant'>
                     <Communique isAdm={false}/>
                 </div>

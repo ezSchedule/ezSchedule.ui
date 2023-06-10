@@ -5,7 +5,7 @@ import HeaderInternal from '../../../components/internal/Header';
 import Carousel from '../../../components/internal/Carousel/carousel';
 
 import GraphicInside from '../../../components/internal/Graphic/index';
-import GraphicFetch from '../../../hooks/graphicFetch';
+import GraphicFetch from '../../../hooks/scheduleFetch';
 
 const Graphic = () => {
 
@@ -24,22 +24,22 @@ const Graphic = () => {
   return (
     <>
       <div className='mainGraphic'>
-      <Sidebar />
-      <HeaderInternal text="2023" />
+        <Sidebar />
+        <HeaderInternal text="2023" />
       </div>
-
-
-      <div className='content'>
-
-        <div className='sideBarMonth'>
-        {data && <Carousel data={data} />}
-
-        </div>
-
-        <div className='graphic'>
-          <GraphicInside data={data}/>
-        </div>
-      </div>
+      {
+        data ?
+          <div className='content'>
+            <div className='sideBarMonth'>
+              <Carousel data={data} />
+            </div>
+            <div className='graphic'>
+              <GraphicInside data={data} />
+            </div>
+          </div>
+          :
+          <div className='content'>Sem dados para apresentar</div>
+      }
     </>
   )
 }

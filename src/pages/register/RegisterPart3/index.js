@@ -5,7 +5,7 @@ import onBackPressed from '../../../components/assets/left-arrow.png';
 import userAvatar from '../../../components/assets/user-avatar.png';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import userFetch from '../../../hooks/userFetch';
+import userWithoutJWTFetch from '../../../hooks/userWithoutJWTFetch';
 
 const RegisterPart3 = () => {
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ const RegisterPart3 = () => {
     fd.append('condominium', body.condominium);
     if (image.selectedFile != null) fd.append('nameBlobImage', image.selectedFile, image.selectedFile.name);
 
-    userFetch.post(``, fd, {
+    userWithoutJWTFetch.post(``, fd, {
       onUploadProgress: ProgressEvent => {
         console.log('Upload Progress: ' + Math.round(ProgressEvent.loaded / ProgressEvent.total * 100) + '%')
       }

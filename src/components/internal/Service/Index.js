@@ -100,7 +100,16 @@ const ServiceList = () => {
     }
 
     function exportTxt() {
-        window.location.href = `http://localhost:8080/users/export-txt/${sessionStorage.CONDOMINIUM}`;
+        userFetch.get(`/export-txt/${sessionStorage.CONDOMINIUM}`, { responseType: 'blob' })
+            .then((res) => {
+                const url = window.URL.createObjectURL(new Blob([res.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'services.txt');
+                document.body.appendChild(link);
+                link.click();
+            })
+            .catch((err) => console.log(err));
     }
 
     function importTxt() {

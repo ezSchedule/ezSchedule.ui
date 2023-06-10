@@ -8,7 +8,7 @@ import scheduleFetch from '../../../hooks/scheduleFetch'
 const ScheduleBox = () => {
   const [schedules, setSchedules] = useState([]);
   useEffect(() => {
-    scheduleFetch.get(`/tenant/${1}`)
+    scheduleFetch.get(`/tenant/${sessionStorage.ID}`)
       .then((response) => {
         console.log(response.data)
         setSchedules(response.data)
@@ -34,8 +34,8 @@ const ScheduleBox = () => {
               </div>
             )
           )
-        :
-        ''
+          :
+          ''
       }
     </>
   )

@@ -10,10 +10,11 @@
 
 .filter{
     position: absolute;
-    top: -100px;
+    top: -50px;
     left: 10px;
-}
 
+    cursor: pointer;
+}
 
 .line{
     width: 100%;

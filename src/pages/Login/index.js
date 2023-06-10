@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './login.css'
 import { Link, useNavigate } from 'react-router-dom';
 import onBackPressed from '../../components/assets/left-arrow.png';
-import userFetch from '../../hooks/userFetch';
+import userWithoutJWTFetch from '../../hooks/userWithoutJWTFetch';
 import Swal from 'sweetalert2';
 
 const Login = () => {
@@ -27,7 +27,7 @@ const Login = () => {
   function login() {
     const loginUser = { email, password };
 
-    userFetch.post('/login', loginUser)
+    userWithoutJWTFetch.post('/login', loginUser)
       .then((res) => {
         saveData(res.data);
         validateAdmin(res.data);

@@ -131,6 +131,7 @@ a{
     font-size: 0.7rem;
     width: 310px;
     text-align: center;
+    margin-bottom: -10px;
 }
 
 .container-payment-pix{
@@ -180,4 +181,8 @@ a{
     outline: none;
     margin: 25px;
     cursor: pointer;
+}
+
+canvas{
+    height: 30px;
 }

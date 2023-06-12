@@ -45,6 +45,7 @@
 
     font-weight: 900;
     color: black;
+    font-size: 1rem;
 }
 
 .header-modal-payment img {
@@ -68,6 +69,6 @@
 }
 
 .card-modal-payment canvas{
-    width: 180px !important;
-    height: 180px !important;
+    width: 150px !important;
+    height: 150px !important;
 }

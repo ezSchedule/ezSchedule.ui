@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const postFetch = axios.create({
-    baseURL: "http://localhost:8080/forum",
+    baseURL: "http://ec2-18-234-46-137.compute-1.amazonaws.com:8080/forum",
     headers: { Authorization: `Bearer ${sessionStorage.TOKEN}` }
 })
 

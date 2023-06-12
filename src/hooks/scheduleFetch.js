@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const scheduleFetch = axios.create({
-    baseURL: "http://localhost:8080/schedules",
+    baseURL: "http://ec2-18-234-46-137.compute-1.amazonaws.com:8080/schedules",
     headers: { Authorization: `Bearer ${sessionStorage.TOKEN}` }
 })
 

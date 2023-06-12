@@ -62,25 +62,34 @@ const TableRequestPayment = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {payments.map((payment) => (
-                        <tr className="dataTable" key={payment.id}>
-                            <td>{payment.scheduleDTO.nameEvent}</td>
-                            <td>{payment.scheduleDTO.dateEvent}</td>
-                            <td>R$ 90</td>
-                            <td className='imgs-acept-or-reject'>
-                                <img
-                                    className='img-reject'
-                                    src={rejectImg}
-                                    onClick={() => rejectSolicitationPayment(payment.scheduleDTO.id)}
-                                    alt="deafult description" />
-                                <img
-                                    className='img-acept'
-                                    src={aceptImg}
-                                    onClick={() => acceptSolicitationPayment(payment.id)}
-                                    alt="deafult description" />
-                            </td>
-                        </tr>
-                    ))}
+                    {
+                        payments ?
+                            payments.map((payment) => (
+                                <tr className="solicitation-payments-table" key={payment.id}>
+                                    <td>{payment.scheduleDTO.nameEvent}</td>
+                                    <td>{payment.scheduleDTO.dateEvent}</td>
+                                    <td>R$ 90</td>
+                                    <td className='imgs-acept-or-reject'>
+                                        <img
+                                            className='img-reject'
+                                            src={rejectImg}
+                                            onClick={() => rejectSolicitationPayment(payment.scheduleDTO.id)}
+                                            alt="deafult description" />
+                                        <img
+                                            className='img-acept'
+                                            src={aceptImg}
+                                            onClick={() => acceptSolicitationPayment(payment.id)}
+                                            alt="deafult description" />
+                                    </td>
+                                </tr>
+                            ))
+                            :
+                            <tr className="solicitation-payments-table">
+                                <td>Não existe solicitações :(</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                    }
                 </tbody>
             </table>
         </>

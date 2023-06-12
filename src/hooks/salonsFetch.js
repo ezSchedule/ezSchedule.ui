@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const salonsFetch = axios.create({
-    baseURL: "http://localhost:8080/saloons",
+    baseURL: "http://ec2-18-234-46-137.compute-1.amazonaws.com:8080/saloons",
     headers: { Authorization: `Bearer ${sessionStorage.TOKEN}` }
 })
 

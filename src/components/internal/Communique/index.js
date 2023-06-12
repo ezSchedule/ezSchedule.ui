@@ -6,66 +6,91 @@ import ToggleFilter from '../ToggleFilter';
 import Filter from '../../assets/filter.png';
 
 const Communique = (props) => {
-
   const [posts, setPosts] = useState([]);
-  const [isAdm, setIsAdm] = useState(props.isAdm)
+  const [isAdm, setIsAdm] = useState(props.isAdm);
   const [toggleFilter, setToggleFilter] = useState(false);
-  
+  const [selectedMessageType, setSelectedMessageType] = useState(null);
+
   useEffect(() => {
     postFetch.get('')
-      .then((response) => setPosts(response.data))
+      .then((response) => {
+        console.log(response.data);
+        setPosts(response.data);
+      })
       .catch((err) => console.log(err));
-  }, [])
+  }, []);
+
+  const filterPostsByMessageType = (messageType) => {
+    setSelectedMessageType(messageType);
+  };
 
   function deletePost(id) {
     postFetch.delete(`/delete/${id}`)
-      .then(() => setPosts(posts.filter(post => post.id !== id)))
+      .then(() => setPosts(posts.filter((post) => post.id !== id)))
       .catch((err) => console.log(err));
   }
 
-  const [selectedOption, setSelectedOption] = useState('');
+  const filteredPosts = selectedMessageType
+    ? posts.filter((post) => post.typeMessage === selectedMessageType)
+    : posts;
 
   return (
     <div className='container-chat'>
-
-      <img
-        className='filter'
-        src={Filter}
-        alt='Filtro'
-        onClick={() => setToggleFilter(!toggleFilter)}
-      />
-
+      {isAdm ? (
+        <img
+          className='filter'
+          src={Filter}
+          alt='Filtro'
+          onClick={() => setToggleFilter(!toggleFilter)}
+        />
+      ) : (
+        ''
+      )}
       <ToggleFilter isOpen={toggleFilter} setOpen={setToggleFilter} setPosts={setPosts} />
-
-      {
-        posts ? (
-          posts.map((post) => {
-            if (selectedOption && post.typeMessage !== selectedOption) {
-              return null;
-            }
-
-            return (
-              <PostSindicate
-                key={post.id}
-                id={post.id}
-                date={post.dateTimePost.substring(-10, 10)}
-                hour={post.dateTimePost.substring(10)}
-                content={post.textContent}
-                typeMessage={post.typeMessage}
-                isAdm={props.isAdm}
-                funcaoDeletar={() => deletePost(post.id)}
-              />
-            );
-          })
-        ) : (
-          <div className='div-not-content-posts'>
-            <p>Ainda não há posts!</p>
-          </div>
-        )}
+      {!isAdm ? (
+        <div className='btn-type-announcement'>
+          <button
+            style={{ backgroundColor: selectedMessageType === 'Comunicado' ? '#5AE982' : '' }}
+            onClick={() => filterPostsByMessageType('Comunicado')}
+          >
+            Comunicados
+          </button>
+          <button
+            style={{ backgroundColor: selectedMessageType === 'Urgente' ? '#5AE982' : '' }}
+            onClick={() => filterPostsByMessageType('Urgente')}
+          >
+            Urgente
+          </button>
+          <button
+            style={{ backgroundColor: selectedMessageType === 'Votação' ? '#5AE982' : '' }}
+            onClick={() => filterPostsByMessageType('Votação')}
+          >
+            Votação
+          </button>
+        </div>
+      ) : (
+        ''
+      )}
+      {filteredPosts.length > 0 ? (
+        filteredPosts.map((post) => (
+          <PostSindicate
+            key={post.id}
+            id={post.id}
+            date={post.dateTimePost}
+            content={post.textContent}
+            typeMessage={post.typeMessage}
+            hour={post.dateTimePost}
+            isAdm={props.isAdm}
+            funcaoDeletar={() => deletePost(post.id)}
+          />
+        ))
+      ) : (
+        <div className='div-not-content-posts'>
+          <p>Ainda não há posts!</p>
+        </div>
+      )}
     </div>
   );
 };
-
-
 
 export default Communique;

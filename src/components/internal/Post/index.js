@@ -9,6 +9,7 @@ const PostSindicate = (props) => {
   const [editing, setEditing] = useState(false);
   const [content, setContent] = useState(props.content);
   const [date, setDate] = useState(props.date);
+  const formattedDate = props.date.split(' ')[0];
   const [hour, setHour] = useState(props.hour);
   const [typeMessage, setTypeMessage] = useState(props.typeMessage);
   const [isAdm, setIsAdm] = useState(props.isAdm);
@@ -46,7 +47,7 @@ const PostSindicate = (props) => {
           {isAdm ? (
             <>
               <div className='filter-container'>
-            </div>
+              </div>
             </>
 
           ) : (
@@ -89,7 +90,7 @@ const PostSindicate = (props) => {
                 </button>
                 <div>
                   <span>{props.typeMessage}</span>
-                  <span>{props.hour}</span>
+                  <span>{formattedDate}</span>
                 </div>
               </div>
             </div>

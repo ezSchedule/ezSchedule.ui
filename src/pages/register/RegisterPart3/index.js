@@ -6,6 +6,7 @@ import userAvatar from '../../../components/assets/user-avatar.png';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import userWithoutJWTFetch from '../../../hooks/userWithoutJWTFetch';
+import VLibras from '../../../components/internal/Vlibras';
 
 const RegisterPart3 = () => {
   const navigate = useNavigate();
@@ -101,27 +102,30 @@ const RegisterPart3 = () => {
   }
 
   return (
-    <div className='mainFormPart3'>
-      <div className='container'>
-        <form>
+    <>
+      <VLibras/>
+      <div className='mainFormPart3'>
+        <div className='container'>
+          <form>
 
-          <div className='headerForm'>
-            <img className='onBack' src={onBackPressed} onClick={() => navigate("/registerPart2", { state: body })} alt='Back button' />
-            <h1>Perfil</h1>
-          </div>
+            <div className='headerForm'>
+              <img className='onBack' src={onBackPressed} onClick={() => navigate("/registerPart2", { state: body })} alt='Back button' />
+              <h1>Perfil</h1>
+            </div>
 
-          <div className='inputsContainer'>
-            <label className="custom-file-upload">
-              <input type="file" onChange={fileSelectedHandler} />
-              <img className='imgAvatar' src={userAvatar} type="file" alt='Add user' />
-            </label>
-            <input id="syndicate" type="text" placeholder='Insira seu token' onChange={(e) => setToken(e.target.value)} />
-          </div>
+            <div className='inputsContainer'>
+              <label className="custom-file-upload">
+                <input type="file" onChange={fileSelectedHandler} />
+                <img className='imgAvatar' src={userAvatar} type="file" alt='Add user' />
+              </label>
+              <input id="syndicate" type="text" placeholder='Insira seu token' onChange={(e) => setToken(e.target.value)} />
+            </div>
 
-          <button className='button' type='button' onClick={() => validateData()}>Finalizar</button>
-        </form>
-      </div>
+            <button className='button' type='button' onClick={() => validateData()}>Finalizar</button>
+          </form>
+        </div>
     </div>
+    </>
   )
 }
 

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import urlBase from './urlBase';
 
 const userWithoutJWTFetch = axios.create({
-    baseURL: "http://ec2-18-234-46-137.compute-1.amazonaws.com:8080/users"
+    baseURL: `${urlBase}users`
 })
 
 export default userWithoutJWTFetch;

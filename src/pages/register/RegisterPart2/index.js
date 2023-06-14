@@ -4,6 +4,7 @@ import MaskPhone from '../../../masks/MaskPhone';
 import './registerPart2.css';
 import onBackPressed from '../../../components/assets/left-arrow.png';
 import Swal from 'sweetalert2';
+import VLibras from '../../../components/internal/Vlibras';
 
 const RegisterPart2 = () => {
   const navigate = useNavigate();
@@ -63,7 +64,9 @@ const RegisterPart2 = () => {
   }
 
   return (
-    <div className='mainFormPart2'>
+    <>
+      <VLibras />
+      <div className='mainFormPart2'>
       <div className='container'>
         <form>
 
@@ -83,6 +86,7 @@ const RegisterPart2 = () => {
         </form>
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import urlBase from './urlBase';
 
 const salonsFetch = axios.create({
-    baseURL: "http://ec2-18-234-46-137.compute-1.amazonaws.com:8080/saloons",
+    baseURL: `${urlBase}saloons`,
     headers: { Authorization: `Bearer ${sessionStorage.TOKEN}` }
 })
 

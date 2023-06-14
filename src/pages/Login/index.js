@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import onBackPressed from '../../components/assets/left-arrow.png';
 import userWithoutJWTFetch from '../../hooks/userWithoutJWTFetch';
 import Swal from 'sweetalert2';
+import VLibras from '../../components/internal/Vlibras';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -80,6 +81,8 @@ const Login = () => {
   }
 
   return (
+    <>
+    <VLibras />
     <div className='mainBodyLogin'>
       <form className='formLogin'>
         <div className='container'>
@@ -103,6 +106,7 @@ const Login = () => {
         </div>
       </form>
     </div>
+    </>
   )
 }
 

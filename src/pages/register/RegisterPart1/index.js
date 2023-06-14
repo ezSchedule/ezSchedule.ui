@@ -5,6 +5,7 @@ import MaskCpf from '../../../masks/MaskCpf';
 import { useLocation, useNavigate } from 'react-router-dom';
 import onBackPressed from '../../../components/assets/left-arrow.png';
 import Swal from 'sweetalert2';
+import VLibras from '../../../components/internal/Vlibras';
 
 const RegisterPart1 = () => {
   const navigate = useNavigate();
@@ -59,7 +60,9 @@ const RegisterPart1 = () => {
   }
 
   return (
-    <div className='mainForm'>
+    <>
+      <VLibras />
+      <div className='mainForm'>
       <div className='container'>
         <form>
 
@@ -96,6 +99,7 @@ const RegisterPart1 = () => {
         </form>
       </div>
     </div>
+    </>
   )
 }
 

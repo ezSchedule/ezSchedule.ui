@@ -4,6 +4,7 @@ import CardRecover from '../../../components/internal/CardRecover';
 import userFetch from '../../../hooks/userFetch';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import VLibras from '../../../components/internal/Vlibras';
 
 const SendEmail = () => {
     const navigate = useNavigate();
@@ -37,14 +38,17 @@ const SendEmail = () => {
     }
 
     return (
-        <div className='mainBody'>
-            <CardRecover title="Recuperar Senha" action={validateField} back="/login">
-                <p>
-                    Digite seu email para que possamos enviar um código de verificação de para recuperar sua senha
-                </p>
-                <input type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)} required />
-            </CardRecover>
-        </div>
+        <>
+        <VLibras />
+            <div className='mainBody'>
+                <CardRecover title="Recuperar Senha" action={validateField} back="/login">
+                    <p>
+                        Digite seu email para que possamos enviar um código de verificação de para recuperar sua senha
+                    </p>
+                    <input type="text" placeholder='Email' onChange={(e) => setEmail(e.target.value)} required />
+                </CardRecover>
+            </div>
+        </>
     );
 }
 

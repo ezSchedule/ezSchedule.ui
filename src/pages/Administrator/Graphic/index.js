@@ -6,9 +6,10 @@ import Carousel from '../../../components/internal/Carousel/carousel';
 
 import GraphicInside from '../../../components/internal/Graphic/index';
 import GraphicFetch from '../../../hooks/scheduleFetch';
+import { now } from 'lodash';
 
 const Graphic = () => {
-
+  const year = new Date;
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const Graphic = () => {
     <>
       <div className='mainGraphic'>
         <Sidebar />
-        <HeaderInternal text="2023" />
+        <HeaderInternal text={year.getFullYear()} />
       </div>
       {
         data ?

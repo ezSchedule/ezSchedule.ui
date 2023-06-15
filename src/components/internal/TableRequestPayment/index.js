@@ -31,10 +31,11 @@ const TableRequestPayment = () => {
             acceptPaymentFetch.put(`/${id}/Pago/${date}`)
                 .then((res) => {
                     console.log(res);
+                    window.location.reload();
                 }).catch((err) => {
                     console.log(err);
                 })
-            window.location.reload();
+
         }
     }
 

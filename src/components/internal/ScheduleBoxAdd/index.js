@@ -160,11 +160,18 @@ const ScheduleBoxAdd = () => {
             />
             <select onChange={(e) => setSalon(e.target.value)}>
               <option value="">Escolher Salão</option>
-              {salons.map((salon) => (
-                <option key={salon.id} value={salon.id}>
-                  {salon.saloonName}
-                </option>
-              ))}
+              {
+                salons ?
+                  salons.map((salon) => (
+                    <option key={salon.id} value={salon.id}>
+                      {salon.saloonName}
+                    </option>
+                  ))
+                  :
+                  <option disabled>
+                    Não há salões cadastrados.
+                  </option>
+              }
             </select>
           </div>
         </div>

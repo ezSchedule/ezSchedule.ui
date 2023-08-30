@@ -1,3 +1,3 @@
-const urlBase = "http://ec2-54-227-99-64.compute-1.amazonaws.com:8080/";
+const urlBase = "http://44.194.143.225:8080/";
 
 export default urlBase;

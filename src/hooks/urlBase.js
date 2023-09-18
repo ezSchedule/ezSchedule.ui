@@ -1,3 +1,3 @@
-const urlBase = "http://localhost:8080/";
+const urlBase = "http://ezschedule.sytes.net:8080/";
 
 export default urlBase;

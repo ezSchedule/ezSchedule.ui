@@ -67,15 +67,3 @@
     flex-direction: column;
     justify-content: space-around;
 }
-
-.input-search {
-    width: 20%;
-    height: 25px;
-    flex-shrink: 0;
-    padding: 4px;
-
-    border-radius: 5px;
-    background: rgba(217, 217, 217, 0.27);
-    border: none;
-    font-size: 1rem;
-}

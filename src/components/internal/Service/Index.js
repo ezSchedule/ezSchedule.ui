@@ -21,7 +21,8 @@ const ServiceList = () => {
     const token = sessionStorage.TOKEN;
     const idCondominium = sessionStorage.CONDOMINIUM;
     const [searchValue, setSearchValue] = useState('');
-    const [filteredTenants, setFilteredTenants] = useState([]);
+
+    const [notFilteredTenants, setNotFilteredTenants] = useState([]);
 
     useEffect(() => {
         serviceFetch
@@ -41,7 +42,7 @@ const ServiceList = () => {
             .get(`/tenant?id=${idCondominium}`)
             .then((res) => {
                 setTenantList(res.data);
-                setFilteredTenants(res.data);
+                setNotFilteredTenants(res.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -135,10 +136,14 @@ const ServiceList = () => {
 
     const handleSearch = (e) => {
         const searchInput = e.target.value.toLowerCase();
-        const filtered = tenantList.filter((tenant) =>
-            tenant.name.toLowerCase().includes(searchInput)
-        );
-        setFilteredTenants(filtered);
+        if (searchInput === '') {
+            setTenantList(notFilteredTenants)
+        } else {
+            const filtered = tenantList.filter((tenant) =>
+                tenant.name.toLowerCase().includes(searchInput)
+            );
+            setTenantList(filtered);
+        }
         setSearchValue(searchInput);
     };
 
@@ -210,38 +215,39 @@ const ServiceList = () => {
                     </div>
                 )}
             </div>
-            <Modal title='Adicionar serviço' isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} tenantList={tenantList}>
-                <div className='container-list-tenant'>
-                    {filteredTenants.length === 0 ? (
-                        <div className='div-not-content'>
-                            <p>Nenhum condomínio foi encontrado.</p>
-                        </div>
-                    ) : (
-                        <>
-                            <input
-                                className='input-search'
-                                type='text'
-                                placeholder='Buscar...'
-                                value={searchValue}
-                                onChange={handleSearch}
-                            />
-                            <ul className='list-tenants'>
-                                {filteredTenants.map((tenant) => (
-                                    <SectionTenantData
-                                        key={tenant.id}
-                                        tenant={tenant}
-                                        setServiceName={setServiceName}
-                                        setIdTenant={setIdTenant}
-                                    />
-                                ))}
-                            </ul>
-                        </>
-                    )}
+
+            <Modal title="Adicionar serviço" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
+                <div className='container-input-search'>
+                    <input
+                        className="input-search"
+                        type="text"
+                        placeholder="Buscar..."
+                        value={searchValue}
+                        onChange={handleSearch} />
                 </div>
-                <div className='button-container'>
-                    <button className='button' onClick={() => validateInput()}>
-                        Adicionar serviço
-                    </button>
+                <div className='container-list-tenant'>
+                    {
+                        tenantList.map(
+                            (tenant) => (
+                                <React.Fragment key={tenant.id}>
+                                    <SectionTenantData
+                                        insertId={setIdTenant}
+                                        img={tenant.nameBlobImage == null ? defaultImage : ("https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + tenant.nameBlobImage)}
+                                        id={tenant.id}
+                                        name={tenant.name}
+                                        apartment={tenant.apartmentNumber}
+                                        block={tenant.residentsBlock} />
+                                </React.Fragment>
+                            )
+                        )
+                    }
+                </div>
+                <div className='container-inputs'>
+                    <input
+                        className='input-service'
+                        placeholder='Nome do serviço prestado'
+                        onChange={(e) => setServiceName(e.target.value)} />
+                    <button className='button-register' onClick={validateInput}>Cadastrar</button>
                 </div>
             </Modal>
         </>

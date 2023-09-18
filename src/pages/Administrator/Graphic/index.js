@@ -13,7 +13,7 @@ const Graphic = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    GraphicFetch.get(`/findSchedule/1`)
+    GraphicFetch.get(`/findSchedule/${sessionStorage.CONDOMINIUM}`)
       .then((res) => {
         setData(res.data);
       })

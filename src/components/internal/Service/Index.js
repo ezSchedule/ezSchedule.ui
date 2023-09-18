@@ -21,8 +21,8 @@ const ServiceList = () => {
     const token = sessionStorage.TOKEN;
     const idCondominium = sessionStorage.CONDOMINIUM;
     const [searchValue, setSearchValue] = useState('');
-
     const [notFilteredTenants, setNotFilteredTenants] = useState([]);
+    const [isLoading, setIsLoading] = useState(true); 
 
     useEffect(() => {
         serviceFetch
@@ -30,12 +30,15 @@ const ServiceList = () => {
             .then((res) => {
                 if (res.status === 204) {
                     setServiceList([]);
+                    setIsLoading(false); 
                     return;
                 }
                 setServiceList(res.data);
+                setIsLoading(false); 
             })
             .catch((err) => {
                 console.log(err);
+                setIsLoading(false); 
             });
 
         serviceFetch
@@ -43,9 +46,11 @@ const ServiceList = () => {
             .then((res) => {
                 setTenantList(res.data);
                 setNotFilteredTenants(res.data);
+                setIsLoading(false); 
             })
             .catch((err) => {
                 console.log(err);
+                setIsLoading(false); 
             });
     }, []);
 
@@ -149,72 +154,76 @@ const ServiceList = () => {
 
     return (
         <>
-            <div className='main-service-list'>
-                <div className='div-add-service' onClick={() => setOpenModal(!openModal)}>
-                    +
-                </div>
-
-                <div id='import-export' className='div-add-service'>
-                    <div id='export' className='div-txt'>
-                        <button onClick={() => exportTxt()}>Export</button>
+            {isLoading ? ( 
+                <div className='loading-message'>Carregando...</div>
+            ) : (
+                <div className='main-service-list'>
+                    <div className='div-add-service' onClick={() => setOpenModal(!openModal)}>
+                        +
                     </div>
 
-                    <form
-                        id='import'
-                        className='div-txt'
-                        onClick={() => document.querySelector('.input-file').click()}
-                    >
-                        {file === null ? (
-                            <>
-                                <img className='import-image' title='Arquivo TXT' src={importFile} />
-                                <p>Clique para inserir o arquivo .txt</p>
-                            </>
-                        ) : (
-                            <>
-                                <img
-                                    className='send-txt'
-                                    title='Send'
-                                    src={sendFile}
-                                    onClick={() => importTxt()}
-                                />
-                                <p>{fileName}</p>
-                            </>
-                        )}
-                        <input
-                            type='file'
-                            className='input-file'
-                            onChange={({ target: { files } }) => {
-                                files[0] && setFileName(files[0].name);
-                                if (files) setFile(files[0]);
-                            }}
-                            hidden
-                        />
-                    </form>
-                </div>
+                    <div id='import-export' className='div-add-service'>
+                        <div id='export' className='div-txt'>
+                            <button onClick={() => exportTxt()}>Export</button>
+                        </div>
 
-                {serviceList && serviceList.length > 0 ? (
-                    serviceList.map((service) => (
-                        <CardService
-                            key={service.id}
-                            idService={service.id}
-                            service={service.serviceName}
-                            nameTenant={service.tenant.name}
-                            imgTenant={
-                                service.tenant.nameBlobImage == null
-                                    ? defaultImage
-                                    : `https://ezscheduleusersimages.blob.core.windows.net/ezschedules/${service.tenant.nameBlobImage}`
-                            }
-                            phoneTenant={service.tenant.phoneNumber}
-                            deleteFunction={deleteService}
-                            showImage={true}
-                        />
-                    ))
-                ) : (
-                    <div className='div-not-content'>
-                        <p>Ainda não existem serviços cadastrados no seu condomínio!</p>
+                        <form
+                            id='import'
+                            className='div-txt'
+                            onClick={() => document.querySelector('.input-file').click()}
+                        >
+                            {file === null ? (
+                                <>
+                                    <img className='import-image' title='Arquivo TXT' src={importFile} />
+                                    <p>Clique para inserir o arquivo .txt</p>
+                                </>
+                            ) : (
+                                <>
+                                    <img
+                                        className='send-txt'
+                                        title='Send'
+                                        src={sendFile}
+                                        onClick={() => importTxt()}
+                                    />
+                                    <p>{fileName}</p>
+                                </>
+                            )}
+                            <input
+                                type='file'
+                                className='input-file'
+                                onChange={({ target: { files } }) => {
+                                    files[0] && setFileName(files[0].name);
+                                    if (files) setFile(files[0]);
+                                }}
+                                hidden
+                            />
+                        </form>
                     </div>
-                )}
-            </div>
+
+                    {serviceList && serviceList.length > 0 ? (
+                        serviceList.map((service) => (
+                            <CardService
+                                key={service.id}
+                                idService={service.id}
+                                service={service.serviceName}
+                                nameTenant={service.tenant.name}
+                                imgTenant={
+                                    service.tenant.nameBlobImage == null
+                                        ? defaultImage
+                                        : `https://ezscheduleusersimages.blob.core.windows.net/ezschedules/${service.tenant.nameBlobImage}`
+                                }
+                                phoneTenant={service.tenant.phoneNumber}
+                                deleteFunction={deleteService}
+                                showImage={true}
+                            />
+                        ))
+                    ) : (
+                        <div className='div-not-content'>
+                            <p>Ainda não existem serviços cadastrados no seu condomínio!</p>
+                        </div>
+                    )}
+                </div>
+            )}
 
             <Modal title="Adicionar serviço" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
                 <div className='container-input-search'>

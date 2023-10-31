@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;800;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Slab:wght@300;400;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,500&display=swap');
+
 .mainPayment {
     background-color: #f5f5f5;
     width: 100vw;
     height: 15vh;
     display: flex;
+
 }
 
 .payment {
@@ -21,6 +24,7 @@
     height: 70vh;
     overflow-y: scroll;
     padding: 0px 20px 20px 20px;
+    border-radius: 50px;
 }
 
 .container-model-column {
@@ -93,7 +97,7 @@
 }
 
 .container-model-row .content-modal span {
-    width: auto;
+    width: 80%;
     margin-left: 5px;
 
     display: flex;
@@ -101,8 +105,17 @@
 }
 
 .btn-div{
-    justify-content: center;
+    margin: auto;
+    width: 85%;
+    height: 15%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-div a{
+    width: 20%;
+
 }
 
 .btn-requests {
@@ -112,10 +125,10 @@
     cursor: pointer;
     color: #0A0C10;
     text-align: center;
-    width: 160px;
+    width: 100%;
     height: 40px;
     font-size: 1rem;
     font-weight: 600;
-    margin-top: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
+

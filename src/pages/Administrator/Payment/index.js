@@ -24,14 +24,14 @@ const Payment = () => {
                         modalEdit={setOpenModal}
                         modalInformation={setModalInformation}
                     />
-                    <span className='btn-div'>
-                        <Link to="/paymentRequests">
-                            <button className='btn-requests'>
-                                Solicitações
-                            </button>
-                        </Link>
-                    </span>
                 </div>
+                <span className='btn-div'>
+                    <Link to="/paymentRequests">
+                        <button className='btn-requests'>
+                            Solicitações
+                        </button>
+                    </Link>
+                </span>
             </div>
             <Modal title="Detalhes do pedido" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
                 <div className='container-model-column'>

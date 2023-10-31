@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import './graphic.css'
 import Sidebar from '../../../components/internal/SideBar/index';
 import HeaderInternal from '../../../components/internal/Header';
@@ -6,13 +5,14 @@ import Carousel from '../../../components/internal/Carousel/carousel';
 
 import GraphicInside from '../../../components/internal/Graphic/index';
 import GraphicFetch from '../../../hooks/scheduleFetch';
+import React, { useState, useEffect } from 'react'
 
 const Graphic = () => {
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    GraphicFetch.get(`/findSchedule/1`)
+    GraphicFetch.get(`/findSchedule/v2/2`)
       .then((res) => {
         setData(res.data);
       })

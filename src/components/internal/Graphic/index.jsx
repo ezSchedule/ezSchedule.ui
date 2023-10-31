@@ -2,11 +2,13 @@ import React from 'react';
 import './graphic.css';
 import Chart from 'react-google-charts';
 
-const GraphicInside = ({ data }) => {
+const GraphicInside = ({ data } ) => {
   const chartData = [
     ['Mês', 'Eventos', 'Pessoas'],
     ...data.map(item => [item.month, item.totalEvents, item.totalGuests]),
   ];
+
+  console.log("dados: " + chartData)
 
   const options = {
     curveType: 'function',

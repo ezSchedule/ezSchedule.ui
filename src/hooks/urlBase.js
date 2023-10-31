@@ -1,3 +1,3 @@
-const urlBase = "http://44.194.143.225:8080/";
+const urlBase = "http://localhost:8080/";
 
 export default urlBase;

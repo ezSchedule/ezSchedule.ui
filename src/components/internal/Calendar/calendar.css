@@ -1,19 +1,19 @@
 .container-calendar {
     height: 100%;
-    width: 93%;
-    margin-left: 7%;
+    width: 100%;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 }
 
 /* Botões da página */
 .container-calendar .container-button {
-    width: 80%;
+    width: 92%;
     height: 20%;
 
+    margin-left: 7%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -24,7 +24,7 @@
     height: 30px;
 
     background-color: rgba(168, 191, 174, 0.8);
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     border: none;
 
@@ -33,21 +33,22 @@
 
 .container-button button#selected {
     background-color: #5AE982;
-    border: 1px solid black;
 }
 
 .content-calendar {
-    width: 100%;
+    width: 92%;
     height: 90%;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin-left: 7%;
 }
 
 /* Calendário */
 .container-calendar .react-calendar {
-    width: 60%;
+    width: 80%;
 
     background-color: #5AE982;
     border-radius: 20px;
@@ -57,6 +58,7 @@
     flex-direction: column;
 
     overflow: hidden;
+    border: none;
 }
 
 .container-calendar .react-calendar button:hover {

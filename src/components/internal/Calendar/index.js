@@ -131,10 +131,6 @@ const MyCalendar = () => {
                     }}>
                     Cancelados
                 </button>
-                <button
-                    onClick={() => navigate('/paymentAdm')}>
-                    Agendados
-                </button>
             </div>
 
             <MiniModal title="Cancelar dia" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} >

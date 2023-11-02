@@ -10,18 +10,22 @@
 
 /* Botões da página */
 .container-calendar .container-button {
-    width: 92%;
+    width: 85%;
     height: 20%;
 
     margin-left: 7%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .container-button button {
-    width: 125px;
-    height: 30px;
+    width: 20%;
+    height: 40px;
+    color: #0A0C10;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
 
     background-color: rgba(168, 191, 174, 0.8);
     border-radius: 10px;
@@ -162,8 +166,9 @@
 
 /* Lista de dias cancelados */
 .container-canceled {
-    width: 60%;
-    height: 90%;
+    width: 85%;
+    height: 70vh;
+    margin-left: 9%;
     max-height: 82%;
 
     display: flex;
@@ -255,6 +260,8 @@
     text-overflow: ellipsis;
     overflow: hidden;
     direction: ltr;
+
+    text-align: center;
 }
 
 .content-body-canceled img {

@@ -16,7 +16,7 @@ const Payment = () => {
         <>
             <div className='mainPayment'>
                 <Sidebar />
-                <HeaderInternal text="Pagamentos Realizados" />
+                <HeaderInternal text="Agendados" />
             </div>
             <div className='payment'>
                 <div>

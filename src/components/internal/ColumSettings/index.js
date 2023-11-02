@@ -5,6 +5,7 @@ import ImgPerfil from "../../assets/user.png";
 import userFetch from '../../../hooks/userFetch';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const ColumSettings = (props) => {
   const id = sessionStorage.ID;
@@ -131,7 +132,9 @@ const ColumSettings = (props) => {
         </div>
       </div>
       <div className='settingsButtons'>
-        <button id='cancel' onClick={cancelChanges}>Cancelar</button>
+        <button id='cancel' onClick={cancelChanges}>
+          <Link to="/configurationAdm" style={{ color: "#000" }}>Voltar</Link>
+        </button>
         <button onClick={inputValidation}>Salvar</button>
       </div>
     </>

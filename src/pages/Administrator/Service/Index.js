@@ -12,7 +12,8 @@ const Service = () => {
         <HeaderInternal text="Serviços" />
       </div>
       <div className='serviceInside'>
-        <ServiceList />
+          <ServiceList />
+
       </div>
     </>
   )

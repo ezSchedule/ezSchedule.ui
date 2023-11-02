@@ -1,6 +1,6 @@
 .card{
     min-width: 17vw;
-    width: 17vw;
+    width: 19vw;
     z-index: 0;
     height: 25vh;
     margin: 0 50px;
@@ -15,6 +15,12 @@
     background-color: #5AE982;
 
 }
+
+.card:hover {
+    transform: translateY(3px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
+}
+
 
 .card .cardMonthTitle{
     margin-top: 7%;

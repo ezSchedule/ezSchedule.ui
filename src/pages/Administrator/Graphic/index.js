@@ -25,7 +25,7 @@ const Graphic = () => {
     <>
       <div className='mainGraphic'>
         <Sidebar />
-        <HeaderInternal text="2023" />
+        <HeaderInternal text="Dashboard" />
       </div>
       {
         data ?

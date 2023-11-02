@@ -8,7 +8,7 @@ const PaymentRequests = () => {
     return (
         <>
             <div className='main-payment-requests'>
-                <Sidebar />
+                <Sidebar/>
                 <HeaderInternal text="Solicitações" />
             </div>
             <div className="payment-requests">
@@ -16,13 +16,17 @@ const PaymentRequests = () => {
                     <TableRequestPayment />
                 </div>
                 <span className='btn-div'>
-                    <Link to="/paymentAdm">
-                        <button className='btn-requests'>
+                <Link to="/paymentAdm">
+                        <button className='btn-requests' id='no-current-button'>
                             Agendados
                         </button>
                     </Link>
+                    <Link to="/paymentRequests">
+                        <button className='btn-requests' id='current-button'>
+                            Solicitações
+                        </button>
+                    </Link>                    
                 </span>
-
             </div>
             
         </>

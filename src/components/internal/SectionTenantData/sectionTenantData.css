@@ -1,6 +1,5 @@
 section:hover {
     background-color: #B6B6B7;
-    border: 1px solid black;
 }
 
 section{
@@ -18,9 +17,8 @@ section{
     cursor: pointer;
 }
 
-section:focus {
+section:focus{
     background-color: #B6B6B7;
-    border: 1px solid black;
 }
 
 section div, p{

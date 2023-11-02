@@ -26,11 +26,16 @@ const Payment = () => {
                     />
                 </div>
                 <span className='btn-div'>
-                    <Link to="/paymentRequests">
-                        <button className='btn-requests'>
-                            Solicitações
+                <Link to="/paymentAdm">
+                        <button className='btn-requests' id='current-button'>
+                            Agendados
                         </button>
                     </Link>
+                    <Link to="/paymentRequests">
+                        <button className='btn-requests' id='no-current-button'>
+                            Solicitações
+                        </button>
+                    </Link>                    
                 </span>
             </div>
             <Modal title="Detalhes do pedido" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>

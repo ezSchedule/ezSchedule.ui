@@ -129,7 +129,7 @@ const MyCalendar = () => {
                         setIndexCalendar(false);
                         setIndexCanceled(true);
                     }}>
-                    Cancelados
+                    Datas canceladas
                 </button>
             </div>
 

@@ -18,9 +18,18 @@ nav a{
     display: flex;
 }
 
+.img:hover{
+    transform: translateY(-3px);
+}
+
+.img a:active{
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
+}
+
 .img{
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 }
 
 .active{

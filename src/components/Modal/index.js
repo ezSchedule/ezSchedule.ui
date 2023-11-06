@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./modal.css";
 import Close from "../assets/fechar.png";
 
 const Modal = ({ isOpen, children, setModalOpen, title }) => {
+
     if (isOpen) {
         return (
             <div className="bg-modal">
@@ -19,6 +20,6 @@ const Modal = ({ isOpen, children, setModalOpen, title }) => {
         );
     }
     return null;
-}
+};
 
 export default Modal;

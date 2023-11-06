@@ -3,8 +3,21 @@ import './card.css'
 import CalendarIcon from '../../assets/calendar-star.png';
 import UserIcon from '../../assets/users.png';
 
-
 const Card = ({ month, totalGuests, totalEvents }) => {
+  const [personName, setPersonName] = useState("Pessoa");
+  const [eventName, setEventName] = useState("Evento");
+
+  console.log(month);
+  useEffect(() => {
+    if (totalGuests > 1) {
+      setPersonName("Pessoas");
+    }
+  
+    if (totalEvents > 1) {
+      setEventName("Eventos");
+    }
+  }, []);
+
 
   function nameMounth(month){
 
@@ -33,13 +46,12 @@ const Card = ({ month, totalGuests, totalEvents }) => {
             <img src={UserIcon} alt='Icone de usuário' />
             <text>{totalEvents} Eventos</text>
           </div>
-
         </div>
 
       </div>
 
     </>
-  )
+  );
 }
 
 export default Card;

@@ -154,52 +154,7 @@ const ServiceList = () => {
 
     return (
         <>
-            {isLoading ? ( 
-                <div className='loading-message'>Carregando...</div>
-            ) : (
-                <div className='main-service-list'>
-                    <div className='div-add-service' onClick={() => setOpenModal(!openModal)}>
-                        +
-                    </div>
-
-                    <div id='import-export' className='div-add-service'>
-                        <div id='export' className='div-txt'>
-                            <button onClick={() => exportTxt()}>Export</button>
-                        </div>
-
-                        <form
-                            id='import'
-                            className='div-txt'
-                            onClick={() => document.querySelector('.input-file').click()}
-                        >
-                            {file === null ? (
-                                <>
-                                    <img className='import-image' title='Arquivo TXT' src={importFile} />
-                                    <p>Clique para inserir o arquivo .txt</p>
-                                </>
-                            ) : (
-                                <>
-                                    <img
-                                        className='send-txt'
-                                        title='Send'
-                                        src={sendFile}
-                                        onClick={() => importTxt()}
-                                    />
-                                    <p>{fileName}</p>
-                                </>
-                            )}
-                            <input
-                                type='file'
-                                className='input-file'
-                                onChange={({ target: { files } }) => {
-                                    files[0] && setFileName(files[0].name);
-                                    if (files) setFile(files[0]);
-                                }}
-                                hidden
-                            />
-                        </form>
-                    </div>
-
+            <div className='main-service-list'>
                     {serviceList && serviceList.length > 0 ? (
                         serviceList.map((service) => (
                             <CardService
@@ -221,10 +176,39 @@ const ServiceList = () => {
                         <div className='div-not-content'>
                             <p>Ainda não existem serviços cadastrados no seu condomínio!</p>
                         </div>
-                    )}
-                </div>
-            )}
+                }
+            </div>
 
+
+            <span className='btn-div'>
+                <button className='btn-options-service' onClick={() => setOpenModal(!openModal)}>
+                    Adicionar serviços+
+                </button>
+
+                <button className='btn-options-service' id='export' onClick={() => exportTxt()}>
+                    Exportar serviços
+                </button>
+
+                <button className='btn-options-service' id='insert-file-button'  onClick={() => document.querySelector(".input-file").click()}>
+                    {
+                            file == null ?
+                                <>
+
+                                    <p className='text-button'>Inserir a partir de .txt</p>
+                                </>
+                                :
+                                <>
+                                    <p>{fileName}</p>
+                                    <img className='send-txt' title='Send' src={sendFile} onClick={() => importTxt()} />
+                                </>
+                        }
+                        <input type='file' className='input-file' onChange={({ target: { files } }) => {
+                            files[0] && setFileName(files[0].name)
+                            if (files) setFile(files[0]);
+                        }} hidden />
+                </button>
+
+            </span>
             <Modal title="Adicionar serviço" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
                 <div className='container-input-search'>
                     <input

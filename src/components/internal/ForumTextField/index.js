@@ -72,7 +72,6 @@ const ForumTextField = () => {
                     <div className='buttonsTextField'>
                         <button type='button' style={{ backgroundColor: announcementColor }} onClick={setToAnnouncement}>Comunicado</button>
                         <button type='button' style={{ backgroundColor: urgentColor }} onClick={setToUrgent}>Urgente</button>
-                        <button type='button' style={{ backgroundColor: voteColor }} onClick={setToVote}>Votação</button>
                     </div>
                     <div className='btnPost'>
                         <button type='submit'>Postar</button>

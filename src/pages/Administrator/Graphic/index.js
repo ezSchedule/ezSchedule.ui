@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import './graphic.css';
+import './graphic.css'
 import Sidebar from '../../../components/internal/SideBar/index';
 import HeaderInternal from '../../../components/internal/Header';
 import Carousel from '../../../components/internal/Carousel/carousel';
 import GraphicInside from '../../../components/internal/Graphic/index';
 import GraphicFetch from '../../../hooks/scheduleFetch';
-import { now } from 'lodash';
+import React, { useState, useEffect } from 'react'
 
 const Graphic = () => {
   const year = new Date();
@@ -13,7 +12,7 @@ const Graphic = () => {
   const [isLoading, setIsLoading] = useState(true); 
 
   useEffect(() => {
-    GraphicFetch.get(`/findSchedule/${sessionStorage.CONDOMINIUM}`)
+    GraphicFetch.get(`/findSchedule/v2/2`)
       .then((res) => {
         setData(res.data);
         setIsLoading(false); 
@@ -28,7 +27,7 @@ const Graphic = () => {
     <>
       <div className='mainGraphic'>
         <Sidebar />
-        <HeaderInternal text={year.getFullYear()} />
+        <HeaderInternal text="Dashboard" />
       </div>
       {isLoading ? ( 
         <div className='content'>Carregando...</div>

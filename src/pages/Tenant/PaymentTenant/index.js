@@ -15,7 +15,7 @@ const PaymentTenant = () => {
         <>
             <div className='main-payment'>
                 <SidebarTenant />
-                <HeaderInternal text="Pagamentos Realizados" />
+                <HeaderInternal text="Agendados" />
             </div>
             <div className='payment'>
                 <div>

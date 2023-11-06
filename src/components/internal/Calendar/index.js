@@ -129,11 +129,7 @@ const MyCalendar = () => {
                         setIndexCalendar(false);
                         setIndexCanceled(true);
                     }}>
-                    Cancelados
-                </button>
-                <button
-                    onClick={() => navigate('/paymentAdm')}>
-                    Agendados
+                    Datas canceladas
                 </button>
             </div>
 

@@ -42,8 +42,7 @@ const ToggleFilter = ({ isOpen, setPosts, setOpen }) => {
             <div className="filterTog">
                 <span onClick={() => all()}>Listar todos</span>
                 <span onClick={() => communicate()}>Comunicado</span>
-                <span onClick={() => urgent()}>Urgente</span>
-                <span onClick={() => votation()}>Votação</span>               
+                <span onClick={() => urgent()}>Urgente</span>              
             </div>
         );
     }

@@ -10,21 +10,21 @@ const ForumTextField = () => {
     const [voteColor, setVoteColor] = useState('');
 
     function setToAnnouncement() {
-        setAnnouncementColor('#81ab8d');
+        setAnnouncementColor('#5AE982');
         setUrgentColor('');
         setVoteColor('');
         setTypeMessageValue("Comunicado");
     }
     function setToUrgent() {
         setAnnouncementColor('');
-        setUrgentColor('#81ab8d');
+        setUrgentColor('#5AE982');
         setVoteColor('');
         setTypeMessageValue("Urgente");
     }
     function setToVote() {
         setAnnouncementColor('');
         setUrgentColor('');
-        setVoteColor('#81ab8d');
+        setVoteColor('#5AE982');
         setTypeMessageValue("Votação");
     }
 

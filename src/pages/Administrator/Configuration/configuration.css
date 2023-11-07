@@ -46,8 +46,23 @@
     font-weight: bold;
     font-size: 1.1rem;
 
-    border-radius: 20px;
-    background-color: #5AE982;
+    border-radius: 10px;
+    background-color: rgba(168, 191, 174, 0.8);
     border: none;
     cursor: pointer;
 }
+
+.btnConfig .button:hover{
+    background-color: #5AE982;
+    transform: translateY(-3px);
+}
+
+.btnConfig .button#selected {
+    background-color: #5AE982;
+}
+
+.btnConfig .button:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
+}
+

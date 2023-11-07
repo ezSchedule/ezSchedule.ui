@@ -19,9 +19,10 @@
 .forum .forumDiv {
     width: 85%;
     height: 70vh;
-    margin-left: 5%;
+    margin-left: 7%;
     overflow-y: scroll;
     padding: 12px;
+    margin-top: 0;
     justify-content: flex-start;
     flex-direction: column;
     overflow-x: hidden;

@@ -1,16 +1,21 @@
-import firebase from 'firebase/app';
-import 'firebase/database';
-import 'firebase/firestore'; 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'chave da aplicação',
-  authDomain: 'nosso dominio',
-  //databaseURL: 'url do banco', // Somente se estivermos usando o real database
-  projectId: 'id do nosso projeto',
+  apiKey: "AIzaSyAibUgcYA_SgY28ErS3Offvh1Z_xpfpbyw",
+  authDomain: "ezschedule-71596.firebaseapp.com",
+  projectId: "ezschedule-71596",
+  storageBucket: "ezschedule-71596.appspot.com",
+  messagingSenderId: "157545262750",
+  appId: "1:157545262750:web:02fd740e3b1d0382ac958f",
+  measurementId: "G-KJPY20LXZX"
 };
 
-// Inicialize o Firebase
-firebase.initializeApp(firebaseConfig);
-
-export default firebase;
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

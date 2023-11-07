@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 import './card.css'
 import CalendarIcon from '../../assets/calendar-star.png';
 import UserIcon from '../../assets/users.png';

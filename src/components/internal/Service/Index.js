@@ -22,7 +22,7 @@ const ServiceList = () => {
     const idCondominium = sessionStorage.CONDOMINIUM;
     const [searchValue, setSearchValue] = useState('');
     const [notFilteredTenants, setNotFilteredTenants] = useState([]);
-    const [isLoading, setIsLoading] = useState(true); 
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         serviceFetch
@@ -30,15 +30,15 @@ const ServiceList = () => {
             .then((res) => {
                 if (res.status === 204) {
                     setServiceList([]);
-                    setIsLoading(false); 
+                    setIsLoading(false);
                     return;
                 }
                 setServiceList(res.data);
-                setIsLoading(false); 
+                setIsLoading(false);
             })
             .catch((err) => {
                 console.log(err);
-                setIsLoading(false); 
+                setIsLoading(false);
             });
 
         serviceFetch
@@ -46,11 +46,11 @@ const ServiceList = () => {
             .then((res) => {
                 setTenantList(res.data);
                 setNotFilteredTenants(res.data);
-                setIsLoading(false); 
+                setIsLoading(false);
             })
             .catch((err) => {
                 console.log(err);
-                setIsLoading(false); 
+                setIsLoading(false);
             });
     }, []);
 
@@ -155,28 +155,29 @@ const ServiceList = () => {
     return (
         <>
             <div className='main-service-list'>
-                    {serviceList && serviceList.length > 0 ? (
-                        serviceList.map((service) => (
-                            <CardService
-                                key={service.id}
-                                idService={service.id}
-                                service={service.serviceName}
-                                nameTenant={service.tenant.name}
-                                imgTenant={
-                                    service.tenant.nameBlobImage == null
-                                        ? defaultImage
-                                        : `https://ezscheduleusersimages.blob.core.windows.net/ezschedules/${service.tenant.nameBlobImage}`
-                                }
-                                phoneTenant={service.tenant.phoneNumber}
-                                deleteFunction={deleteService}
-                                showImage={true}
-                            />
-                        ))
-                    ) : (
-                        <div className='div-not-content'>
-                            <p>Ainda não existem serviços cadastrados no seu condomínio!</p>
-                        </div>
-                }
+                {serviceList && serviceList.length > 0 ? (
+                    serviceList.map((service) => (
+                        <CardService
+                            key={service.id}
+                            idService={service.id}
+                            service={service.serviceName}
+                            nameTenant={service.tenant.name}
+                            imgTenant={
+                                service.tenant.nameBlobImage == null
+                                    ? defaultImage
+                                    : `https://ezscheduleusersimages.blob.core.windows.net/ezschedules/${service.tenant.nameBlobImage}`
+                            }
+                            phoneTenant={service.tenant.phoneNumber}
+                            deleteFunction={deleteService}
+                            showImage={true}
+                        />
+                    ))
+                ) : (
+                    <div className='div-not-content'>
+                        <p>Ainda não existem serviços cadastrados no seu condomínio!</p>
+                    </div>
+                )}
+
             </div>
 
 
@@ -189,23 +190,23 @@ const ServiceList = () => {
                     Exportar serviços
                 </button>
 
-                <button className='btn-options-service' id='insert-file-button'  onClick={() => document.querySelector(".input-file").click()}>
+                <button className='btn-options-service' id='insert-file-button' onClick={() => document.querySelector(".input-file").click()}>
                     {
-                            file == null ?
-                                <>
+                        file == null ?
+                            <>
 
-                                    <p className='text-button'>Inserir a partir de .txt</p>
-                                </>
-                                :
-                                <>
-                                    <p>{fileName}</p>
-                                    <img className='send-txt' title='Send' src={sendFile} onClick={() => importTxt()} />
-                                </>
-                        }
-                        <input type='file' className='input-file' onChange={({ target: { files } }) => {
-                            files[0] && setFileName(files[0].name)
-                            if (files) setFile(files[0]);
-                        }} hidden />
+                                <p className='text-button'>Inserir a partir de .txt</p>
+                            </>
+                            :
+                            <>
+                                <p>{fileName}</p>
+                                <img className='send-txt' title='Send' src={sendFile} onClick={() => importTxt()} />
+                            </>
+                    }
+                    <input type='file' className='input-file' onChange={({ target: { files } }) => {
+                        files[0] && setFileName(files[0].name)
+                        if (files) setFile(files[0]);
+                    }} hidden />
                 </button>
 
             </span>

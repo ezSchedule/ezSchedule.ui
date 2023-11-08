@@ -44,7 +44,7 @@ const Configuration = () => {
                     <h5> O que deseja ajustar?</h5>
                     <div className='btnConfig'>
                         <Link className='button' to="/personSettingsAdm">Meu perfil</Link>
-                        <Link className='button' to="/condominiumSettings">Condominío</Link>
+                        <Link className='button' to="/condominiumSettings">Condomínio</Link>
                         <button className='button' onClick={() => generateToken()}>Gerar token</button>
                         <button className='button' onClick={() => exportCSV()}>Exportar .csv</button>
                     </div>

@@ -1,7 +1,7 @@
 .mainColumSettings{
     width: 85%;
     height: 65vh;
-    margin-left: 5%;
+    margin-left: 7%;
     display: flex;
     padding: 20px;
 }
@@ -36,7 +36,7 @@
 
     display: flex;
     justify-content: center;
-    border-radius: 24px;
+    border-radius: 10px;
     border: none;
     outline: none;
     cursor: pointer;
@@ -46,8 +46,18 @@
 }
 
 .settingsButtons #cancel{
-    background-color: #dadada;
+    background-color: rgba(168, 191, 174, 0.8);
 }
+
+.settingsButtons button:hover{
+    transform: translateY(-3px);
+}
+
+.settingsButtons button:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
+}
+
 
 .settingsImg .set-image {
     width: auto;

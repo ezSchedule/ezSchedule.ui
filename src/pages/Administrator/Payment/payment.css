@@ -20,7 +20,7 @@
 
 .payment div {
     width: 85%;
-    margin-left: 5%;
+    margin-left: 7%;
     height: 70vh;
     overflow-y: scroll;
     padding: 0px 20px 20px 20px;
@@ -142,5 +142,15 @@
 
 #no-current-button:hover{
     background-color: #5AE982;
+    transform: translateY(-3px);
+}
+
+#no-current-button#selected {
+    background-color: #5AE982;
+}
+
+#no-current-button:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
 }
 

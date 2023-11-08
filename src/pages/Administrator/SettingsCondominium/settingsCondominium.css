@@ -13,4 +13,33 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+} 
+
+#cancel{
+    width: 120px;
+    margin: 8px;
+    padding: 8px 80px;
+
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgba(168, 191, 174, 0.8);
+
+    font-weight: bold;
+    font-size: 1.2rem;
 }
+
+#cancel:hover{
+    transform: translateY(-3px);
+    background-color: #5AE982;
+}
+
+#cancel button:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
+}
+
+

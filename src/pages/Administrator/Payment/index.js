@@ -16,7 +16,7 @@ const Payment = () => {
         <>
             <div className='mainPayment'>
                 <Sidebar />
-                <HeaderInternal text="Pagamentos Realizados" />
+                <HeaderInternal text="Agendados" />
             </div>
             <div className='payment'>
                 <div>
@@ -24,14 +24,19 @@ const Payment = () => {
                         modalEdit={setOpenModal}
                         modalInformation={setModalInformation}
                     />
-                    <span className='btn-div'>
-                        <Link to="/paymentRequests">
-                            <button className='btn-requests'>
-                                Solicitações
-                            </button>
-                        </Link>
-                    </span>
                 </div>
+                <span className='btn-div'>
+                <Link to="/paymentAdm">
+                        <button className='btn-requests' id='current-button'>
+                            Agendados
+                        </button>
+                    </Link>
+                    <Link to="/paymentRequests">
+                        <button className='btn-requests' id='no-current-button'>
+                            Solicitações
+                        </button>
+                    </Link>                    
+                </span>
             </div>
             <Modal title="Detalhes do pedido" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}>
                 <div className='container-model-column'>

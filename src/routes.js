@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -24,8 +25,13 @@ import ServicesTenant from './pages/Tenant/ServicesTenant';
 import ForumTenant from './pages/Tenant/ForumTenant';
 import PaymentTenant from './pages/Tenant/PaymentTenant';
 import PaymentRequests from './pages/Administrator/PaymentRequests'
+
 const Private = ({ Item }) => {
-    const signed = sessionStorage.AUTH;
+    const [signed, setSigned] = useState(localStorage.getItem('AUTH'));
+
+    useEffect(() => {
+        setSigned(sessionStorage.getItem('AUTH'));
+    }, []);
 
     return signed ? <Item /> : <NotAutorized />;
 }

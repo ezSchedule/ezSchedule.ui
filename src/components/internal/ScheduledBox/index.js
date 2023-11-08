@@ -8,7 +8,7 @@ import scheduleFetch from '../../../hooks/scheduleFetch'
 const ScheduleBox = () => {
   const [schedules, setSchedules] = useState([]);
   useEffect(() => {
-    scheduleFetch.get(`/tenant/${sessionStorage.ID}`)
+    scheduleFetch.get(`/tenant/${sessionStorage.CONDOMINIUM}`)
       .then((response) => {
         console.log(response.data)
         setSchedules(response.data)

@@ -17,7 +17,7 @@ const PostSindicate = (props) => {
   function updatePost() {
     const postUpdated = {
       textContent: content,
-      typeMessage: 'Importante'
+      typeMessage: typeMessage
     };
 
     postFetch

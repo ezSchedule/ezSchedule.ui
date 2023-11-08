@@ -1,7 +1,7 @@
 .card{
-    min-width: 25vw;
+    min-width: 17vw;
+    width: 19vw;
     z-index: 0;
-    min-width: 18vw;
     height: 25vh;
     margin: 0 50px;
     margin: 0 50px 0 0;
@@ -16,8 +16,14 @@
 
 }
 
+.card:hover {
+    transform: translateY(3px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
+}
+
+
 .card .cardMonthTitle{
-    margin-top: 2%;
+    margin-top: 7%;
 }
 
 .card .titleMonth{
@@ -26,10 +32,43 @@
     margin: 0;
 }
 
-.card .information{
+.cardInformation{
+    width: 60%;
+    height: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.information{
+    margin: auto;
     font-weight: bold;
     color: #757575;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.cardInformation{
+    width: 60%;
+    height: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.information{
+    margin: auto;
+    font-weight: bold;
+    color: #757575;
+
+    display: flex;
+}
+
+.information img{
+    width: 15%;
 }

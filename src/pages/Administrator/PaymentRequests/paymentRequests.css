@@ -16,10 +16,52 @@
 }
 
 .payment-requests div{
-    width: 80%;
-    height: 65vh;
-    margin-left: 3%;
+    width: 85%;
+    height: 70vh;
+    margin-left: 5%;
     overflow: hidden;
     overflow-y: scroll;
     padding: 15px;
+    border-radius: 50px;
+}
+
+
+.btn-div{
+    width: 85%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-left: 5%;
+}
+
+.btn-div a{
+    width: 20%;
+
+}
+
+.btn-requests {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #0A0C10;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+#current-button{
+    background-color: #5AE982;
+}
+
+#no-current-button{
+    background-color: rgba(168, 191, 174, 0.8);
+}
+
+#no-current-button:hover{
+    background-color: #5AE982;
 }

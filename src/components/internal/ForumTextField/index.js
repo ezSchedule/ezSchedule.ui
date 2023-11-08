@@ -10,21 +10,21 @@ const ForumTextField = () => {
     const [voteColor, setVoteColor] = useState('');
 
     function setToAnnouncement() {
-        setAnnouncementColor('#81ab8d');
+        setAnnouncementColor('#5AE982');
         setUrgentColor('');
         setVoteColor('');
         setTypeMessageValue("Comunicado");
     }
     function setToUrgent() {
         setAnnouncementColor('');
-        setUrgentColor('#81ab8d');
+        setUrgentColor('#5AE982');
         setVoteColor('');
         setTypeMessageValue("Urgente");
     }
     function setToVote() {
         setAnnouncementColor('');
         setUrgentColor('');
-        setVoteColor('#81ab8d');
+        setVoteColor('#5AE982');
         setTypeMessageValue("Votação");
     }
 
@@ -33,20 +33,23 @@ const ForumTextField = () => {
             modal("Campos em branco", "Para realizar uma postagem no forum é necessario preencher todos os campos.");
             e.preventDefault();
         } else if (typeMessageValue == undefined) {
-             modal("Tipo de post em branco", "Escolha o tipo de publição deseja postar!");
-             e.preventDefault();
+            modal("Tipo de post em branco", "Escolha o tipo de publição deseja postar!");
+            e.preventDefault();
         } else addNewPost(e);
     }
 
 
     function addNewPost(e) {
+        e.preventDefault();
         const newPost = {
             textContent: e.target.content.value,
             typeMessage: typeMessageValue,
             condominium: { id: sessionStorage.CONDOMINIUM }
         };
 
-        postFetch.post('', newPost).catch((err) => console.log(err));
+        postFetch.post('', newPost)
+            .then(() => window.location.reload(false))
+            .catch((err) => console.log(err));
     }
 
     function modal(title, text) {
@@ -69,7 +72,6 @@ const ForumTextField = () => {
                     <div className='buttonsTextField'>
                         <button type='button' style={{ backgroundColor: announcementColor }} onClick={setToAnnouncement}>Comunicado</button>
                         <button type='button' style={{ backgroundColor: urgentColor }} onClick={setToUrgent}>Urgente</button>
-                        <button type='button' style={{ backgroundColor: voteColor }} onClick={setToVote}>Votação</button>
                     </div>
                     <div className='btnPost'>
                         <button type='submit'>Postar</button>

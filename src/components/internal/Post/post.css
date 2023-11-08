@@ -30,20 +30,38 @@
 }
 
 .communiqueText .textAreaEnable{
-    width: 95%;
-    height: 70px;
+    width: 93%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px;
     overflow: hidden;
     overflow-y: scroll;
-    background-color: #5AE982;
+    background-color: #ffffff65;
     margin-left: 28px;
     font-size: 1.1rem;
     font-weight: bold;
     color: #0a0c10ad;
+    resize: none;
+    border: none;
+    outline: none;
+
+}
+
+.textAreaEnable::-webkit-scrollbar-track{
+    background-color: #5AE982;
+}
+
+.textAreaEnable::-webkit-scrollbar{
+    background-color: #5AE982;
+}
+
+.textAreaEnable::-webkit-scrollbar-thumb{
+    background-color: #5AE982;
 }
 
 .textAreaDisabled{
-    width: 95%;
-    height: 70px;
+    width: 93%;
+    height: 100px;
     overflow: hidden;
     overflow-y: scroll;
     background-color: #5AE982;
@@ -53,6 +71,25 @@
     color: #0a0c10ad;
     outline: none;
     border: none;
+
+    display: flex;
+    align-items: center;
+    text-align: justify;
+
+    padding: 4px;
+    resize: none;
+}
+
+.textAreaDisabled::-webkit-scrollbar-track{
+    background-color: #5AE982;
+}
+
+.textAreaDisabled::-webkit-scrollbar{
+    background-color: #5AE982;
+}
+
+.textAreaDisabled::-webkit-scrollbar-thumb{
+    background-color: #5AE982;
 }
 
 .h4{

@@ -54,11 +54,11 @@ const InputInformation = (props) => {
     return (
       <>
         <div className='main-button-information' onClick={() => setOpenModal(true)}>
-          <p>{props.attribute}:</p>
+          <p>{props.attribute}</p>
           <input defaultValue={props.information} readOnly />
         </div>
 
-        <Modal title="Adicionar salão" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} saloon="saloon" >
+        <Modal title="Adicionar salão" isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} saloon="saloon" className="inputTitle">
           <input type='text' placeholder='Nome do salão' maxLength={50} onChange={(e) => setSaloonName(e.target.value)} />
           <input type='number' placeholder='Valor...' min="0.00" step="0.01" onChange={(e) => setSaloonPrice(e.target.value)} />
           <div className='div-block'>

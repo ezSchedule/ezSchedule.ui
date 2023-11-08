@@ -25,6 +25,7 @@ const Login = () => {
     }
   }
 
+
   function login() {
     const loginUser = { email, password };
 
@@ -32,16 +33,15 @@ const Login = () => {
       .then((res) => {
         saveData(res.data);
         validateAdmin(res.data);
-      }).catch((err) => {
+        if (data.isAdmin === 1) navigate('/homeAdm');
+        else if (data.isAdmin === 0) navigate('/scheduleTenant');
+      })
+      .catch((err) => {
         console.clear();
         errorMessage(err.response.status);
       });
   }
 
-  function validateAdmin(data) {
-    if (data.isAdmin === 1) navigate('/homeAdm');
-    else if (data.isAdmin === 0) navigate('/scheduleTenant');
-  }
 
   function saveData(data) {
     sessionStorage.ID = data.id;

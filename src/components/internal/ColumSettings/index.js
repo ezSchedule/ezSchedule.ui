@@ -83,7 +83,7 @@ const ColumSettings = (props) => {
     sessionStorage.BLOCK = data.residentsBlock;
     sessionStorage.PHONE = data.phoneNumber;
     sessionStorage.EMAIL = data.email;
-    sessionStorage.IMAGE = "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + data.nameBlobImage;
+    sessionStorage.IMAGE = "" + data.nameBlobImage;
   }
 
   function inputValidation() {
@@ -124,7 +124,7 @@ const ColumSettings = (props) => {
           <label className='set-image'>
             <input type="file" onChange={fileSelectedHandler} />
             {
-              <img src={sessionStorage.IMAGE === "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/null" ?
+              <img src={sessionStorage.IMAGE === "null" ?
                 ImgPerfil : sessionStorage.IMAGE} />
             }
           </label>

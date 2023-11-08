@@ -19,7 +19,7 @@ const HeaderInternal = (props) => {
                   className='image-user'
                   onClick={() => setToggle(!toggle)}
                   src={
-                    sessionStorage.IMAGE === "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/null" ? 
+                    sessionStorage.IMAGE === "null" ? 
                       UserDeafult : sessionStorage.IMAGE
                   } />
               }

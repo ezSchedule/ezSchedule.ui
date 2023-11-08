@@ -55,7 +55,7 @@ const Login = () => {
     sessionStorage.PHONE = data.phoneNumber;
     sessionStorage.CPF = data.cpf;
     sessionStorage.CONDOMINIUM = data.idCondominium;
-    sessionStorage.IMAGE = "https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + data.image;
+    sessionStorage.IMAGE = data.image;
   }
 
   function errorMessage(status) {
@@ -82,30 +82,30 @@ const Login = () => {
 
   return (
     <>
-    <VLibras />
-    <div className='mainBodyLogin'>
-      <form className='formLogin'>
-        <div className='container'>
+      <VLibras />
+      <div className='mainBodyLogin'>
+        <form className='formLogin'>
+          <div className='container'>
 
-          <div className='headerForm'>
-            <img className='onBack' src={onBackPressed} onClick={() => navigate("/")} alt='Back button' />
-            <h1>Login</h1>
-          </div>
-
-          <div className='contentContainer'>
-            <div className='inputContainer'>
-              <input type="email" placeholder='Email' required defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
-              <input type="password" placeholder='Senha' required defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
+            <div className='headerForm'>
+              <img className='onBack' src={onBackPressed} onClick={() => navigate("/")} alt='Back button' />
+              <h1>Login</h1>
             </div>
-            <span>
-              <Link className='forgotPassword' to="/sendEmail">Esqueci minha senha</Link>
-            </span>
-          </div>
 
-          <button type='button' onClick={validateInputs}>Continuar</button>
-        </div>
-      </form>
-    </div>
+            <div className='contentContainer'>
+              <div className='inputContainer'>
+                <input type="email" placeholder='Email' required defaultValue={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="password" placeholder='Senha' required defaultValue={password} onChange={(e) => setPassword(e.target.value)} />
+              </div>
+              <span>
+                <Link className='forgotPassword' to="/sendEmail">Esqueci minha senha</Link>
+              </span>
+            </div>
+
+            <button type='button' onClick={validateInputs}>Continuar</button>
+          </div>
+        </form>
+      </div>
     </>
   )
 }

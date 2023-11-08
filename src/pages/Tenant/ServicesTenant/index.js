@@ -44,7 +44,7 @@ const ServicesTenant = () => {
                                             idService={service.id}
                                             service={service.serviceName}
                                             nameTenant={service.tenant.name}
-                                            imgTenant={service.tenant.nameBlobImage == null ? defaultImage : ("https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + service.tenant.nameBlobImage)}
+                                            imgTenant={service.tenant.nameBlobImage == null ? defaultImage : ("" + service.tenant.nameBlobImage)}
                                             phoneTenant={service.tenant.phoneNumber}
                                             showImage={false} />
                                     </React.Fragment>

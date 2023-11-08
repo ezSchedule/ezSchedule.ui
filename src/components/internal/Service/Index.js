@@ -165,7 +165,7 @@ const ServiceList = () => {
                             imgTenant={
                                 service.tenant.nameBlobImage == null
                                     ? defaultImage
-                                    : `https://ezscheduleusersimages.blob.core.windows.net/ezschedules/${service.tenant.nameBlobImage}`
+                                    : `${service.tenant.nameBlobImage}`
                             }
                             phoneTenant={service.tenant.phoneNumber}
                             deleteFunction={deleteService}
@@ -226,7 +226,7 @@ const ServiceList = () => {
                                 <React.Fragment key={tenant.id}>
                                     <SectionTenantData
                                         insertId={setIdTenant}
-                                        img={tenant.nameBlobImage == null ? defaultImage : ("https://ezscheduleusersimages.blob.core.windows.net/ezschedules/" + tenant.nameBlobImage)}
+                                        img={tenant.nameBlobImage == null ? defaultImage : ("" + tenant.nameBlobImage)}
                                         id={tenant.id}
                                         name={tenant.name}
                                         apartment={tenant.apartmentNumber}

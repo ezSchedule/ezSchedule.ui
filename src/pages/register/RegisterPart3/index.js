@@ -6,7 +6,6 @@ import userAvatar from '../../../components/assets/user-avatar.png';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import userWithoutJWTFetch from '../../../hooks/userWithoutJWTFetch';
-import VLibras from '../../../components/internal/Vlibras';
 
 const RegisterPart3 = () => {
   const navigate = useNavigate();
@@ -103,7 +102,6 @@ const RegisterPart3 = () => {
 
   return (
     <>
-      <VLibras/>
       <div className='mainFormPart3'>
         <div className='container'>
           <form>

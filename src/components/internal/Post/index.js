@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './post.css';
 import ImgEdit from '../../../components/assets/edit-icon.png';
 import ImgDelete from '../../../components/assets/delete-icon.png';
-import postFetch from '../../../hooks/postFetch';
+import { db } from '../../../caminho-para-firebase-config'; // Importe o objeto de banco de dados do Firebase
 import Swal from 'sweetalert2';
 
 const PostSindicate = (props) => {
   const [editing, setEditing] = useState(false);
   const [content, setContent] = useState(props.content);
   const [date, setDate] = useState(props.date);
-  const formattedDate = props.date.split(' ')[0];
-  const [hour, setHour] = useState(props.hour);
+  const formattedDate = props.date.toDate().toLocaleDateString(); // Converta a data para um formato legível
   const [typeMessage, setTypeMessage] = useState(props.typeMessage);
   const [isAdm, setIsAdm] = useState(props.isAdm);
 
+  useEffect(() => {
+    setContent(props.content);
+    setDate(props.date);
+    setTypeMessage(props.typeMessage);
+    setIsAdm(props.isAdm);
+  }, [props.content, props.date, props.typeMessage, props.isAdm]);
+
   function updatePost() {
-    const postUpdated = {
+    const postRef = db.collection('sua-colecao'); // Substitua 'sua-colecao' pelo nome da sua coleção no Firestore
+    const postDoc = postRef.doc(props.id);
+
+    postDoc.update({
       textContent: content,
       typeMessage: typeMessage
-    };
-
-    postFetch
-      .put(`/${props.id}`, postUpdated)
-      .then((res) => {
+    })
+      .then(() => {
         Swal.fire({
           position: 'top-center',
           icon: 'success',
@@ -42,7 +48,7 @@ const PostSindicate = (props) => {
       <div className='mainCommunique'>
         {isAdm ? <div className='line'></div> : ''}
         <header>
-          <input type='text' disabled defaultValue={props.date} />
+          <input type='text' disabled defaultValue={formattedDate} />
 
           {isAdm ? (
             <>
@@ -97,7 +103,6 @@ const PostSindicate = (props) => {
           </div>
         </div>
       </div>
-
     </>
   );
 };

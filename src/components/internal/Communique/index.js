@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './communique.css';
 import PostSindicate from '../Post/index';
-import postFetch from '../../../hooks/postFetch';
+import { db } from '../../../caminho-para-firebase-config'; // Importe o objeto de banco de dados do Firebase
 import ToggleFilter from '../ToggleFilter';
 import Filter from '../../assets/filter.png';
 
@@ -10,18 +10,24 @@ const Communique = (props) => {
   const [isAdm, setIsAdm] = useState(props.isAdm);
   const [toggleFilter, setToggleFilter] = useState(false);
   const [selectedMessageType, setSelectedMessageType] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    postFetch.get('')
-      .then((response) => {
-        console.log(response.data);
-        setPosts(response.data);
-        setIsLoading(false); 
+    const postsRef = db.collection('sua-colecao'); // Substitua 'sua-colecao' pelo nome da sua coleção no Firestore
+
+    postsRef
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setPosts(data);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
-        setIsLoading(false); 
+        setIsLoading(false);
       });
   }, []);
 
@@ -30,7 +36,10 @@ const Communique = (props) => {
   };
 
   function deletePost(id) {
-    postFetch.delete(`/delete/${id}`)
+    const postRef = db.collection('sua-colecao').doc(id); // Substitua 'sua-colecao' pelo nome da sua coleção no Firestore
+
+    postRef
+      .delete()
       .then(() => setPosts(posts.filter((post) => post.id !== id)))
       .catch((err) => console.log(err));
   }

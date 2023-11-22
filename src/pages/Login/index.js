@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import onBackPressed from '../../components/assets/left-arrow.png';
 import userWithoutJWTFetch from '../../hooks/userWithoutJWTFetch';
 import Swal from 'sweetalert2';
-import VLibras from '../../components/internal/Vlibras';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,15 +31,16 @@ const Login = () => {
     userWithoutJWTFetch.post('/login', loginUser)
       .then((res) => {
         saveData(res.data);
-        validateAdmin(res.data);
-        if (data.isAdmin === 1) navigate('/homeAdm');
-        else if (data.isAdmin === 0) navigate('/scheduleTenant');
+
+        setTimeout(() => {
+          validateAdmin(res.data);
+        }, 3000);
       })
       .catch((err) => {
         console.clear();
         errorMessage(err.response.status);
       });
-  }
+}
 
 
   function saveData(data) {
@@ -57,6 +57,15 @@ const Login = () => {
     sessionStorage.CONDOMINIUM = data.idCondominium;
     sessionStorage.IMAGE = data.image;
   }
+
+  
+  function validateAdmin(data) {
+    if (data.isAdmin === 1) navigate('/homeAdm');
+    else if (data.isAdmin === 0) navigate('/scheduleTenant');
+  }
+
+
+
 
   function errorMessage(status) {
     if (status === 500) {
@@ -82,7 +91,6 @@ const Login = () => {
 
   return (
     <>
-      <VLibras />
       <div className='mainBodyLogin'>
         <form className='formLogin'>
           <div className='container'>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './communique.css';
 import PostSindicate from '../Post/index';
-import { db } from '../../../caminho-para-firebase-config'; // Importe o objeto de banco de dados do Firebase
+import { db } from '../../../hooks/firebase';
 import ToggleFilter from '../ToggleFilter';
 import Filter from '../../assets/filter.png';
 
@@ -13,7 +13,7 @@ const Communique = (props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const postsRef = db.collection('sua-colecao'); // Substitua 'sua-colecao' pelo nome da sua coleção no Firestore
+    const postsRef = db.collection(`conversations-${sessionStorage.ID}`);
 
     postsRef
       .get()
@@ -36,7 +36,7 @@ const Communique = (props) => {
   };
 
   function deletePost(id) {
-    const postRef = db.collection('sua-colecao').doc(id); // Substitua 'sua-colecao' pelo nome da sua coleção no Firestore
+    const postRef = db.collection('conversations').doc(id); // Substitua 'sua-colecao' pelo nome da sua coleção no Firestore
 
     postRef
       .delete()

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './post.css';
 import ImgEdit from '../../../components/assets/edit-icon.png';
 import ImgDelete from '../../../components/assets/delete-icon.png';
-import { db } from '../../../caminho-para-firebase-config'; // Importe o objeto de banco de dados do Firebase
+import { db } from '../../../hooks/firebase'; // Importe o objeto de banco de dados do Firebase
 import Swal from 'sweetalert2';
 
 const PostSindicate = (props) => {
@@ -21,7 +21,7 @@ const PostSindicate = (props) => {
   }, [props.content, props.date, props.typeMessage, props.isAdm]);
 
   function updatePost() {
-    const postRef = db.collection('sua-colecao'); // Substitua 'sua-colecao' pelo nome da sua coleção no Firestore
+    const postRef = db.collection(`conversations-${sessionStorage.ID}`);
     const postDoc = postRef.doc(props.id);
 
     postDoc.update({

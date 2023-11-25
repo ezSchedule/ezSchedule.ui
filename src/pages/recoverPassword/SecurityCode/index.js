@@ -4,7 +4,6 @@ import CardRecover from '../../../components/internal/CardRecover';
 import userFetch from '../../../hooks/userFetch';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import VLibras from '../../../components/internal/Vlibras';
 
 const SecurityCode = () => {
     const navigate = useNavigate();
@@ -46,7 +45,6 @@ const SecurityCode = () => {
                 </CardRecover>
             </div>
             
-            <VLibras />
         </>
         
     );

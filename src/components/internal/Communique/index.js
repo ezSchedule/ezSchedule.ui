@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './communique.css';
 import PostSindicate from '../Post/index';
-import { db } from '../../../hooks/firebase';
 import ToggleFilter from '../ToggleFilter';
 import Filter from '../../assets/filter.png';
+import { firestore } from '../../../hooks/firebase';
+import { collection, getDocs, doc } from 'firebase/firestore';
+
 
 const Communique = (props) => {
   const [posts, setPosts] = useState([]);
@@ -13,10 +15,9 @@ const Communique = (props) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const postsRef = db.collection(`conversations-${sessionStorage.ID}`);
+    const postsRef = collection(firestore, `conversations-${sessionStorage.CONDOMINIUM}`);
 
-    postsRef
-      .get()
+    getDocs(postsRef)
       .then((querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -36,13 +37,13 @@ const Communique = (props) => {
   };
 
   function deletePost(id) {
-    const postRef = db.collection('conversations').doc(id); // Substitua 'sua-colecao' pelo nome da sua coleção no Firestore
+    const postRef = doc(firestore, `conversations-${sessionStorage.CONDOMINIUM}`, id);
 
-    postRef
-      .delete()
-      .then(() => setPosts(posts.filter((post) => post.id !== id)))
-      .catch((err) => console.log(err));
-  }
+
+    postRef.delete()
+    .then(() => setPosts(posts.filter((post) => post.id !== id)))
+    .catch((err) => console.log(err));
+}
 
   const filteredPosts = selectedMessageType
     ? posts.filter((post) => post.typeMessage === selectedMessageType)

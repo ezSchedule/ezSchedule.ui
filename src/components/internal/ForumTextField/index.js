@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './forumTextField.css';
 import Swal from 'sweetalert2';
-import { db } from '../../../hooks/firebase'; // Importe o objeto de banco de dados do Firebase
-import postFetch from '../../../hooks/postFetch';
+import { collection, addDoc } from 'firebase/firestore';
+import { firestore } from '../../../hooks/firebase';
 
 const ForumTextField = () => {
   const [typeMessageValue, setTypeMessageValue] = useState('');
@@ -51,10 +51,9 @@ const ForumTextField = () => {
       condominium: { id: sessionStorage.CONDOMINIUM }
     };
 
-    const postsRef = db.collection(`conversations-${sessionStorage.ID}`); // Substitua 'sua-colecao' pelo nome da sua coleção no Firestore
+    const postsRef = collection(firestore, `conversations-${sessionStorage.CONDOMINIUM}`);
 
-    postsRef
-      .add(newPost)
+    addDoc(postsRef, newPost)
       .then(() => {
         Swal.fire({
           position: 'top-center',

@@ -1,13 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore"; // Corrigi a importação para getFirestore
+import { getFirestore } from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAibUgcYA_SgY28ErS3Offvh1Z_xpfpbyw",
   authDomain: "ezschedule-71596.firebaseapp.com",
@@ -19,7 +14,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app)
-const db = getFirestore(app); 
+const analytics = getAnalytics(app);
 
-export { db };
+export const firestore = getFirestore(app);
+
+export default app; // Você pode exportar a instância do app se precisar dela em outro lugar

@@ -55,7 +55,7 @@ const RoutesSystem = () => {
                 <Route path='/graphicAdm' element={<Private Item={Graphic} />} />
                 <Route path='/servicesAdm' element={<Private Item={Service} />} />
                 <Route path='/paymentAdm' element={<Private Item={Payment} />} />
-                <Route path='/forumAdm' element={<Private Item={Forum} />} />
+                <Route path='/forumAdm' element={<Forum />} />
                 <Route path='/configurationAdm' element={<Private Item={Configuration} />} />
                 <Route path='/personSettingsAdm' element={<Private Item={PersonalSettings} />} />
                 <Route path='/condominiumSettings' element={<Private Item={CondominiumSettings} />} />

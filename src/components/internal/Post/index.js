@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './post.css';
 import ImgEdit from '../../../components/assets/edit-icon.png';
 import ImgDelete from '../../../components/assets/delete-icon.png';
-import { db } from '../../../hooks/firebase'; // Importe o objeto de banco de dados do Firebase
+import { doc, updateDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
+import { firestore } from '../../../hooks/firebase';
 
 const PostSindicate = (props) => {
   const [editing, setEditing] = useState(false);
   const [content, setContent] = useState(props.content);
   const [date, setDate] = useState(props.date);
-  const formattedDate = props.date.toDate().toLocaleDateString(); // Converta a data para um formato legível
+  // const formattedDate = props.date.toDate().toLocaleDateString();
   const [typeMessage, setTypeMessage] = useState(props.typeMessage);
   const [isAdm, setIsAdm] = useState(props.isAdm);
 
@@ -21,10 +22,9 @@ const PostSindicate = (props) => {
   }, [props.content, props.date, props.typeMessage, props.isAdm]);
 
   function updatePost() {
-    const postRef = db.collection(`conversations-${sessionStorage.ID}`);
-    const postDoc = postRef.doc(props.id);
+    const postRef = doc(firestore, `conversations-${sessionStorage.CONDOMINIUM}`, props.id);
 
-    postDoc.update({
+    updateDoc(postRef, {
       textContent: content,
       typeMessage: typeMessage
     })
@@ -48,7 +48,7 @@ const PostSindicate = (props) => {
       <div className='mainCommunique'>
         {isAdm ? <div className='line'></div> : ''}
         <header>
-          <input type='text' disabled defaultValue={formattedDate} />
+          {/* <input type='text' disabled defaultValue={formattedDate} /> */}
 
           {isAdm ? (
             <>
@@ -96,7 +96,7 @@ const PostSindicate = (props) => {
                 </button>
                 <div>
                   <span>{props.typeMessage}</span>
-                  <span>{formattedDate}</span>
+                  {/* <span>{formattedDate}</span> */}
                 </div>
               </div>
             </div>

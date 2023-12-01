@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './post.css';
 import ImgEdit from '../../../components/assets/edit-icon.png';
 import ImgDelete from '../../../components/assets/delete-icon.png';
-import postFetch from '../../../hooks/postFetch';
+import { doc, updateDoc } from 'firebase/firestore';
 import Swal from 'sweetalert2';
+import { firestore } from '../../../hooks/firebase';
 
 const PostSindicate = (props) => {
   const [editing, setEditing] = useState(false);
   const [content, setContent] = useState(props.content);
   const [date, setDate] = useState(props.date);
-  const formattedDate = props.date.split(' ')[0];
-  const [hour, setHour] = useState(props.hour);
+  // const formattedDate = props.date.toDate().toLocaleDateString();
   const [typeMessage, setTypeMessage] = useState(props.typeMessage);
   const [isAdm, setIsAdm] = useState(props.isAdm);
 
+  useEffect(() => {
+    setContent(props.content);
+    setDate(props.date);
+    setTypeMessage(props.typeMessage);
+    setIsAdm(props.isAdm);
+  }, [props.content, props.date, props.typeMessage, props.isAdm]);
+
   function updatePost() {
-    const postUpdated = {
+    const postRef = doc(firestore, `conversations-${sessionStorage.CONDOMINIUM}`, props.id);
+
+    updateDoc(postRef, {
       textContent: content,
       typeMessage: typeMessage
-    };
-
-    postFetch
-      .put(`/${props.id}`, postUpdated)
-      .then((res) => {
+    })
+      .then(() => {
         Swal.fire({
           position: 'top-center',
           icon: 'success',
@@ -42,7 +48,7 @@ const PostSindicate = (props) => {
       <div className='mainCommunique'>
         {isAdm ? <div className='line'></div> : ''}
         <header>
-          <input type='text' disabled defaultValue={props.date} />
+          {/* <input type='text' disabled defaultValue={formattedDate} /> */}
 
           {isAdm ? (
             <>
@@ -90,14 +96,13 @@ const PostSindicate = (props) => {
                 </button>
                 <div>
                   <span>{props.typeMessage}</span>
-                  <span>{formattedDate}</span>
+                  {/* <span>{formattedDate}</span> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </>
   );
 };

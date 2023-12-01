@@ -4,7 +4,6 @@ import CardRecover from '../../../components/internal/CardRecover';
 import userFetch from '../../../hooks/userFetch';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import VLibras from '../../../components/internal/Vlibras';
 
 const UpdatePassword = () => {
     const navigate = useNavigate();
@@ -58,7 +57,6 @@ const UpdatePassword = () => {
 
     return (
         <>
-            <VLibras />
             <div className='mainBody'>
                 <CardRecover title="Atualizar senha" action={validateField} back="/securityCode">
                     <input type="password" placeholder='Senha' onChange={(e) => setPassword(e.target.value)} required />

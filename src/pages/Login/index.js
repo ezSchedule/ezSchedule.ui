@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import './login.css'
+import React, { useState } from 'react';
+import './login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import onBackPressed from '../../components/assets/left-arrow.png';
 import userWithoutJWTFetch from '../../hooks/userWithoutJWTFetch';
@@ -7,41 +7,42 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   function validateInputs() {
-    if (email === "" || email === undefined || password === "" || password === undefined) {
+    if (email === '' || email === undefined || password === '' || password === undefined) {
       Swal.fire({
         position: 'top-center',
         icon: 'error',
         title: 'Os campos não podem ser vazios!',
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
     } else {
       login();
     }
   }
 
-
   function login() {
     const loginUser = { email, password };
-
+    setIsLoading(true); 
     userWithoutJWTFetch.post('/login', loginUser)
       .then((res) => {
         saveData(res.data);
 
         setTimeout(() => {
           validateAdmin(res.data);
+          setIsLoading(false);
         }, 3000);
       })
       .catch((err) => {
         console.clear();
         errorMessage(err.response.status);
+        setIsLoading(false); 
       });
-}
-
+  }
 
   function saveData(data) {
     sessionStorage.ID = data.id;
@@ -58,14 +59,10 @@ const Login = () => {
     sessionStorage.IMAGE = data.image;
   }
 
-  
   function validateAdmin(data) {
     if (data.isAdmin === 1) navigate('/homeAdm');
     else if (data.isAdmin === 0) navigate('/scheduleTenant');
   }
-
-
-
 
   function errorMessage(status) {
     if (status === 500) {
@@ -94,7 +91,6 @@ const Login = () => {
       <div className='mainBodyLogin'>
         <form className='formLogin'>
           <div className='container'>
-
             <div className='headerForm'>
               <img className='onBack' src={onBackPressed} onClick={() => navigate("/")} alt='Back button' />
               <h1>Login</h1>
@@ -110,12 +106,14 @@ const Login = () => {
               </span>
             </div>
 
-            <button type='button' onClick={validateInputs}>Continuar</button>
+            <button type='button' onClick={validateInputs} disabled={isLoading}>
+              {isLoading ? 'Carregando...' : 'Continuar'}
+            </button>
           </div>
         </form>
       </div>
     </>
-  )
+  );
 }
 
-export default Login
+export default Login;

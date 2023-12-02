@@ -18,10 +18,7 @@
     "axios": "^1.3.4",
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
-<<<<<<< HEAD
-=======
     "firebase": "^10.6.0",
->>>>>>> 3c279af391d04f721646cf82b22b3dbd489eb015
     "react": "^18.2.0",
     "react-calendar": "^4.2.1",
     "react-dom": "^18.2.0",

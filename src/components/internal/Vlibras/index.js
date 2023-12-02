@@ -1,4 +1,3 @@
-import VLibras from "@djpfs/react-vlibras";
 
 function App() {
   return (

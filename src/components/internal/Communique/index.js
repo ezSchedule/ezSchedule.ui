@@ -4,7 +4,8 @@ import PostSindicate from '../Post/index';
 import ToggleFilter from '../ToggleFilter';
 import Filter from '../../assets/filter.png';
 import { firestore } from '../../../hooks/firebase';
-import { collection, getDocs, doc } from 'firebase/firestore';
+import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
+
 
 
 const Communique = (props) => {
@@ -37,13 +38,23 @@ const Communique = (props) => {
   };
 
   function deletePost(id) {
-    const postRef = doc(firestore, `conversations-${sessionStorage.CONDOMINIUM}`, id);
-
-
-    postRef.delete()
-    .then(() => setPosts(posts.filter((post) => post.id !== id)))
-    .catch((err) => console.log(err));
-}
+    const postId = String(id); 
+    const condominiumId = sessionStorage.CONDOMINIUM;
+  
+    if (!condominiumId || typeof condominiumId !== 'string') {
+      console.error('Invalid or missing condominium ID');
+      return;
+    }
+  
+    const postRef = doc(firestore, `conversations-${condominiumId}`, postId);
+  
+    deleteDoc(postRef)
+      .then(() => setPosts(posts => posts.filter(post => post.id !== id)))
+      .catch((err) => {
+        console.error('Error deleting post:', err);
+      });
+  }
+  
 
   const filteredPosts = selectedMessageType
     ? posts.filter((post) => post.typeMessage === selectedMessageType)

@@ -5,7 +5,7 @@ const FinanceTr = (props) => {
         <>
             <tr className="dataTable" onClick={props.onClick}>
                 <td>{props.name}</td>
-                <td>{props.date}</td>
+                <td>{new Date(props.date).toLocaleDateString()}</td>
                 <td>{props.salon}</td>
                 <td>{props.value}</td>
             </tr>

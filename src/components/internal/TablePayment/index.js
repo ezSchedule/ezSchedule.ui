@@ -71,7 +71,7 @@ return (
                                 name={payment.tenant.name}
                                 date={payment.paymentDate === null ? 'Não pago' : payment.paymentDate}
                                 salon={payment.saloon.name}
-                                value={`R$ ${new Date(payment.saloon.saloonPrice).toLocaleDateString()}`}
+                                value={`R$ ${payment.saloon.saloonPrice}`}
                             />
                         ))
                     ) : (

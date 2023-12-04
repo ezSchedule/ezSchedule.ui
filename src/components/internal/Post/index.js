@@ -22,8 +22,16 @@ const PostSindicate = (props) => {
   }, [props.content, props.date, props.typeMessage, props.isAdm]);
 
   function updatePost() {
-    const postRef = doc(firestore, `conversations-${sessionStorage.CONDOMINIUM}`, props.id);
-
+    const postId = String(props.id); 
+    const condominiumId = sessionStorage.CONDOMINIUM;
+  
+    if (!condominiumId || typeof condominiumId !== 'string') {
+      console.error('Invalid or missing condominium ID');
+      return;
+    }
+  
+    const postRef = doc(firestore, `conversations-${condominiumId}`, postId);
+  
     updateDoc(postRef, {
       textContent: content,
       typeMessage: typeMessage
@@ -39,9 +47,12 @@ const PostSindicate = (props) => {
         setEditing(false);
       })
       .catch((err) => {
-        alert(err);
+        console.error('Error updating post:', err);
       });
   }
+  
+  
+
 
   return (
     <>
